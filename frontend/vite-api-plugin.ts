@@ -12,19 +12,22 @@ const bundledDatasetsDir = path.resolve(projectRoot, 'datasets');
 const userDatasetsDir = path.resolve(projectRoot, 'user_generated_datasets');
 const pythonVenvBin = path.resolve(projectRoot, '.venv', 'bin', 'python');
 
+// In-memory analysis results store
+const analysisStore = new Map<string, any>();
+
 export function socialVectorApiPlugin(): Plugin {
   return {
     name: 'social-vector-api',
     configureServer(server) {
-      // 1. GET /api/datasets
       server.middlewares.use(async (req, res, next) => {
         const url = req.url || '';
+        const method = req.method || 'GET';
 
-        if (req.method === 'GET' && url === '/api/datasets') {
+        // 1. GET /api/datasets
+        if (method === 'GET' && url === '/api/datasets') {
           try {
             const datasets: any[] = [];
 
-            // Helper to scan directory
             const scanDir = (dir: string, type: 'bundled' | 'user_generated') => {
               if (!fs.existsSync(dir)) return;
               const files = fs.readdirSync(dir).filter(f => f.endsWith('.json'));
@@ -64,7 +67,6 @@ export function socialVectorApiPlugin(): Plugin {
             scanDir(bundledDatasetsDir, 'bundled');
             scanDir(userDatasetsDir, 'user_generated');
 
-            // Sort: bundled first, then by creation date descending
             datasets.sort((a, b) => {
               if (a.type !== b.type) return a.type === 'bundled' ? -1 : 1;
               return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
@@ -82,11 +84,10 @@ export function socialVectorApiPlugin(): Plugin {
         }
 
         // 2. GET /api/datasets/:filename
-        if (req.method === 'GET' && url.startsWith('/api/datasets/')) {
+        if (method === 'GET' && url.startsWith('/api/datasets/')) {
           const rawParam = url.replace('/api/datasets/', '').split('?')[0];
           const filename = rawParam.endsWith('.json') ? rawParam : `${rawParam}.json`;
 
-          // Check in user_generated first, then bundled
           let targetPath = path.join(userDatasetsDir, filename);
           if (!fs.existsSync(targetPath)) {
             targetPath = path.join(bundledDatasetsDir, filename);
@@ -113,7 +114,7 @@ export function socialVectorApiPlugin(): Plugin {
         }
 
         // 3. GET /api/scenarios
-        if (req.method === 'GET' && url === '/api/scenarios') {
+        if (method === 'GET' && url === '/api/scenarios') {
           const scenarios = [
             {
               id: 'organic_activity',
@@ -163,7 +164,7 @@ export function socialVectorApiPlugin(): Plugin {
         }
 
         // 4. POST /api/generate
-        if (req.method === 'POST' && url === '/api/generate') {
+        if (method === 'POST' && url === '/api/generate') {
           let bodyStr = '';
           req.on('data', chunk => { bodyStr += chunk; });
           req.on('end', async () => {
@@ -176,17 +177,14 @@ export function socialVectorApiPlugin(): Plugin {
               const seed = parseInt(body.seed || '42', 10);
               const campaignRatio = parseFloat(body.campaign_ratio || '0.15');
 
-              // Format filename
               const timestamp = Date.now();
               const filename = `dataset_${scenario}_s${seed}_u${users}_${timestamp}.json`;
               const outputPath = path.join(userDatasetsDir, filename);
 
-              // Ensure userDatasetsDir exists
               if (!fs.existsSync(userDatasetsDir)) {
                 fs.mkdirSync(userDatasetsDir, { recursive: true });
               }
 
-              // Build CLI arguments
               const pythonExec = fs.existsSync(pythonVenvBin) ? pythonVenvBin : 'python3';
               const args = [
                 '-m', 'social_vector.cli.main',
@@ -200,17 +198,11 @@ export function socialVectorApiPlugin(): Plugin {
                 '--output', outputPath,
               ];
 
-              if (body.start_date) {
-                args.push('--start-date', body.start_date);
-              }
-              if (body.end_date) {
-                args.push('--end-date', body.end_date);
-              }
+              if (body.start_date) args.push('--start-date', body.start_date);
+              if (body.end_date) args.push('--end-date', body.end_date);
 
-              // Execute generator
               await execFileAsync(pythonExec, args, { cwd: projectRoot });
 
-              // Verify file creation
               if (!fs.existsSync(outputPath)) {
                 throw new Error('Generator completed without creating dataset file');
               }
@@ -240,23 +232,87 @@ export function socialVectorApiPlugin(): Plugin {
           return;
         }
 
-        // 5. POST /api/analyze/feed and POST /api/analyze/dataset (Placeholder API)
-        if (req.method === 'POST' && (url === '/api/analyze/feed' || url === '/api/analyze/dataset')) {
+        // 5. POST /api/analysis (Execute Canonical Python Analytical Engine)
+        if (method === 'POST' && (url === '/api/analysis' || url === '/api/analyze/feed' || url === '/api/analyze/dataset')) {
           let bodyStr = '';
           req.on('data', chunk => { bodyStr += chunk; });
-          req.on('end', () => {
-            const body = JSON.parse(bodyStr || '{}');
-            const scope = url.includes('/feed') ? 'feed' : 'dataset';
-            res.setHeader('Content-Type', 'application/json');
-            res.end(JSON.stringify({
-              status: 'placeholder',
-              scope,
-              targetId: body.targetId || body.userId || body.datasetId,
-              message: 'Observation context assembled. Analysis engine integration boundary reached.',
-              signalsEvaluated: ['content_lexicon', 'temporal_rhythm', 'network_topology', 'domain_infrastructure'],
-              timestamp: new Date().toISOString(),
-            }));
+          req.on('end', async () => {
+            try {
+              const body = JSON.parse(bodyStr || '{}');
+              const scope = body.scope || (url.includes('/feed') ? 'feed' : 'dataset');
+              const datasetId = body.dataset_id || body.datasetId || body.targetId;
+              const targetId = body.target_id || body.userId;
+
+              const pythonExec = fs.existsSync(pythonVenvBin) ? pythonVenvBin : 'python3';
+              const args = [
+                '-m', 'social_vector.cli.main',
+                'analyze',
+                scope,
+                datasetId,
+                '--json',
+              ];
+
+              if (targetId && (scope === 'user' || scope === 'feed')) {
+                args.push(targetId);
+              }
+              if (body.threshold) {
+                args.push('--threshold', body.threshold.toString());
+              }
+              if (body.eps) {
+                args.push('--eps', body.eps.toString());
+              }
+
+              const { stdout } = await execFileAsync(pythonExec, args, {
+                cwd: projectRoot,
+                maxBuffer: 10 * 1024 * 1024,
+              });
+
+              const result = JSON.parse(stdout);
+              analysisStore.set(result.analysis_id, result);
+
+              res.setHeader('Content-Type', 'application/json');
+              res.end(JSON.stringify({
+                success: true,
+                analysis_id: result.analysis_id,
+                dataset_id: result.dataset_id,
+                scope: result.scope,
+                status: 'completed',
+                result,
+              }));
+            } catch (error: any) {
+              console.error('Analysis execution error:', error);
+              res.statusCode = 500;
+              res.setHeader('Content-Type', 'application/json');
+              res.end(JSON.stringify({ error: error.message || 'Analysis execution failed' }));
+            }
           });
+          return;
+        }
+
+        // 6. GET /api/analysis/:id/results, /api/analysis/:id/evidence, /api/analysis/:id/graph
+        if (method === 'GET' && url.startsWith('/api/analysis/')) {
+          const parts = url.replace('/api/analysis/', '').split('/');
+          const analysisId = parts[0];
+          const subResource = parts[1] || 'status';
+
+          const result = analysisStore.get(analysisId);
+          if (!result) {
+            res.statusCode = 404;
+            res.setHeader('Content-Type', 'application/json');
+            res.end(JSON.stringify({ error: `Analysis '${analysisId}' not found` }));
+            return;
+          }
+
+          res.setHeader('Content-Type', 'application/json');
+          if (subResource === 'results' || subResource === 'status') {
+            res.end(JSON.stringify(result));
+          } else if (subResource === 'evidence') {
+            res.end(JSON.stringify({ evidence: result.evidence || [] }));
+          } else if (subResource === 'graph') {
+            res.end(JSON.stringify(result.graph || { nodes: [], edges: [] }));
+          } else {
+            res.end(JSON.stringify(result));
+          }
           return;
         }
 
