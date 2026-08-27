@@ -11,54 +11,49 @@ import {
   CheckCircle2,
   AlertCircle,
   Loader2,
-  Clock,
-  ExternalLink,
-  Layers,
   Sparkles,
   ArrowRight,
-  ShieldAlert,
-  Sliders,
 } from 'lucide-react';
 
 export const AnalysisModal: React.FC = () => {
-  const { analysisTarget, closeAnalysis, activeDatasetId, activeDatasetMeta, setLatestAnalysisResult } = useDataset();
+  const {
+    analysisTarget,
+    closeAnalysis,
+    activeDatasetId,
+    activeDatasetMeta,
+    latestAnalysisResult,
+    setLatestAnalysisResult,
+  } = useDataset();
   const navigate = useNavigate();
 
   const [isRunning, setIsRunning] = useState<boolean>(false);
-  const [analysisResult, setAnalysisResult] = useState<AnalysisResult | null>(null);
+  const [localResult, setLocalResult] = useState<AnalysisResult | null>(null);
   const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => {
-    if (analysisTarget) {
-      setAnalysisResult(null);
-      setError(null);
-      handleRunAnalysis();
-    }
-  }, [analysisTarget]);
-
-  if (!analysisTarget) return null;
-
-  const isFeed = analysisTarget.scope === 'feed' || analysisTarget.scope === 'user';
+  const isFeed = analysisTarget?.scope === 'feed' || analysisTarget?.scope === 'user';
   const targetName = isFeed
-    ? analysisTarget.user
+    ? analysisTarget?.user
       ? `@${analysisTarget.user.username} Feed`
       : 'Target Social Feed'
     : activeDatasetMeta?.scenario?.replace(/_/g, ' ') || 'Complete Observation Dataset';
 
   const handleRunAnalysis = async () => {
-    if (!activeDatasetId) return;
+    if (!analysisTarget) return;
+    const datasetIdToUse = activeDatasetId || analysisTarget.targetId;
+    if (!datasetIdToUse) return;
+
     setIsRunning(true);
     setError(null);
 
     try {
       const response = await runAnalysis({
-        dataset_id: activeDatasetId,
+        dataset_id: datasetIdToUse,
         scope: analysisTarget.scope,
         target_id: analysisTarget.targetId,
       });
 
-      if (response.success && response.result) {
-        setAnalysisResult(response.result);
+      if (response && response.result) {
+        setLocalResult(response.result);
         setLatestAnalysisResult(response.result);
       } else {
         throw new Error('Analysis completed with empty results');
@@ -71,12 +66,25 @@ export const AnalysisModal: React.FC = () => {
     }
   };
 
+  useEffect(() => {
+    if (analysisTarget) {
+      setLocalResult(null);
+      setError(null);
+      handleRunAnalysis();
+    }
+  }, [analysisTarget]);
+
+  if (!analysisTarget) return null;
+
   const handleOpenInvestigation = () => {
-    if (activeDatasetId) {
+    const datasetIdToUse = activeDatasetId || analysisTarget.targetId;
+    if (datasetIdToUse) {
       closeAnalysis();
-      navigate(`/datasets/${activeDatasetId}/investigations`);
+      navigate(`/datasets/${datasetIdToUse}/investigations`);
     }
   };
+
+  const analysisResult = localResult || latestAnalysisResult;
 
   return (
     <Modal
@@ -187,14 +195,14 @@ export const AnalysisModal: React.FC = () => {
                   </p>
 
                   {/* Stage Metrics */}
-                  {Object.keys(stage.metrics).length > 0 && (
+                  {stage.metrics && Object.keys(stage.metrics).length > 0 && (
                     <div className="mt-2 pl-5.5 flex flex-wrap gap-1.5">
                       {Object.entries(stage.metrics).map(([k, v]) => (
                         <span
                           key={k}
                           className="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-[10px] font-mono text-slate-600 dark:text-slate-300"
                         >
-                          {k.replace(/_/g, ' ')}: <strong className="text-slate-900 dark:text-cyan-400">{typeof v === 'number' ? Number.isInteger(v) ? v : v.toFixed(3) : String(v)}</strong>
+                          {k.replace(/_/g, ' ')}: <strong className="text-slate-900 dark:text-cyan-400">{typeof v === 'number' ? (Number.isInteger(v) ? v : v.toFixed(3)) : String(v)}</strong>
                         </span>
                       ))}
                     </div>

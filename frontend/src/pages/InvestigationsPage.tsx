@@ -6,21 +6,14 @@ import { EmptyState } from '../components/common/EmptyState';
 import {
   FileSearch,
   Activity,
-  Layers,
-  Share2,
-  Calendar,
-  ExternalLink,
   ShieldAlert,
-  Users,
-  MessageSquare,
   Sparkles,
   Download,
-  Terminal,
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 export const InvestigationsPage: React.FC = () => {
-  const { activeDataset, activeDatasetMeta, activeDatasetId, latestAnalysisResult, openAnalysis } = useDataset();
+  const { activeDatasetMeta, activeDatasetId, latestAnalysisResult, openAnalysis } = useDataset();
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState<'clusters' | 'evidence' | 'graph' | 'signals'>('clusters');
 
@@ -62,9 +55,9 @@ export const InvestigationsPage: React.FC = () => {
             <Button
               variant="primary"
               icon={<Sparkles className="w-4 h-4" />}
-              onClick={() => openAnalysis('dataset', activeDatasetMeta.id)}
+              onClick={() => openAnalysis('dataset', activeDatasetId || '')}
             >
-              Run Investigation Pipeline
+              Run Pipeline Now
             </Button>
           }
         />
@@ -74,19 +67,33 @@ export const InvestigationsPage: React.FC = () => {
 
   const res = latestAnalysisResult;
 
+  const handleExportJson = () => {
+    const dataStr = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(res, null, 2));
+    const downloadAnchor = document.createElement('a');
+    downloadAnchor.setAttribute('href', dataStr);
+    downloadAnchor.setAttribute('download', `investigation_dossier_${res.analysis_id}.json`);
+    document.body.appendChild(downloadAnchor);
+    downloadAnchor.click();
+    downloadAnchor.remove();
+  };
+
   return (
-    <div className="space-y-8">
-      {/* Header */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+    <div className="space-y-6">
+      {/* Dossier Header */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 border-b border-slate-200 dark:border-slate-800">
         <div>
-          <div className="text-xs font-mono uppercase tracking-wider text-slate-400 dark:text-slate-500 flex items-center gap-2">
-            <span>Investigation ID: {res.analysis_id}</span>
-            <span>·</span>
-            <span>{res.total_users_analyzed} Users Analyzed</span>
+          <div className="text-xs font-mono uppercase tracking-wider text-slate-400 dark:text-slate-500">
+            Investigation Dossier: {res.analysis_id}
           </div>
           <h1 className="text-2xl font-bold text-slate-900 dark:text-slate-100 tracking-tight mt-1">
-            Investigation Dossier: {activeDatasetMeta.scenario.replace(/_/g, ' ')}
+            Campaign Investigation Workspace
           </h1>
+          <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">
+            Canonical analytical intelligence, multi-signal evidence, and coordination topology for{' '}
+            <strong className="text-slate-900 dark:text-slate-200">
+              {activeDatasetMeta.scenario.replace(/_/g, ' ')}
+            </strong>
+          </p>
         </div>
 
         <div className="flex items-center gap-2">
@@ -94,35 +101,28 @@ export const InvestigationsPage: React.FC = () => {
             variant="outline"
             size="sm"
             icon={<Download className="w-3.5 h-3.5" />}
-            onClick={() => {
-              const blob = new Blob([JSON.stringify(res, null, 2)], { type: 'application/json' });
-              const url = URL.createObjectURL(blob);
-              const a = document.createElement('a');
-              a.href = url;
-              a.download = `investigation_${res.analysis_id}.json`;
-              a.click();
-            }}
+            onClick={handleExportJson}
           >
-            Export Dossier JSON
+            Export Dossier
           </Button>
 
           <Button
             variant="primary"
             size="sm"
             icon={<Sparkles className="w-3.5 h-3.5" />}
-            onClick={() => openAnalysis('dataset', activeDatasetMeta.id)}
+            onClick={() => openAnalysis('dataset', activeDatasetId || '')}
           >
-            Re-Run Analysis
+            Re-Run Engine
           </Button>
         </div>
       </div>
 
       {/* Synthesis Summary Banner */}
-      <div className="p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0f141c] space-y-4">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-slate-100 dark:border-slate-800">
+      <div className="p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0f141c] space-y-3">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-100 dark:border-slate-800">
           <div>
-            <div className="text-[10px] font-mono uppercase tracking-wider text-slate-400 dark:text-slate-500">
-              Confidence Assessment
+            <div className="text-[10px] font-mono uppercase tracking-wider text-slate-400">
+              Multi-Signal Coordination Risk Score
             </div>
             <div className="text-xl font-bold text-slate-900 dark:text-slate-100 flex items-center gap-2 mt-0.5">
               <span className="font-mono text-blue-600 dark:text-cyan-400">
@@ -156,7 +156,7 @@ export const InvestigationsPage: React.FC = () => {
         </p>
       </div>
 
-      {/* Tabs */}
+      {/* Tabs Navigation */}
       <div className="space-y-4">
         <div className="flex items-center gap-2 border-b border-slate-200 dark:border-slate-800 pb-2">
           <button
@@ -331,15 +331,15 @@ export const InvestigationsPage: React.FC = () => {
               ))
             ) : (
               <EmptyState
-                icon={<FileSearch className="w-8 h-8 text-slate-400" />}
-                title="No Evidence Items Flagged"
-                description="No suspicious indicators crossed analytical significance thresholds."
+                icon={<ShieldAlert className="w-8 h-8 text-slate-400" />}
+                title="No Critical Evidence Flagged"
+                description="No individual posts or user activities met the anomaly threshold for direct evidence inclusion."
               />
             )}
           </div>
         )}
 
-        {/* Tab 3: Signals */}
+        {/* Tab 3: Signal Breakdown */}
         {activeTab === 'signals' && (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {res.signals.map(sig => (
@@ -410,22 +410,24 @@ export const InvestigationsPage: React.FC = () => {
               </div>
             </div>
 
-            {/* Edge list preview */}
-            <div className="space-y-1.5 max-h-60 overflow-y-auto pr-1">
-              <div className="text-[10px] font-mono uppercase text-slate-400">Key Co-ordination & Semantic Edges:</div>
-              {res.graph?.edges.slice(0, 15).map((e, idx) => (
-                <div
-                  key={idx}
-                  className="p-2 rounded border border-slate-100 dark:border-slate-800/80 bg-slate-50/50 dark:bg-slate-900/40 text-[11px] flex items-center justify-between"
-                >
-                  <span className="font-mono text-slate-700 dark:text-slate-300 truncate">
-                    {e.source} &harr; {e.target}
-                  </span>
-                  <Badge variant="blue" size="sm">
-                    {e.relationship} ({e.weight.toFixed(2)})
-                  </Badge>
-                </div>
-              ))}
+            <div className="space-y-2">
+              <div className="text-xs font-semibold text-slate-700 dark:text-slate-300">
+                Relational Edges Sample
+              </div>
+              <div className="space-y-1.5 max-h-48 overflow-y-auto">
+                {res.graph?.edges.slice(0, 10).map((edge, idx) => (
+                  <div
+                    key={idx}
+                    className="flex items-center justify-between p-2 rounded-md bg-slate-50 dark:bg-slate-900 text-xs font-mono"
+                  >
+                    <span className="text-slate-800 dark:text-slate-200">{edge.source}</span>
+                    <span className="text-[10px] text-blue-600 dark:text-cyan-400 px-1.5 py-0.5 rounded bg-blue-50 dark:bg-cyan-950">
+                      {edge.relationship} ({(edge.weight * 100).toFixed(0)}%)
+                    </span>
+                    <span className="text-slate-800 dark:text-slate-200">{edge.target}</span>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         )}
