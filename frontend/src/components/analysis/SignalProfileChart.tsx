@@ -25,7 +25,7 @@ export const SignalProfileChart: React.FC<SignalProfileChartProps> = ({
   };
 
   return (
-    <div className="space-y-3">
+    <div className="space-y-2.5">
       {signals.map((sig) => {
         const isSelected = selectedSignalId === sig.signal_id;
         const weightedScore = sig.score * sig.weight;
@@ -34,11 +34,11 @@ export const SignalProfileChart: React.FC<SignalProfileChartProps> = ({
           <div
             key={sig.signal_id}
             onClick={() => onSelectSignal?.(sig.signal_id)}
-            className={`p-3 rounded-lg border transition-all ${
+            className={`p-2.5 rounded-lg border transition-all ${
               onSelectSignal ? 'cursor-pointer' : ''
             } ${
               isSelected
-                ? 'border-blue-500 dark:border-cyan-400 bg-blue-50/40 dark:bg-cyan-950/20 shadow-sm'
+                ? 'border-slate-900 dark:border-cyan-400 bg-slate-50 dark:bg-cyan-950/20 shadow-xs'
                 : 'border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0f141c] hover:border-slate-300 dark:hover:border-slate-700'
             }`}
           >
@@ -67,7 +67,7 @@ export const SignalProfileChart: React.FC<SignalProfileChartProps> = ({
             </div>
 
             {/* Progress Bar */}
-            <div className="w-full h-2 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+            <div className="w-full h-1.5 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
               <div
                 className={`h-full rounded-full transition-all duration-500 ${getSignalColor(sig.score)}`}
                 style={{ width: `${Math.max(3, sig.score * 100)}%` }}

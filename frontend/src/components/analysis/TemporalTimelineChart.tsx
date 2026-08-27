@@ -56,7 +56,7 @@ export const TemporalTimelineChart: React.FC<TemporalTimelineChartProps> = ({
       </div>
 
       {/* SVG Timeline Histogram */}
-      <div className="relative p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0f141c]">
+      <div className="relative p-3.5 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0f141c]">
         {/* Tooltip display */}
         <div className="h-6 mb-2 flex items-center justify-between text-xs font-mono">
           {hoveredBin ? (

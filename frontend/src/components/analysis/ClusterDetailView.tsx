@@ -16,17 +16,17 @@ export const ClusterDetailView: React.FC<ClusterDetailViewProps> = ({
   const navigate = useNavigate();
 
   return (
-    <div className="p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0f141c] space-y-5">
+    <div className="p-4 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0f141c] space-y-4">
       {/* Cluster Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-slate-100 dark:border-slate-800">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-100 dark:border-slate-800">
         <div>
-          <div className="text-[10px] font-mono uppercase tracking-wider text-slate-400">
-            Selected Coordination Cluster
+          <div className="text-[10px] font-mono uppercase text-slate-400">
+            Selected Cluster
           </div>
-          <div className="text-base font-bold text-slate-900 dark:text-slate-100 flex items-center gap-2 mt-0.5">
+          <div className="text-sm font-bold text-slate-900 dark:text-slate-100 flex items-center gap-2 mt-0.5">
             <span>{cluster.cluster_id.toUpperCase()}</span>
             <Badge variant="danger" size="sm">
-              Cohesion Score: {(cluster.coordination_score * 100).toFixed(1)}%
+              Cohesion: {(cluster.coordination_score * 100).toFixed(1)}%
             </Badge>
           </div>
         </div>

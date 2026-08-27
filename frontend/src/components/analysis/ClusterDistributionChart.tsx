@@ -34,9 +34,9 @@ export const ClusterDistributionChart: React.FC<ClusterDistributionChartProps> =
           <div
             key={cluster.cluster_id}
             onClick={() => onSelectCluster(cluster.cluster_id)}
-            className={`p-3.5 rounded-xl border transition-all cursor-pointer ${
+            className={`p-3 rounded-lg border transition-all cursor-pointer ${
               isSelected
-                ? 'border-blue-500 dark:border-cyan-400 bg-blue-50/40 dark:bg-cyan-950/20 shadow-sm'
+                ? 'border-slate-900 dark:border-cyan-400 bg-slate-50 dark:bg-cyan-950/20 shadow-xs'
                 : 'border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0f141c] hover:border-slate-300 dark:hover:border-slate-700'
             }`}
           >
