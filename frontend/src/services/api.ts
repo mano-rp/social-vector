@@ -1,5 +1,6 @@
 import axios from 'axios';
 import {
+  AnalysisResult,
   DatasetListItem,
   GenerateDatasetParams,
   GenerateDatasetResponse,
@@ -34,12 +35,31 @@ export const generateDataset = async (params: GenerateDatasetParams): Promise<Ge
   return res.data;
 };
 
-export const analyzeFeed = async (feedId: string, authorId: string) => {
-  const res = await client.post('/analyze/feed', { targetId: feedId, userId: authorId });
+export interface StartAnalysisParams {
+  dataset_id: string;
+  scope: 'dataset' | 'user' | 'feed';
+  target_id?: string;
+  threshold?: number;
+  eps?: number;
+  min_samples?: number;
+}
+
+export const runAnalysis = async (params: StartAnalysisParams): Promise<{ success: boolean; analysis_id: string; result: AnalysisResult }> => {
+  const res = await client.post('/analysis', params);
   return res.data;
 };
 
-export const analyzeDataset = async (datasetId: string) => {
-  const res = await client.post('/analyze/dataset', { datasetId });
+export const getAnalysisResults = async (analysisId: string): Promise<AnalysisResult> => {
+  const res = await client.get<AnalysisResult>(`/analysis/${analysisId}/results`);
+  return res.data;
+};
+
+export const getAnalysisEvidence = async (analysisId: string) => {
+  const res = await client.get(`/analysis/${analysisId}/evidence`);
+  return res.data;
+};
+
+export const getAnalysisGraph = async (analysisId: string) => {
+  const res = await client.get(`/analysis/${analysisId}/graph`);
   return res.data;
 };

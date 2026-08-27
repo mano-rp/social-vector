@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useEffect, useState, useMemo } from 'react';
-import { DatasetListItem, SocialDataset, UserRecord } from '../types/dataset';
+import { AnalysisResult, DatasetListItem, SocialDataset, UserRecord } from '../types/dataset';
 import { getDatasets, getDataset } from '../services/api';
 
 interface DatasetContextType {
@@ -16,9 +16,11 @@ interface DatasetContextType {
   isGeneratorOpen: boolean;
   openGenerator: () => void;
   closeGenerator: () => void;
-  analysisTarget: { scope: 'feed' | 'dataset'; targetId: string; user?: UserRecord } | null;
-  openAnalysis: (scope: 'feed' | 'dataset', targetId: string, user?: UserRecord) => void;
+  analysisTarget: { scope: 'feed' | 'dataset' | 'user'; targetId: string; user?: UserRecord } | null;
+  openAnalysis: (scope: 'feed' | 'dataset' | 'user', targetId: string, user?: UserRecord) => void;
   closeAnalysis: () => void;
+  latestAnalysisResult: AnalysisResult | null;
+  setLatestAnalysisResult: (result: AnalysisResult | null) => void;
 }
 
 const DatasetContext = createContext<DatasetContextType | undefined>(undefined);
@@ -32,7 +34,8 @@ export const DatasetProvider: React.FC<{ children: React.ReactNode }> = ({ child
   const [error, setError] = useState<string | null>(null);
 
   const [isGeneratorOpen, setIsGeneratorOpen] = useState(false);
-  const [analysisTarget, setAnalysisTarget] = useState<{ scope: 'feed' | 'dataset'; targetId: string; user?: UserRecord } | null>(null);
+  const [analysisTarget, setAnalysisTarget] = useState<{ scope: 'feed' | 'dataset' | 'user'; targetId: string; user?: UserRecord } | null>(null);
+  const [latestAnalysisResult, setLatestAnalysisResult] = useState<AnalysisResult | null>(null);
 
   const refreshDatasets = async () => {
     setIsLoadingDatasets(true);
@@ -91,7 +94,7 @@ export const DatasetProvider: React.FC<{ children: React.ReactNode }> = ({ child
   const openGenerator = () => setIsGeneratorOpen(true);
   const closeGenerator = () => setIsGeneratorOpen(false);
 
-  const openAnalysis = (scope: 'feed' | 'dataset', targetId: string, user?: UserRecord) => {
+  const openAnalysis = (scope: 'feed' | 'dataset' | 'user', targetId: string, user?: UserRecord) => {
     setAnalysisTarget({ scope, targetId, user });
   };
   const closeAnalysis = () => setAnalysisTarget(null);
@@ -115,6 +118,8 @@ export const DatasetProvider: React.FC<{ children: React.ReactNode }> = ({ child
         analysisTarget,
         openAnalysis,
         closeAnalysis,
+        latestAnalysisResult,
+        setLatestAnalysisResult,
       }}
     >
       {children}
