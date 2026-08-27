@@ -26,8 +26,8 @@ export const Sidebar: React.FC = () => {
     }`;
 
   return (
-    <aside className="w-60 border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0f141c] flex flex-col shrink-0 min-h-[calc(100vh-3.5rem)] transition-colors">
-      <div className="p-3 flex-1 flex flex-col justify-between">
+    <aside className="w-60 border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0f141c] flex flex-col shrink-0 sticky top-14 h-[calc(100vh-3.5rem)] transition-colors">
+      <div className="p-3 flex-1 flex flex-col justify-between overflow-hidden">
         <div className="space-y-6">
           <div>
             <div className="px-3 mb-2 text-[10px] font-semibold tracking-wider text-slate-400 dark:text-slate-500 uppercase font-mono">
