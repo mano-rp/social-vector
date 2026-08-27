@@ -134,6 +134,7 @@ def build_parser() -> argparse.ArgumentParser:
     anl_ds.add_argument("dataset", type=str, help="Dataset identifier or file path")
     anl_ds.add_argument("-o", "--output", type=str, default=None, help="Save structured analysis to file")
     anl_ds.add_argument("--json", action="store_true", help="Output raw structured JSON results")
+    anl_ds.add_argument("--stream", action="store_true", help="Stream pipeline stage progress as JSON events")
     anl_ds.add_argument("--threshold", type=float, default=0.78, help="Semantic similarity threshold (default: 0.78)")
     anl_ds.add_argument("--eps", type=float, default=0.38, help="DBSCAN clustering eps distance (default: 0.38)")
     anl_ds.add_argument("--min-samples", type=int, default=3, help="DBSCAN min samples per cluster (default: 3)")
@@ -144,14 +145,16 @@ def build_parser() -> argparse.ArgumentParser:
     anl_usr.add_argument("target", type=str, help="User ID or username to analyze")
     anl_usr.add_argument("-o", "--output", type=str, default=None, help="Save structured analysis to file")
     anl_usr.add_argument("--json", action="store_true", help="Output raw structured JSON results")
+    anl_usr.add_argument("--stream", action="store_true", help="Stream pipeline stage progress as JSON events")
     anl_usr.add_argument("--threshold", type=float, default=0.78, help="Semantic similarity threshold")
 
     # sv analyze feed <dataset> <target>
     anl_feed = anl_subparsers.add_parser("feed", help="Analyze a specific feed or user timeline")
     anl_feed.add_argument("dataset", type=str, help="Dataset identifier or file path")
-    anl_feed.add_argument("target", type=str, help="User ID or feed target identifier")
+    anl_feed.add_argument("target", type=str, nargs="?", default=None, help="User ID or feed target identifier")
     anl_feed.add_argument("-o", "--output", type=str, default=None, help="Save structured analysis to file")
     anl_feed.add_argument("--json", action="store_true", help="Output raw structured JSON results")
+    anl_feed.add_argument("--stream", action="store_true", help="Stream pipeline stage progress as JSON events")
     anl_feed.add_argument("--threshold", type=float, default=0.78, help="Semantic similarity threshold")
 
     return parser

@@ -49,6 +49,54 @@ export const runAnalysis = async (params: StartAnalysisParams): Promise<{ succes
   return res.data;
 };
 
+export interface AnalysisStreamCallbacks {
+  onStage?: (stage: import('../types/dataset').PipelineStageResult) => void;
+  onResult?: (result: AnalysisResult) => void;
+  onError?: (error: string) => void;
+}
+
+export const runAnalysisStream = (
+  params: StartAnalysisParams,
+  callbacks: AnalysisStreamCallbacks
+): (() => void) => {
+  const queryParams = new URLSearchParams({
+    scope: params.scope,
+    dataset_id: params.dataset_id,
+    ...(params.target_id ? { target_id: params.target_id } : {}),
+    ...(params.threshold ? { threshold: params.threshold.toString() } : {}),
+    ...(params.eps ? { eps: params.eps.toString() } : {}),
+    ...(params.min_samples ? { min_samples: params.min_samples.toString() } : {}),
+  });
+
+  const eventSource = new EventSource(`/api/analysis/stream?${queryParams.toString()}`);
+
+  eventSource.onmessage = (event) => {
+    try {
+      const data = JSON.parse(event.data);
+      if (data.type === 'stage' && data.stage) {
+        callbacks.onStage?.(data.stage);
+      } else if (data.type === 'result' && data.result) {
+        callbacks.onResult?.(data.result);
+        eventSource.close();
+      } else if (data.type === 'error') {
+        callbacks.onError?.(data.error || 'Analysis execution error');
+        eventSource.close();
+      }
+    } catch (e: any) {
+      console.warn('Failed to parse SSE event:', e);
+    }
+  };
+
+  eventSource.onerror = () => {
+    callbacks.onError?.('Real-time pipeline stream disconnected');
+    eventSource.close();
+  };
+
+  return () => {
+    eventSource.close();
+  };
+};
+
 export const getAnalysisResults = async (analysisId: string): Promise<AnalysisResult> => {
   const res = await client.get<AnalysisResult>(`/analysis/${analysisId}/results`);
   return res.data;

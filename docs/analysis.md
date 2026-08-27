@@ -109,6 +109,9 @@ sv analyze dataset datasets/sample_extreme_geopolitical_operation.json
 # Output structured JSON result
 sv analyze dataset datasets/sample_extreme_geopolitical_operation.json --json -o dossier.json
 
+# Live stream observable pipeline stages
+sv analyze dataset datasets/sample_extreme_geopolitical_operation.json --stream
+
 # Analyze specific target user persona
 sv analyze user datasets/sample_extreme_geopolitical_operation.json usr_whistleblower_01
 
@@ -123,11 +126,12 @@ sv analyze dataset datasets/sample_extreme_geopolitical_operation.json --thresho
 
 ## API Endpoints
 
-The analytical engine is available over REST via FastAPI:
+The analytical engine is available over REST via FastAPI and Vite API middleware:
 
 | Method | Path | Description |
 |---|---|---|
-| `POST` | `/api/analysis/run` | Execute analysis pipeline over dataset, user, or feed scope |
-| `GET` | `/api/analysis/:id` | Retrieve completed analysis result and dossier |
+| `GET/POST` | `/api/analysis/stream` | Stream real-time stage progress and final analysis dossier via Server-Sent Events (SSE) |
+| `POST` | `/api/analysis` | Execute analytical pipeline synchronously over dataset, user, or feed scope |
+| `GET` | `/api/analysis/:id/results` | Retrieve completed analysis result and dossier |
 | `GET` | `/api/analysis/:id/evidence` | Retrieve categorized evidence items |
 | `GET` | `/api/analysis/:id/graph` | Retrieve relational NetworkX network topology |

@@ -157,6 +157,71 @@ async def start_analysis(
     }
 
 
+@app.get("/api/analysis/stream")
+@app.post("/api/analysis/stream")
+async def stream_analysis(
+    dataset_id: Optional[str] = None,
+    scope: Optional[str] = "dataset",
+    target_id: Optional[str] = None,
+    threshold: Optional[float] = 0.78,
+    eps: Optional[float] = 0.38,
+    min_samples: Optional[int] = 3,
+    req: Optional[CreateAnalysisRequest] = None,
+):
+    from fastapi.responses import StreamingResponse
+    import json
+
+    ds_id = req.dataset_id if req else (dataset_id or "")
+    sc_val = req.scope if req else (scope or "dataset")
+    tg_id = req.target_id if req else target_id
+    th_val = req.threshold if req else (threshold or 0.78)
+    ep_val = req.eps if req else (eps or 0.38)
+    ms_val = req.min_samples if req else (min_samples or 3)
+
+    config = AnalysisConfig(
+        similarity_threshold=th_val,
+        dbscan_eps=ep_val,
+        dbscan_min_samples=ms_val,
+    )
+    scope_enum = AnalysisScope(sc_val.lower())
+    pipeline = AnalysisPipeline(config)
+
+    queue: asyncio.Queue[str] = asyncio.Queue()
+    loop = asyncio.get_running_loop()
+
+    def sync_progress_callback(stage: PipelineStageResult):
+        event_str = json.dumps({"type": "stage", "stage": stage.to_dict()})
+        loop.call_soon_threadsafe(queue.put_nowait, event_str)
+
+    def run_sync():
+        try:
+            res = pipeline.run(
+                dataset_path_or_id=ds_id,
+                scope=scope_enum,
+                target_id=tg_id,
+                progress_callback=sync_progress_callback,
+            )
+            analysis_results[res.analysis_id] = res
+            res_str = json.dumps({"type": "result", "result": res.to_dict()})
+            loop.call_soon_threadsafe(queue.put_nowait, res_str)
+        except Exception as e:
+            err_str = json.dumps({"type": "error", "error": str(e)})
+            loop.call_soon_threadsafe(queue.put_nowait, err_str)
+        finally:
+            loop.call_soon_threadsafe(queue.put_nowait, "__DONE__")
+
+    executor.submit(run_sync)
+
+    async def event_generator():
+        while True:
+            item = await queue.get()
+            if item == "__DONE__":
+                break
+            yield f"data: {item}\n\n"
+
+    return StreamingResponse(event_generator(), media_type="text/event-stream")
+
+
 @app.get("/api/analysis/{analysis_id}")
 def get_analysis_status(analysis_id: str):
     job = analysis_jobs.get(analysis_id)

@@ -232,7 +232,117 @@ export function socialVectorApiPlugin(): Plugin {
           return;
         }
 
-        // 5. POST /api/analysis (Execute Canonical Python Analytical Engine)
+        // 5. POST or GET /api/analysis/stream (Live Real-Time SSE Observable Execution)
+        if (url.startsWith('/api/analysis/stream') || url.startsWith('/api/analyze/stream')) {
+          let scope = 'dataset';
+          let datasetId = '';
+          let targetId: string | null = null;
+          let threshold: number | null = null;
+          let eps: number | null = null;
+
+          const handleStreamingExecution = async () => {
+            res.setHeader('Content-Type', 'text/event-stream');
+            res.setHeader('Cache-Control', 'no-cache');
+            res.setHeader('Connection', 'keep-alive');
+            res.flushHeaders?.();
+
+            const pythonExec = fs.existsSync(pythonVenvBin) ? pythonVenvBin : 'python3';
+            const args = [
+              '-m', 'social_vector.cli.main',
+              'analyze',
+              scope,
+              datasetId,
+              '--stream',
+            ];
+
+            if (targetId && (scope === 'user' || scope === 'feed')) {
+              args.push(targetId);
+            }
+            if (threshold) {
+              args.push('--threshold', threshold.toString());
+            }
+            if (eps) {
+              args.push('--eps', eps.toString());
+            }
+
+            const { spawn } = await import('child_process');
+            const proc = spawn(pythonExec, args, { cwd: projectRoot });
+
+            let lineBuffer = '';
+
+            proc.stdout.on('data', (chunk: Buffer) => {
+              lineBuffer += chunk.toString('utf-8');
+              const lines = lineBuffer.split('\n');
+              lineBuffer = lines.pop() || '';
+
+              for (const line of lines) {
+                const trimmed = line.trim();
+                if (!trimmed) continue;
+                try {
+                  const event = JSON.parse(trimmed);
+                  if (event.type === 'result' && event.result) {
+                    analysisStore.set(event.result.analysis_id, event.result);
+                  }
+                  res.write(`data: ${JSON.stringify(event)}\n\n`);
+                } catch {
+                  // Non-JSON log message ignored
+                }
+              }
+            });
+
+            proc.stderr.on('data', (chunk: Buffer) => {
+              console.warn('Analysis python stderr:', chunk.toString('utf-8'));
+            });
+
+            proc.on('close', (code) => {
+              if (lineBuffer.trim()) {
+                try {
+                  const event = JSON.parse(lineBuffer.trim());
+                  if (event.type === 'result' && event.result) {
+                    analysisStore.set(event.result.analysis_id, event.result);
+                  }
+                  res.write(`data: ${JSON.stringify(event)}\n\n`);
+                } catch {}
+              }
+              if (code !== 0) {
+                res.write(`data: ${JSON.stringify({ type: 'error', error: `Process exited with code ${code}` })}\n\n`);
+              }
+              res.end();
+            });
+
+            req.on('close', () => {
+              proc.kill();
+            });
+          };
+
+          if (method === 'GET') {
+            const parsedUrl = new URL(url, 'http://localhost');
+            scope = parsedUrl.searchParams.get('scope') || 'dataset';
+            datasetId = parsedUrl.searchParams.get('dataset_id') || parsedUrl.searchParams.get('dataset') || '';
+            targetId = parsedUrl.searchParams.get('target_id') || parsedUrl.searchParams.get('target');
+            if (parsedUrl.searchParams.get('threshold')) threshold = parseFloat(parsedUrl.searchParams.get('threshold')!);
+            if (parsedUrl.searchParams.get('eps')) eps = parseFloat(parsedUrl.searchParams.get('eps')!);
+            handleStreamingExecution();
+            return;
+          } else {
+            let bodyStr = '';
+            req.on('data', chunk => { bodyStr += chunk; });
+            req.on('end', () => {
+              try {
+                const body = JSON.parse(bodyStr || '{}');
+                scope = body.scope || 'dataset';
+                datasetId = body.dataset_id || body.datasetId || '';
+                targetId = body.target_id || body.target;
+                threshold = body.threshold;
+                eps = body.eps;
+              } catch {}
+              handleStreamingExecution();
+            });
+            return;
+          }
+        }
+
+        // 6. POST /api/analysis (Execute Canonical Python Analytical Engine)
         if (method === 'POST' && (url === '/api/analysis' || url === '/api/analyze/feed' || url === '/api/analyze/dataset')) {
           let bodyStr = '';
           req.on('data', chunk => { bodyStr += chunk; });

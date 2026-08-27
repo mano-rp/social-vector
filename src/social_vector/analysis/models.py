@@ -184,10 +184,13 @@ class AnalysisResult:
     assessment_rationale: str
     signals: List[SignalScore]
     clusters: List[CoordinatedCluster]
-    evidence: List[EvidenceItem]
-    graph: Optional[GraphData]
-    total_users_analyzed: int
-    total_posts_analyzed: int
+    evidence: List[EvidenceItem] = field(default_factory=list)
+    graph: Optional[GraphData] = None
+    timeline: List[Dict[str, Any]] = field(default_factory=list)
+    content_stats: Dict[str, Any] = field(default_factory=dict)
+    behavioral_stats: Dict[str, Any] = field(default_factory=dict)
+    total_users_analyzed: int = 0
+    total_posts_analyzed: int = 0
 
     def to_dict(self) -> Dict[str, Any]:
         return {
@@ -207,6 +210,9 @@ class AnalysisResult:
             "clusters": [c.to_dict() for c in self.clusters],
             "evidence": [e.to_dict() for e in self.evidence],
             "graph": self.graph.to_dict() if self.graph else None,
+            "timeline": self.timeline,
+            "content_stats": self.content_stats,
+            "behavioral_stats": self.behavioral_stats,
             "total_users_analyzed": self.total_users_analyzed,
             "total_posts_analyzed": self.total_posts_analyzed,
         }

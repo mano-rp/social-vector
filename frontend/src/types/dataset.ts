@@ -232,6 +232,41 @@ export interface GraphData {
   edge_count: number;
 }
 
+export interface TimelineBin {
+  bin_index: number;
+  start_timestamp: number;
+  end_timestamp: number;
+  start_time: string;
+  end_time: string;
+  post_count: number;
+  user_count: number;
+  is_burst: boolean;
+}
+
+export interface ContentStats {
+  top_domains: Array<{ domain: string; sharer_count: number; user_ids: string[] }>;
+  top_hashtags: Array<{ hashtag: string; sharer_count: number; user_ids: string[] }>;
+  duplicate_groups: Array<{
+    group_id: string;
+    repetition_count: number;
+    user_count: number;
+    sample_text: string;
+    participating_users: string[];
+    post_ids: string[];
+  }>;
+  verbatim_reuse_ratio: number;
+}
+
+export interface BehavioralStats {
+  client_distribution: Record<string, number>;
+  asymmetry_distribution: Record<string, number>;
+  creation_date_histogram: Array<{ date_label: string; account_count: number }>;
+  anomalous_users: string[];
+  creation_clustering_score: number;
+  client_homogeneity_score: number;
+  follower_asymmetry_mean: number;
+}
+
 export interface AnalysisResult {
   analysis_id: string;
   dataset_id: string;
@@ -255,6 +290,9 @@ export interface AnalysisResult {
   clusters: CoordinatedCluster[];
   evidence: EvidenceItem[];
   graph?: GraphData | null;
+  timeline?: TimelineBin[];
+  content_stats?: ContentStats;
+  behavioral_stats?: BehavioralStats;
   total_users_analyzed: number;
   total_posts_analyzed: number;
 }

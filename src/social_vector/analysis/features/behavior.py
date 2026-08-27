@@ -16,6 +16,9 @@ class BehavioralFeatureResult:
     client_homogeneity_score: float  # High if high concentration of identical automation clients
     follower_asymmetry_mean: float  # Mean following-to-follower ratio
     anomalous_users: List[str]  # user_ids showing behavioral outliers
+    client_distribution: Dict[str, int] = field(default_factory=dict)
+    asymmetry_distribution: Dict[str, int] = field(default_factory=dict)
+    creation_date_histogram: List[Dict[str, Any]] = field(default_factory=list)
     metrics: Dict[str, Any] = field(default_factory=dict)
 
 
@@ -29,14 +32,18 @@ class BehavioralAnalysisEngine:
                 client_homogeneity_score=0.0,
                 follower_asymmetry_mean=0.0,
                 anomalous_users=[],
+                client_distribution={},
+                asymmetry_distribution={},
+                creation_date_histogram=[],
                 metrics={},
             )
 
         n_users = len(users)
 
-        # 1. Registration Batch Clustering
+        # 1. Registration Batch Clustering & Histogram
         created_timestamps = [parse_iso_timestamp(u.created_at) for u in users if u.created_at]
         creation_clustering_score = 0.0
+        creation_date_histogram: List[Dict[str, Any]] = []
 
         if len(created_timestamps) >= 3:
             sorted_ts = sorted(created_timestamps)
@@ -50,6 +57,20 @@ class BehavioralAnalysisEngine:
                 max_batch = max(max_batch, j - i)
             creation_clustering_score = min(1.0, max_batch / n_users) if n_users > 0 else 0.0
 
+            # 10 date bins
+            t_min, t_max = sorted_ts[0], sorted_ts[-1]
+            span = max(86400.0, t_max - t_min)
+            n_bins = min(12, max(4, int(len(sorted_ts) / 10)))
+            bin_w = span / n_bins
+            for b in range(n_bins):
+                b_start = t_min + b * bin_w
+                b_end = t_min + (b + 1) * bin_w
+                count = sum(1 for t in sorted_ts if b_start <= t < (b_end if b < n_bins - 1 else b_end + 1))
+                creation_date_histogram.append({
+                    "date_label": datetime.fromtimestamp(b_start).strftime("%Y-%m-%d"),
+                    "account_count": count,
+                })
+
         # 2. Client Source Homogeneity
         clients = [u.device_client for u in users if u.device_client]
         client_counts: Dict[str, int] = {}
@@ -62,12 +83,27 @@ class BehavioralAnalysisEngine:
         # 3. Follower Asymmetry (Bot Ratio)
         asymmetry_ratios: List[float] = []
         anomalous_users: List[str] = []
+        asym_dist = {
+            "< 1.0 (High Reach)": 0,
+            "1.0 - 3.0 (Organic Balanced)": 0,
+            "3.0 - 5.0 (Elevated)": 0,
+            "> 5.0 (Outlier Following)": 0,
+        }
 
         for u in users:
             followers = u.metrics.followers_count
             following = u.metrics.following_count
             ratio = (following + 1) / (followers + 1)
             asymmetry_ratios.append(ratio)
+
+            if ratio < 1.0:
+                asym_dist["< 1.0 (High Reach)"] += 1
+            elif ratio <= 3.0:
+                asym_dist["1.0 - 3.0 (Organic Balanced)"] += 1
+            elif ratio <= 5.0:
+                asym_dist["3.0 - 5.0 (Elevated)"] += 1
+            else:
+                asym_dist["> 5.0 (Outlier Following)"] += 1
 
             # Mark as potential bot persona if high following-to-follower ratio and high posting count
             if ratio > 5.0 and following > 100:
@@ -80,6 +116,9 @@ class BehavioralAnalysisEngine:
             client_homogeneity_score=round(client_homogeneity, 4),
             follower_asymmetry_mean=round(mean_asymmetry, 2),
             anomalous_users=anomalous_users,
+            client_distribution=client_counts,
+            asymmetry_distribution=asym_dist,
+            creation_date_histogram=creation_date_histogram,
             metrics={
                 "total_users": n_users,
                 "client_distribution": client_counts,

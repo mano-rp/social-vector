@@ -78,6 +78,7 @@ def run_analyze_command(args: argparse.Namespace) -> int:
     similarity_threshold = getattr(args, "threshold", 0.78)
     eps = getattr(args, "eps", 0.38)
     min_samples = getattr(args, "min_samples", 3)
+    stream_mode = getattr(args, "stream", False)
 
     config = AnalysisConfig(
         similarity_threshold=similarity_threshold,
@@ -87,12 +88,23 @@ def run_analyze_command(args: argparse.Namespace) -> int:
 
     pipeline = AnalysisPipeline(config)
 
+    def progress_callback(stage):
+        if stream_mode:
+            sys.stdout.write(json.dumps({"type": "stage", "stage": stage.to_dict()}) + "\n")
+            sys.stdout.flush()
+
     try:
         result = pipeline.run(
             dataset_path_or_id=dataset_path,
             scope=scope,
             target_id=target_id,
+            progress_callback=progress_callback,
         )
+
+        if stream_mode:
+            sys.stdout.write(json.dumps({"type": "result", "result": result.to_dict()}) + "\n")
+            sys.stdout.flush()
+            return 0
 
         if getattr(args, "json", False):
             out_str = result.to_json(indent=2)
@@ -115,5 +127,9 @@ def run_analyze_command(args: argparse.Namespace) -> int:
         return 0
 
     except Exception as e:
-        print(f"Analysis error: {e}", file=sys.stderr)
+        if stream_mode:
+            sys.stdout.write(json.dumps({"type": "error", "error": str(e)}) + "\n")
+            sys.stdout.flush()
+        else:
+            print(f"Analysis error: {e}", file=sys.stderr)
         return 1

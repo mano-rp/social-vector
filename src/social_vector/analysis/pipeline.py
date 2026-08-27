@@ -328,6 +328,48 @@ class AnalysisPipeline:
         total_duration_ms = (time.perf_counter() - start_wall_time) * 1000.0
         completed_at = datetime.now(timezone.utc).isoformat()
 
+        # Build content stats summary
+        top_domains = [
+            {"domain": d, "sharer_count": len(u_list), "user_ids": u_list[:8]}
+            for d, u_list in sorted(content_res.shared_domains.items(), key=lambda x: len(x[1]), reverse=True)
+            if len(u_list) >= 2
+        ][:10]
+
+        top_hashtags = [
+            {"hashtag": h, "sharer_count": len(u_list), "user_ids": u_list[:8]}
+            for h, u_list in sorted(content_res.shared_hashtags.items(), key=lambda x: len(x[1]), reverse=True)
+            if len(u_list) >= 2
+        ][:12]
+
+        duplicate_groups_summary = [
+            {
+                "group_id": dg.group_id,
+                "repetition_count": dg.post_count,
+                "user_count": dg.user_count,
+                "sample_text": dg.text_snippet,
+                "participating_users": dg.participating_users[:6],
+                "post_ids": dg.affiliated_post_ids[:6],
+            }
+            for dg in content_res.duplicate_groups[:10]
+        ]
+
+        content_stats = {
+            "top_domains": top_domains,
+            "top_hashtags": top_hashtags,
+            "duplicate_groups": duplicate_groups_summary,
+            "verbatim_reuse_ratio": content_res.verbatim_reuse_ratio,
+        }
+
+        behavioral_stats = {
+            "client_distribution": behavioral_res.client_distribution,
+            "asymmetry_distribution": behavioral_res.asymmetry_distribution,
+            "creation_date_histogram": behavioral_res.creation_date_histogram,
+            "anomalous_users": behavioral_res.anomalous_users,
+            "creation_clustering_score": behavioral_res.creation_clustering_score,
+            "client_homogeneity_score": behavioral_res.client_homogeneity_score,
+            "follower_asymmetry_mean": behavioral_res.follower_asymmetry_mean,
+        }
+
         return AnalysisResult(
             analysis_id=analysis_id,
             dataset_id=ctx.dataset_id,
@@ -345,6 +387,9 @@ class AnalysisPipeline:
             clusters=clustering_res.clusters,
             evidence=evidence_items,
             graph=graph_data,
+            timeline=temporal_res.timeline_bins,
+            content_stats=content_stats,
+            behavioral_stats=behavioral_stats,
             total_users_analyzed=len(ctx.users),
             total_posts_analyzed=len(ctx.posts),
         )

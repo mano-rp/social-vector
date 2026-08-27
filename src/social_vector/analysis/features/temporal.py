@@ -39,6 +39,7 @@ class TemporalFeatureResult:
     total_burst_posts: int
     synchronization_ratio: float
     max_burst_density: float  # max posts per minute in a burst
+    timeline_bins: List[Dict[str, Any]] = field(default_factory=list)
 
 
 class TemporalAnalysisEngine:
@@ -61,6 +62,7 @@ class TemporalAnalysisEngine:
                 total_burst_posts=0,
                 synchronization_ratio=0.0,
                 max_burst_density=0.0,
+                timeline_bins=[],
             )
 
         # Sort indices by timestamp
@@ -122,10 +124,44 @@ class TemporalAnalysisEngine:
             if density_ppm > max_density:
                 max_density = density_ppm
 
+        # Generate 20-30 uniform timeline histogram bins
+        timeline_bins: List[Dict[str, Any]] = []
+        if n_posts > 0:
+            t_min = float(np.min(timestamps))
+            t_max = float(np.max(timestamps))
+            span = max(60.0, t_max - t_min)
+            n_bins = min(30, max(12, int(n_posts / 25)))
+            bin_width = span / float(n_bins)
+
+            for b in range(n_bins):
+                b_start = t_min + b * bin_width
+                b_end = t_min + (b + 1) * bin_width
+                mask = (timestamps >= b_start) & (timestamps < b_end if b < n_bins - 1 else timestamps <= b_end)
+                bin_indices = np.where(mask)[0]
+                bin_posts = int(len(bin_indices))
+                bin_users = len(set(author_ids[idx] for idx in bin_indices))
+
+                is_burst = any(
+                    not (bw.end_timestamp < b_start or bw.start_timestamp > b_end)
+                    for bw in burst_windows
+                )
+
+                timeline_bins.append({
+                    "bin_index": b,
+                    "start_timestamp": round(b_start, 2),
+                    "end_timestamp": round(b_end, 2),
+                    "start_time": datetime.fromtimestamp(b_start, tz=timezone.utc).isoformat(),
+                    "end_time": datetime.fromtimestamp(b_end, tz=timezone.utc).isoformat(),
+                    "post_count": bin_posts,
+                    "user_count": bin_users,
+                    "is_burst": is_burst,
+                })
+
         return TemporalFeatureResult(
             burst_windows=burst_windows,
             synchronized_user_pairs=synchronized_pairs,
             total_burst_posts=total_burst_posts,
             synchronization_ratio=round(sync_ratio, 4),
             max_burst_density=round(max_density, 2),
+            timeline_bins=timeline_bins,
         )
