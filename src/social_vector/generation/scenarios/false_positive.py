@@ -6,11 +6,13 @@ from datetime import timedelta
 from typing import List, Optional, Tuple
 
 from social_vector.generation.ground_truth import GroundTruthBuilder
+from social_vector.generation.profiles import ContentProfile
 from social_vector.generation.scenarios.base import BaseScenario, ScenarioMetadata
 from social_vector.generation.scenarios.registry import register_scenario
 from social_vector.generation.templates import (
     compose_organic_post,
     compose_viral_organic_post,
+    sample_length_tier,
 )
 from social_vector.generation.temporal import sample_organic_timeline
 from social_vector.schema.models import (
@@ -34,6 +36,7 @@ class OrganicTopicalSimilarityScenario(BaseScenario):
     )
 
     def run(self) -> Tuple[List[UserRecord], List[PostRecord], Optional[GroundTruth]]:
+        profile = self.config.resolved_content_profile()
         users = self.generate_organic_users(self.config.user_count, prefix="usr_fp")
         known_usernames = [u.username for u in users]
         posts: List[PostRecord] = []
@@ -61,13 +64,18 @@ class OrganicTopicalSimilarityScenario(BaseScenario):
 
             for ts in timestamps:
                 post_id = f"pst_fp_{post_idx:07d}"
+                tier = sample_length_tier(self.post_rng, profile)
 
-                # If timestamp is within viral event window and user decides to post about it
                 is_viral_window = viral_start <= ts <= viral_end
                 posts_viral = is_viral_window and (self.post_rng.random() < 0.70)
 
                 if posts_viral:
-                    content, entities = compose_viral_organic_post(self.post_rng, frame_key="organic_viral_eclipse")
+                    content, entities = compose_viral_organic_post(
+                        self.post_rng,
+                        frame_key="organic_viral_eclipse",
+                        length_tier=tier,
+                        profile=profile,
+                    )
                 else:
                     content, entities = compose_organic_post(
                         self.post_rng,
@@ -75,6 +83,8 @@ class OrganicTopicalSimilarityScenario(BaseScenario):
                         include_hashtag=self.post_rng.random() < 0.50,
                         include_mention=self.post_rng.random() < 0.10,
                         known_usernames=known_usernames,
+                        length_tier=tier,
+                        profile=profile,
                     )
 
                 metrics = self.generate_organic_post_metrics(u)

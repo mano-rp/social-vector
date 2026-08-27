@@ -7,11 +7,13 @@ from typing import List, Optional, Tuple
 
 from social_vector.generation.ground_truth import GroundTruthBuilder
 from social_vector.generation.personas import generate_user_persona
+from social_vector.generation.profiles import ContentProfile
 from social_vector.generation.scenarios.base import BaseScenario, ScenarioMetadata
 from social_vector.generation.scenarios.registry import register_scenario
 from social_vector.generation.templates import (
     compose_organic_post,
     compose_paraphrased_campaign_post,
+    sample_length_tier,
 )
 from social_vector.generation.temporal import sample_organic_timeline
 from social_vector.schema.models import (
@@ -36,6 +38,7 @@ class ParaphrasedCoordinationScenario(BaseScenario):
     )
 
     def run(self) -> Tuple[List[UserRecord], List[PostRecord], Optional[GroundTruth]]:
+        profile = self.config.resolved_content_profile()
         total_users = self.config.user_count
         campaign_ratio = min(0.6, max(0.05, self.config.campaign_ratio))
         campaign_user_count = max(2, int(total_users * campaign_ratio))
@@ -47,7 +50,6 @@ class ParaphrasedCoordinationScenario(BaseScenario):
         # 2. Generate subtle campaign accounts (masquerading with realistic backgrounds)
         campaign_users: List[UserRecord] = []
         for i in range(1, campaign_user_count + 1):
-            # Camouflage: some campaign accounts have realistic bios and older registration dates
             bot_style = (i % 2 == 0)
             user = generate_user_persona(
                 self.user_rng,
@@ -101,12 +103,15 @@ class ParaphrasedCoordinationScenario(BaseScenario):
                 self.config.end_time,
             )
             for ts in timestamps:
+                tier = sample_length_tier(self.post_rng, profile)
                 content, entities = compose_organic_post(
                     self.post_rng,
                     include_url=self.post_rng.random() < 0.25,
                     include_hashtag=self.post_rng.random() < 0.50,
                     include_mention=self.post_rng.random() < 0.10,
                     known_usernames=known_usernames,
+                    length_tier=tier,
+                    profile=profile,
                 )
                 post_id = f"pst_subtle_{post_idx:07d}"
                 metrics = self.generate_organic_post_metrics(u)
@@ -136,8 +141,6 @@ class ParaphrasedCoordinationScenario(BaseScenario):
 
             for ts in timestamps:
                 post_id = f"pst_subtle_{post_idx:07d}"
-
-                # ~65% campaign narrative posts, ~35% organic cover posts
                 is_campaign_post = self.post_rng.random() < 0.65
 
                 if is_campaign_post:
@@ -149,13 +152,15 @@ class ParaphrasedCoordinationScenario(BaseScenario):
                     )
                     gt_builder.add_post_to_campaign(campaign_id, post_id)
                 else:
-                    # Organic cover post
+                    tier = sample_length_tier(self.post_rng, profile)
                     content, entities = compose_organic_post(
                         self.post_rng,
                         include_url=self.post_rng.random() < 0.20,
                         include_hashtag=self.post_rng.random() < 0.50,
                         include_mention=False,
                         known_usernames=known_usernames,
+                        length_tier=tier,
+                        profile=profile,
                     )
 
                 metrics = self.generate_organic_post_metrics(u)

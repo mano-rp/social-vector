@@ -7,11 +7,13 @@ from typing import List, Optional, Tuple
 
 from social_vector.generation.ground_truth import GroundTruthBuilder
 from social_vector.generation.personas import generate_user_persona
+from social_vector.generation.profiles import ContentProfile
 from social_vector.generation.scenarios.base import BaseScenario, ScenarioMetadata
 from social_vector.generation.scenarios.registry import register_scenario
 from social_vector.generation.templates import (
     compose_coordinated_exact_post,
     compose_organic_post,
+    sample_length_tier,
 )
 from social_vector.generation.temporal import (
     sample_burst_timeline,
@@ -39,6 +41,11 @@ class CoordinatedCampaignScenario(BaseScenario):
     )
 
     def run(self) -> Tuple[List[UserRecord], List[PostRecord], Optional[GroundTruth]]:
+        profile = self.config.resolved_content_profile()
+        if profile == ContentProfile.EXTREME:
+            from social_vector.generation.scenarios.extreme_campaign import ExtremeInformationOperationScenario
+            return ExtremeInformationOperationScenario(self.config, self.rng).run()
+
         total_users = self.config.user_count
         campaign_ratio = min(0.8, max(0.05, self.config.campaign_ratio))
         campaign_user_count = max(2, int(total_users * campaign_ratio))
@@ -104,12 +111,15 @@ class CoordinatedCampaignScenario(BaseScenario):
                 self.config.end_time,
             )
             for ts in timestamps:
+                tier = sample_length_tier(self.post_rng, profile)
                 content, entities = compose_organic_post(
                     self.post_rng,
                     include_url=self.post_rng.random() < 0.25,
                     include_hashtag=self.post_rng.random() < 0.50,
                     include_mention=self.post_rng.random() < 0.10,
                     known_usernames=known_usernames,
+                    length_tier=tier,
+                    profile=profile,
                 )
                 post_id = f"pst_cmp_{post_idx:07d}"
                 metrics = self.generate_organic_post_metrics(u)

@@ -7,6 +7,7 @@ from datetime import datetime, timezone
 from typing import Any, Dict, Optional
 
 from social_vector.__version__ import __schema_version__, __version__
+from social_vector.generation.profiles import ContentProfile
 from social_vector.generation.seed import DeterministicRNG
 from social_vector.schema.models import (
     DatasetMetadata,
@@ -29,6 +30,7 @@ class GenerationConfig:
     start_time: Optional[datetime] = None
     end_time: Optional[datetime] = None
     campaign_ratio: float = 0.15
+    content_profile: str = "realistic"
     custom_params: Dict[str, Any] = field(default_factory=dict)
 
     def __post_init__(self):
@@ -36,6 +38,10 @@ class GenerationConfig:
             self.start_time = datetime(2026, 8, 1, 0, 0, 0, tzinfo=timezone.utc)
         if self.end_time is None:
             self.end_time = datetime(2026, 8, 7, 0, 0, 0, tzinfo=timezone.utc)
+
+    def resolved_content_profile(self) -> ContentProfile:
+        """Resolve content_profile string to ContentProfile enum."""
+        return ContentProfile.from_str(self.content_profile)
 
 
 class DatasetGenerator:
@@ -79,6 +85,7 @@ class DatasetGenerator:
             "user_count": self.config.user_count,
             "posts_per_user": self.config.posts_per_user,
             "campaign_ratio": self.config.campaign_ratio,
+            "content_profile": self.config.content_profile,
             "seed": self.config.seed,
             **self.config.custom_params,
         }
