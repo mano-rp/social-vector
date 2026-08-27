@@ -1,24 +1,25 @@
 # SocialVector
 
-SocialVector is an offline social-media observation, dataset generation, and investigation system designed for cybersecurity research, forensic signal modeling, and information operation analysis.
+SocialVector is an offline social-media observation, dataset generation, and forensic analysis platform designed for cybersecurity research, coordinated information operation detection, and narrative signal modeling.
 
 ---
 
 ## Core Capabilities
 
-- **Social Exploration Frontend:** Interactive web application for exploring synthetic social-media feeds, user timelines, and observation datasets with dual themes (*Professional* and *Hacker*).
-- **Deterministic Dataset Generation:** Generates synthetic social-media feeds with mathematical reproducibility using seeded PRNG streams.
-- **Configurable Content Profiles:** Supports `standard`, `realistic`, and `extreme` content profiles generating semantically coherent multi-sentence posts of variable length.
-- **Multi-Stage Geopolitical Simulation:** Includes a high-intensity fictional information operation scenario modeling 6 temporal campaign stages, heterogeneous actor roles (whistleblower seeds, state media, astroturf citizens, counter-narrative attackers, geopolitical analysts), and narrative escalation.
-- **Strict Ground-Truth Isolation:** Observable social feeds are cleanly separated from generator ground truth.
-- **Scenario-Driven Simulation:** Includes pre-built scenarios for baseline organic activity, overt synchronized bot campaigns, subtle semantic paraphrasing operations, viral false-positive benchmarks, and extreme geopolitical information operations.
-- **Offline-First:** Completely independent of cloud APIs, external network services, and online language model endpoints.
+- **Canonical Analytical Engine:** Integrated multi-signal coordination analysis pipeline detecting semantic narrative alignment, temporal synchronization, verbatim repetition, infrastructure sharing, and behavioral anomalies.
+- **Precomputed DBSCAN Clustering:** Multi-dimensional metric fusion clustering cross-account activities without ground-truth contamination.
+- **Observable 9-Stage Pipeline:** Transparent stage execution reporting timing, metrics, parameters, and structured investigation dossiers.
+- **Social Exploration Frontend:** Interactive web application for exploring feeds, user timelines, and campaign investigation dossiers with dual themes (*Professional* and *Hacker*).
+- **Deterministic Dataset Generation:** Mathematically reproducible synthetic social-media feeds powered by seeded PRNG streams.
+- **Multi-Stage Geopolitical Simulation:** Fictional 6-stage information operation scenarios with heterogeneous actor roles and narrative escalation.
+- **Relational Network Topology:** NetworkX graph construction modeling accounts, shared campaign domains, and coordination clusters.
+- **Offline-First & Local:** Zero cloud dependencies, zero external network calls, and zero external LLM API requirements.
 
 ---
 
 ## Installation & Setup
 
-### Python Environment (CLI & Generator)
+### Python Environment (Analytical Engine & CLI)
 
 ```bash
 # Clone the repository
@@ -29,7 +30,7 @@ cd social-vector
 python3 -m venv .venv
 source .venv/bin/activate
 
-# Install package and development tools
+# Install package with analytical and development dependencies
 pip install -e ".[dev]"
 ```
 
@@ -45,34 +46,44 @@ npm install
 
 ## Quick Start
 
-### 1. Launch the Frontend Web Interface
+### 1. Run Analytical Pipeline via CLI
 
 ```bash
-# From the frontend directory
+# Analyze a sample information operation dataset
+sv analyze dataset datasets/sample_extreme_geopolitical_operation.json
+
+# Export structured investigation dossier as JSON
+sv analyze dataset datasets/sample_extreme_geopolitical_operation.json --json -o dossier.json
+
+# Analyze target user or feed
+sv analyze user datasets/sample_extreme_geopolitical_operation.json usr_whistleblower_01
+sv analyze feed datasets/sample_extreme_geopolitical_operation.json
+```
+
+### 2. Launch the Web Application
+
+```bash
+# From the repository root or frontend/ directory
+cd frontend
 npm run dev
 ```
 
-Open `http://localhost:5173` in your browser. From the UI, you can:
-- Explore pre-bundled sample datasets (e.g. *Extreme Geopolitical Information Operation*).
-- Browse chronological social feeds and read long-form posts.
-- Inspect individual user profiles and feeds.
-- Configure and generate new synthetic datasets using the built-in generator modal.
-- Launch feed and dataset analysis workflows.
-- Switch between **Professional** (light) and **Hacker** (dark/cyan) themes.
+Open `http://localhost:5173` in your browser to:
+- Inspect coordinated campaign feeds and user accounts.
+- Launch the observable **Analysis Lab** and trigger live analytical pipeline runs.
+- Explore the **Campaign Investigation Workspace** with interactive cluster dossiers, evidence logs, and relational graph topology.
+- Generate new deterministic datasets via the interactive generator modal.
 
-### 2. Command-Line Interface (CLI)
+### 3. Generate Synthetic Datasets
 
 ```bash
-# List available generation scenarios
+# List available scenarios
 sv list-scenarios
 
-# Generate an organic baseline dataset
-sv generate-dataset --scenario organic --content-profile realistic --users 50 --seed 42 -o dataset_organic.json
-
-# Generate an extreme multi-stage geopolitical operation dataset
+# Generate an extreme geopolitical operation dataset
 sv generate-dataset --scenario extreme_information_operation --users 500 --seed 2026 -o dataset_extreme.json
 
-# Inspect and validate a dataset
+# Inspect and validate dataset schema
 sv inspect-dataset dataset_extreme.json
 ```
 
@@ -94,10 +105,10 @@ The repository includes deterministic sample datasets in the `datasets/` directo
 
 ## Running Tests
 
-### Python Backend & Generation Tests
+### Python Analytical Backend & Generator Tests
 
 ```bash
-# Run pytest test suite
+# Run 48 unit and integration tests
 pytest
 ```
 
@@ -112,9 +123,8 @@ npm test
 
 ## Documentation
 
-Detailed documentation is available in the `docs/` directory:
-
-- [Frontend Architecture & UI Guide](docs/frontend.md)
+- [Analytical Engine & Detection Signals Guide](docs/analysis.md)
+- [Frontend Architecture & Investigation Workspace](docs/frontend.md)
 - [Dataset Schema Specification](docs/schema.md)
 - [Dataset Generation Architecture](docs/generation.md)
 - [Scenarios Guide](docs/scenarios.md)
