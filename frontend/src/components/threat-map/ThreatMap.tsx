@@ -99,7 +99,7 @@ export const ThreatMap: React.FC<ThreatMapProps> = ({
   return (
     <div
       ref={containerRef}
-      className="relative w-full rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-[#0b0f17] overflow-hidden select-none"
+      className="relative w-full rounded-lg border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-[#0b0f17] overflow-hidden select-none"
       style={{ height: '480px' }}
       onMouseDown={handleMouseDown}
       onMouseMove={handleMouseMove}
