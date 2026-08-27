@@ -8,7 +8,7 @@ import {
   ArrowRight,
   Radio,
   FileSearch,
-  Sparkles,
+  Play,
   CheckCircle2,
   Database,
   Sliders,
@@ -171,7 +171,7 @@ export const AnalysisPage: React.FC = () => {
             <Button
               variant="primary"
               size="sm"
-              icon={<Sparkles className="w-3.5 h-3.5" />}
+              icon={<Play className="w-3.5 h-3.5" />}
               onClick={() => openAnalysis('dataset', datasetId || activeDatasetId || activeDataset.metadata.dataset_id)}
             >
               Run Analysis
@@ -281,7 +281,7 @@ export const AnalysisPage: React.FC = () => {
           <Button
             variant="primary"
             size="sm"
-            icon={<Sparkles className="w-3.5 h-3.5" />}
+            icon={<Play className="w-3.5 h-3.5" />}
             onClick={() => openAnalysis('dataset', datasetId || activeDatasetId || activeDataset.metadata.dataset_id)}
           >
             Run Initial Dataset Analysis

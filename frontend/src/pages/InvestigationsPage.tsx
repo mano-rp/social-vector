@@ -7,7 +7,7 @@ import {
   FileSearch,
   Activity,
   ShieldAlert,
-  Sparkles,
+  RotateCcw,
   Download,
   Layers,
   Clock,
@@ -75,7 +75,7 @@ export const InvestigationsPage: React.FC = () => {
           action={
             <Button
               variant="primary"
-              icon={<Sparkles className="w-4 h-4" />}
+              icon={<RotateCcw className="w-4 h-4" />}
               onClick={() => openAnalysis('dataset', activeDatasetId || datasetId || '')}
             >
               Run Pipeline Now
@@ -133,7 +133,7 @@ export const InvestigationsPage: React.FC = () => {
           <Button
             variant="primary"
             size="sm"
-            icon={<Sparkles className="w-3.5 h-3.5" />}
+            icon={<RotateCcw className="w-3.5 h-3.5" />}
             onClick={() => openAnalysis('dataset', currentDatasetId)}
           >
             Re-Run Engine

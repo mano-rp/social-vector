@@ -3,7 +3,7 @@ import { useDataset } from '../../context/DatasetContext';
 import { Modal } from '../common/Modal';
 import { Button } from '../common/Button';
 import { generateDataset } from '../../services/api';
-import { Sparkles, AlertCircle, CheckCircle2 } from 'lucide-react';
+import { Plus, AlertCircle, CheckCircle2 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 export const DatasetGeneratorModal: React.FC = () => {
@@ -221,7 +221,7 @@ export const DatasetGeneratorModal: React.FC = () => {
             <Button variant="ghost" size="sm" type="button" onClick={closeGenerator}>
               Cancel
             </Button>
-            <Button variant="primary" size="sm" type="submit" icon={<Sparkles className="w-3.5 h-3.5" />}>
+            <Button variant="primary" size="sm" type="submit" icon={<Plus className="w-3.5 h-3.5" />}>
               Generate Dataset
             </Button>
           </div>

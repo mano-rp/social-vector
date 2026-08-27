@@ -10,7 +10,7 @@ import {
   Activity,
   FileSearch,
   MapPin,
-  Sparkles,
+  Plus,
 } from 'lucide-react';
 
 export const Sidebar: React.FC = () => {
@@ -113,8 +113,8 @@ export const Sidebar: React.FC = () => {
             onClick={openGenerator}
             className="w-full flex items-center justify-center gap-2 p-2.5 text-xs rounded-md bg-slate-50 dark:bg-slate-800/60 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700/60 font-medium transition-colors"
           >
-            <Sparkles className="w-3.5 h-3.5 text-slate-500 dark:text-cyan-400" />
-            <span>Generate New Dataset</span>
+            <Plus className="w-3.5 h-3.5 text-slate-500 dark:text-cyan-400" />
+            <span>Generate Dataset</span>
           </button>
         </div>
       </div>

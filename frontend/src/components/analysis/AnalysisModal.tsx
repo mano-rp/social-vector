@@ -11,7 +11,7 @@ import {
   CheckCircle2,
   AlertCircle,
   Loader2,
-  Sparkles,
+  RotateCcw,
   ArrowRight,
 } from 'lucide-react';
 
@@ -216,7 +216,7 @@ export const AnalysisModal: React.FC = () => {
             <Button
               size="sm"
               variant="outline"
-              icon={isRunning ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Sparkles className="w-3.5 h-3.5" />}
+              icon={isRunning ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <RotateCcw className="w-3.5 h-3.5" />}
               disabled={isRunning}
               onClick={startAnalysis}
             >
