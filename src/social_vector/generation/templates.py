@@ -1,9 +1,14 @@
-"""Deterministic template composition and paraphrase engines for synthetic posts."""
+"""Deterministic template composition and multi-sentence discourse engines."""
 
 from __future__ import annotations
 
 from typing import List, Optional, Tuple
 
+from social_vector.generation.profiles import (
+    PROFILE_LENGTH_WEIGHTS,
+    ContentProfile,
+    PostLengthTier,
+)
 from social_vector.generation.seed import DeterministicRNG
 from social_vector.generation.vocabulary import (
     CAMPAIGN_DOMAINS,
@@ -14,6 +19,14 @@ from social_vector.generation.vocabulary import (
 from social_vector.schema.models import PostEntities
 
 
+def sample_length_tier(rng: DeterministicRNG, profile: ContentProfile = ContentProfile.REALISTIC) -> PostLengthTier:
+    """Sample a post length tier based on the configured content profile."""
+    weights_dict = PROFILE_LENGTH_WEIGHTS.get(profile, PROFILE_LENGTH_WEIGHTS[ContentProfile.REALISTIC])
+    tiers = list(weights_dict.keys())
+    weights = [weights_dict[t] for t in tiers]
+    return rng.choices(tiers, weights=weights, k=1)[0]
+
+
 def compose_organic_post(
     rng: DeterministicRNG,
     topic: Optional[str] = None,
@@ -21,37 +34,91 @@ def compose_organic_post(
     include_hashtag: bool = True,
     include_mention: bool = False,
     known_usernames: Optional[List[str]] = None,
+    length_tier: Optional[PostLengthTier] = None,
+    profile: ContentProfile = ContentProfile.REALISTIC,
 ) -> Tuple[str, PostEntities]:
-    """Compose a realistic organic social post on a specified or random topic."""
+    """Compose a realistic, semantically coherent organic post of variable length."""
     available_topics = list(ORGANIC_TOPIC_LEXICONS.keys())
     selected_topic = topic if (topic in ORGANIC_TOPIC_LEXICONS) else rng.choice(available_topics)
     lexicon = ORGANIC_TOPIC_LEXICONS[selected_topic]
 
-    template = rng.choice(lexicon["templates"])
+    tier = length_tier or sample_length_tier(rng, profile)
+
     noun = rng.choice(lexicon["nouns"])
     verb = rng.choice(lexicon["verbs"])
-    content = template.format(noun=noun, verb=verb)
+
+    sentences: List[str] = []
+
+    if tier == PostLengthTier.SHORT:
+        # 1-2 sentences: context or concise observation
+        if "contexts" in lexicon and rng.random() < 0.5:
+            sentences.append(rng.choice(lexicon["contexts"]))
+        else:
+            detail_tmpl = rng.choice(lexicon["details"])
+            sentences.append(detail_tmpl.format(noun=noun, verb=verb))
+    elif tier == PostLengthTier.MEDIUM:
+        # 2-4 sentences: context + detail + reflection
+        if "contexts" in lexicon:
+            sentences.append(rng.choice(lexicon["contexts"]))
+        detail_tmpl = rng.choice(lexicon["details"])
+        sentences.append(detail_tmpl.format(noun=noun, verb=verb))
+        if "conclusions" in lexicon:
+            sentences.append(rng.choice(lexicon["conclusions"]))
+    elif tier == PostLengthTier.LONG:
+        # 4-7 sentences: context + technical detail + critique + conclusion
+        if "contexts" in lexicon:
+            sentences.append(rng.choice(lexicon["contexts"]))
+        detail_tmpl = rng.choice(lexicon["details"])
+        sentences.append(detail_tmpl.format(noun=noun, verb=verb))
+        if "critiques" in lexicon:
+            sentences.append(rng.choice(lexicon["critiques"]))
+        if "conclusions" in lexicon:
+            sentences.append(rng.choice(lexicon["conclusions"]))
+    else:  # VERY_LONG
+        # 7-12 sentences structured across paragraphs
+        p1 = [
+            rng.choice(lexicon.get("contexts", ["Observation on modern systems:"])),
+            rng.choice(lexicon["details"]).format(noun=noun, verb=verb)
+        ]
+        # Pick another detail with different aspect
+        noun2 = rng.choice([n for n in lexicon["nouns"] if n != noun] or lexicon["nouns"])
+        p2 = [
+            rng.choice(lexicon["details"]).format(noun=noun2, verb=verb),
+            rng.choice(lexicon.get("critiques", ["This remains a key trade-off to watch."]))
+        ]
+        p3 = [
+            rng.choice(lexicon.get("conclusions", ["Continued research is essential."]))
+        ]
+        sentences = [" ".join(p1), " ".join(p2), " ".join(p3)]
+
+    # Assemble base text
+    if tier == PostLengthTier.VERY_LONG:
+        body = "\n\n".join(sentences)
+    else:
+        body = " ".join(sentences)
 
     hashtags: List[str] = []
     mentions: List[str] = []
     urls: List[str] = []
 
-    if include_hashtag and lexicon["hashtags"]:
-        tag = rng.choice(lexicon["hashtags"])
-        content = f"{content} #{tag}"
-        hashtags.append(tag)
-
     if include_mention and known_usernames:
         mention = rng.choice(known_usernames)
-        content = f"@{mention} {content}"
+        body = f"@{mention} {body}"
         mentions.append(mention)
 
     if include_url:
         domain = rng.choice(LEGITIMATE_DOMAINS)
         slug = f"article-{rng.randint(1000, 99999)}"
         url = f"https://{domain}/news/{slug}"
-        content = f"{content} {url}"
+        body = f"{body}\n\n{url}" if tier in [PostLengthTier.LONG, PostLengthTier.VERY_LONG] else f"{body} {url}"
         urls.append(url)
+
+    if include_hashtag and lexicon["hashtags"]:
+        num_tags = 1 if tier == PostLengthTier.SHORT else rng.randint(1, 3)
+        selected_tags = rng.sample(lexicon["hashtags"], k=min(num_tags, len(lexicon["hashtags"])))
+        tag_str = " ".join([f"#{t}" for t in selected_tags])
+        body = f"{body}\n\n{tag_str}" if tier in [PostLengthTier.LONG, PostLengthTier.VERY_LONG] else f"{body} {tag_str}"
+        hashtags.extend(selected_tags)
 
     entities = PostEntities(
         hashtags=hashtags,
@@ -60,7 +127,7 @@ def compose_organic_post(
         media_urls=[],
     )
 
-    return content, entities
+    return body, entities
 
 
 def compose_coordinated_exact_post(
@@ -69,17 +136,16 @@ def compose_coordinated_exact_post(
     campaign_url: str,
     campaign_hashtags: List[str],
 ) -> Tuple[str, PostEntities]:
-    """Compose an obvious coordinated campaign post with high verbatim repetition."""
+    """Compose an overt coordinated campaign post with high verbatim repetition."""
     base_messages = [
-        "URGENT: Municipal utility report confirms catastrophic grid vulnerability. Read the full investigation:",
-        "Critical energy safety alert: Leaked documents show concealed power station failures. Full report:",
-        "Massive utility failure exposed! Officials ignored safety warnings for months. Verified findings:",
-        "Warning to all residents: Grid reserves at historic dangerous lows. See unredacted audit:",
+        "URGENT INVESTIGATION: Municipal utility report confirms catastrophic grid vulnerability across northern substations. Leaked telemetry files show power reserves dropped below emergency thresholds.",
+        "Critical energy safety alert: Whistleblower documents reveal concealed transformer failures and hidden rolling blackout risks. Unredacted engineering logs linked below:",
+        "Massive public utility failure exposed: Regional regulators intentionally ignored safety audits for over six months. Verified engineering findings and telemetry data:",
+        "Public alert to all district residents: Municipal grid capacity is dangerously compromised while officials conceal hazardous distribution defects. Read the full investigation:",
     ]
-    # In exact coordination, select from a very tight set of canned messages
     msg = rng.choice(base_messages)
     tag_str = " ".join([f"#{t}" for t in campaign_hashtags])
-    content = f"{msg} {campaign_url} {tag_str}"
+    content = f"{msg}\n\n{campaign_url}\n{tag_str}"
 
     entities = PostEntities(
         hashtags=list(campaign_hashtags),
@@ -107,19 +173,17 @@ def compose_paraphrased_campaign_post(
     path_id = f"doc_{rng.randint(100, 999)}"
     url = f"https://{domain}/reports/{path_id}"
 
-    # Select 1 or 2 hashtags from campaign pool
     num_tags = rng.randint(1, 2)
     selected_tags = rng.sample(frame["hashtags"], k=num_tags)
     tag_str = " ".join([f"#{t}" for t in selected_tags])
 
-    # Structure variation
     structure_variant = rng.randint(1, 3)
     if structure_variant == 1:
-        content = f"{opener} {claim}. {evidence} {url} {cta} {tag_str}"
+        content = f"{opener} {claim}. {evidence} {url}\n{cta} {tag_str}"
     elif structure_variant == 2:
-        content = f"{cta} {opener} {claim}. {evidence} {url} {tag_str}"
+        content = f"{cta}\n\n{opener} {claim}. {evidence} {url} {tag_str}"
     else:
-        content = f"{claim.capitalize()}. {opener.lower()} this crisis is escalating. {url} {tag_str}"
+        content = f"{claim.capitalize()}.\n\n{opener} this crisis is escalating rapidly without public oversight. Access the documentation: {url}\n{tag_str}"
 
     entities = PostEntities(
         hashtags=selected_tags,
@@ -127,31 +191,53 @@ def compose_paraphrased_campaign_post(
         urls=[url],
         media_urls=[],
     )
-    narrative_id = frame_key
-    return content, entities, narrative_id
+    return content, entities, frame_key
 
 
 def compose_viral_organic_post(
     rng: DeterministicRNG,
     frame_key: str = "organic_viral_eclipse",
+    length_tier: Optional[PostLengthTier] = None,
+    profile: ContentProfile = ContentProfile.REALISTIC,
 ) -> Tuple[str, PostEntities]:
     """Compose an organic post during a high-similarity viral event (false positive benchmark)."""
     frame = PARAPHRASE_FRAMES.get(frame_key, PARAPHRASE_FRAMES["organic_viral_eclipse"])
-    reaction = rng.choice(frame["reactions"])
+    tier = length_tier or sample_length_tier(rng, profile)
 
-    # Organic users occasionally add personal flavor
-    personal_flairs = [
-        "", " Worth the drive.", " Can't wait for the next one in 2045.",
-        " Captured some raw frames on my camera.", " Glad the clouds cleared up just in time!",
-        " My kids were completely mesmerized."
-    ]
-    flair = rng.choice(personal_flairs)
+    sentences: List[str] = []
 
-    tag = rng.choice(frame["hashtags"])
-    content = f"{reaction}{flair} #{tag}"
+    if tier == PostLengthTier.SHORT:
+        reaction = rng.choice(frame["reactions"])
+        sentences.append(reaction)
+    elif tier == PostLengthTier.MEDIUM:
+        if "contexts" in frame:
+            sentences.append(rng.choice(frame["contexts"]))
+        if "details" in frame:
+            sentences.append(rng.choice(frame["details"]))
+        if "reflections" in frame:
+            sentences.append(rng.choice(frame["reflections"]))
+    elif tier in [PostLengthTier.LONG, PostLengthTier.VERY_LONG]:
+        if "contexts" in frame:
+            sentences.append(rng.choice(frame["contexts"]))
+        if "details" in frame:
+            sentences.append(rng.choice(frame["details"]))
+            detail2 = rng.choice([d for d in frame["details"] if d != sentences[-1]] or frame["details"])
+            sentences.append(detail2)
+        if "reflections" in frame:
+            sentences.append(rng.choice(frame["reflections"]))
+    else:
+        sentences.append(rng.choice(frame["reactions"]))
+
+    body = " ".join(sentences)
+
+    # Select tags
+    num_tags = 1 if tier == PostLengthTier.SHORT else rng.randint(1, 2)
+    tags = rng.sample(frame["hashtags"], k=min(num_tags, len(frame["hashtags"])))
+    tag_str = " ".join([f"#{t}" for t in tags])
+    content = f"{body} {tag_str}"
 
     entities = PostEntities(
-        hashtags=[tag],
+        hashtags=tags,
         mentions=[],
         urls=[],
         media_urls=[],
