@@ -74,6 +74,10 @@ export const Sidebar: React.FC = () => {
                   <FileSearch className="w-4 h-4" />
                   <span>Investigations</span>
                 </NavLink>
+                <NavLink to={`${baseDatasetPath}/threat-map`} className={navItemClass}>
+                  <MapPin className="w-4 h-4" />
+                  <span>Threat Map</span>
+                </NavLink>
               </nav>
             </div>
           ) : (
@@ -89,23 +93,6 @@ export const Sidebar: React.FC = () => {
               </NavLink>
             </div>
           )}
-
-          <div>
-            <div className="px-3 mb-2 text-[10px] font-semibold tracking-wider text-slate-400 dark:text-slate-500 uppercase font-mono">
-              Future Modules
-            </div>
-            <div className="space-y-1">
-              <div className="flex items-center justify-between px-3 py-2 rounded-md text-xs text-slate-400 dark:text-slate-600 cursor-not-allowed">
-                <span className="flex items-center gap-2.5">
-                  <MapPin className="w-4 h-4" />
-                  <span>Threat Map</span>
-                </span>
-                <span className="text-[9px] font-mono uppercase bg-slate-100 dark:bg-slate-800/40 text-slate-400 dark:text-slate-600 px-1 rounded">
-                  Phase 3
-                </span>
-              </div>
-            </div>
-          </div>
         </div>
 
         <div className="pt-4 border-t border-slate-100 dark:border-slate-800/80">

@@ -9,6 +9,7 @@ import { UserProfilePage } from './pages/UserProfilePage';
 import { PostsPage } from './pages/PostsPage';
 import { AnalysisPage } from './pages/AnalysisPage';
 import { InvestigationsPage } from './pages/InvestigationsPage';
+import { ThreatMapPage } from './pages/ThreatMapPage';
 import { useDataset } from './context/DatasetContext';
 
 // Helper component that synchronizes route datasetId with active dataset in context
@@ -94,6 +95,14 @@ export const App: React.FC = () => {
           element={
             <DatasetRouteWrapper>
               <InvestigationsPage />
+            </DatasetRouteWrapper>
+          }
+        />
+        <Route
+          path="datasets/:datasetId/threat-map"
+          element={
+            <DatasetRouteWrapper>
+              <ThreatMapPage />
             </DatasetRouteWrapper>
           }
         />
