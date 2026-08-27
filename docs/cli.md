@@ -22,7 +22,8 @@ sv generate-dataset [OPTIONS]
 ```
 
 #### Options:
-- `-s, --scenario TEXT`: Scenario identifier (`organic_activity`, `coordinated_campaign`, `paraphrased_coordination`, `organic_topical_similarity`). Default: `organic_activity`.
+- `-s, --scenario TEXT`: Scenario identifier (`organic_activity`, `coordinated_campaign`, `paraphrased_coordination`, `organic_topical_similarity`, `extreme_information_operation`). Default: `organic_activity`.
+- `-c, --content-profile TEXT`: Content generation profile (`standard`, `realistic`, `extreme`). Default: `realistic`.
 - `-u, --users INT`: Total number of users to generate. Default: `50`.
 - `-p, --posts-per-user INT`: Average target posts per user. Default: `5`.
 - `--seed INT`: Deterministic random seed integer. Default: `42`.
@@ -36,11 +37,14 @@ sv generate-dataset [OPTIONS]
 #### Examples:
 
 ```bash
-# Generate 100-user organic baseline dataset
-sv generate-dataset --scenario organic --users 100 --seed 42 -o datasets/organic_100.json
+# Generate 100-user organic baseline dataset with realistic content
+sv generate-dataset --scenario organic --content-profile realistic --users 100 --seed 42 -o datasets/organic_100.json
 
-# Generate overt coordinated campaign dataset
-sv generate-dataset --scenario coordinated --users 500 --seed 123 --campaign-ratio 0.20 -o datasets/campaign_500.json
+# Generate high-intensity fictional geopolitical information operation dataset
+sv generate-dataset --scenario extreme_information_operation --users 500 --seed 2026 --campaign-ratio 0.18 -o datasets/extreme_io_500.json
+
+# Generate overt coordinated campaign dataset with extreme profile
+sv generate-dataset --scenario coordinated --content-profile extreme --users 250 --seed 123 -o datasets/campaign_250.json
 
 # Generate subtle paraphrased operation dataset
 sv generate-dataset --scenario paraphrased --users 200 --seed 777 -o datasets/subtle_200.json
@@ -63,7 +67,7 @@ sv list-scenarios
 Inspects, validates, and summarizes a SocialVector dataset JSON file.
 
 ```bash
-sv inspect-dataset datasets/sample_coordinated_campaign.json
+sv inspect-dataset datasets/sample_extreme_geopolitical_operation.json
 ```
 
 #### Output:

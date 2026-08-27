@@ -6,10 +6,11 @@ SocialVector provides an offline, fully deterministic synthetic dataset generati
 
 Key design principles include:
 
-1. **Deterministic Reproducibility:** Given the same scenario, parameters, and random seed, the generator produces bitwise-identical output on any supported system.
+1. **Deterministic Reproducibility:** Given the same scenario, parameters, content profile, and random seed, the generator produces bitwise-identical output on any supported system.
 2. **Zero Cloud/API Dependencies:** All text, temporal patterns, and persona attributes are synthesized locally without network calls or external language model APIs.
 3. **Strict Separation of Concerns:** Observable metadata (posts, users, metrics) never contains leaked ground-truth labels.
-4. **Computational Efficiency:** Generates datasets containing thousands of users and posts in seconds.
+4. **Multi-Length Semantic Coherence:** Generates structured multi-sentence discourse spanning short reactions to multi-paragraph analytical breakdowns.
+5. **Computational Efficiency:** Generates datasets containing thousands of users and posts in seconds.
 
 ---
 
@@ -24,15 +25,15 @@ Key design principles include:
             +------------------+------------------+
             |                  |                  |
      +------v------+    +------v------+    +------v------+
-     |   Personas  |    |  Temporal   |    |  Vocabulary |
-     |  Generator  |    |  Simulation |    | & Templates |
+     |   Personas  |    |  Temporal   |    |  Profiles & |
+     |  Generator  |    |  Simulation |    | Lexicon/IO  |
      +------+------+    +------+------+    +------+------+
             |                  |                  |
             +------------------+------------------+
                                |
                     +----------v----------+
                     |  Scenario Execution |
-                    | (Organic / Campaign)|
+                    | (Organic / IO Stages|
                     +----------+----------+
                                |
                     +----------v----------+
@@ -45,17 +46,17 @@ Key design principles include:
                     +---------------------+
 ```
 
-### 1. Hierarchical Deterministic PRNG (`seed.py`)
-To prevent cross-component RNG coupling, independent sub-streams are derived from the master seed via SHA-256 hashing. Modifying post generation rules does not alter user persona generation sequences.
+---
 
-### 2. Persona Engine (`personas.py`)
-Synthesizes realistic account profiles including international names, handle patterns, demographic variations, biographies, account creation timelines, and Pareto-distributed follower/following ratios.
+## Content Profiles and Length Tiers
 
-### 3. Temporal Simulation (`temporal.py`)
-Simulates human diurnal circadian cycles (morning/afternoon/evening activity curves) for organic users, synchronized millisecond/minute burst windows for bot operations, and periodic scheduling for automated feeds.
+SocialVector supports configurable content profiles (`profiles.py`) that govern post length distribution, structural depth, and rhetorical complexity:
 
-### 4. Vocabulary and Template Systems (`vocabulary.py`, `templates.py`)
-Provides topic lexicons across science, technology, urban infrastructure, and energy, combined with paraphrase frames that generate syntactically diverse posts sharing semantic narrative cores.
+| Profile | Target Domain | Length Distribution | Rhetorical Characteristics |
+|---|---|---|---|
+| `standard` | Lightweight benchmarks | 85% Short, 15% Medium | Concise 1-2 sentence posts |
+| `realistic` | Deep behavioral analysis | 25% Short, 45% Medium, 22% Long, 8% Very Long | Multi-sentence coherent discourse with context, analysis, and critique |
+| `extreme` | High-intensity IO simulations | 20% Short, 35% Medium, 30% Long, 15% Very Long | Multi-stage geopolitical narratives, whistleblower leaks, and astroturf threads |
 
-### 5. Ground Truth Builder (`ground_truth.py`)
-Tracks campaign actors, coordinated post IDs, targeted hashtags, domains, and coordination signatures into an isolated ground-truth block.
+### Multi-Sentence Composition
+Rather than concatenating random sentences, the engine utilizes coherent discourse frames (`vocabulary.py`, `templates.py`, `geopolitical.py`) where sentences logically progress from observational context to specific metrics/claims, critical analysis, and concluding commentary within a unified semantic theme.

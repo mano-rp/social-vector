@@ -1,6 +1,8 @@
 # SocialVector Generation Scenarios
 
-SocialVector includes several generation scenarios designed to model distinct analytical conditions.
+SocialVector provides modular generation scenarios designed to model distinct analytical conditions, ranging from baseline organic activity to high-intensity information operations.
+
+---
 
 ## 1. Organic Social Activity (`organic_activity`)
 
@@ -9,12 +11,13 @@ SocialVector includes several generation scenarios designed to model distinct an
 - **Scenario Type:** Baseline
 
 ### Description
-Models an authentic social ecosystem where independent users discuss diverse topics (technology, climate science, astronomy, urban development).
+Models an authentic social ecosystem where independent users discuss diverse topics (technology, climate science, astrophysics, and urban community planning).
 
 ### Characteristics
 - Diurnal circadian posting schedules following natural human activity hours.
 - Power-law follower and engagement distributions.
-- Diverse, uncoordinated hashtag, mention, and URL usage.
+- Multi-sentence coherent discourse with realistic length distributions (short remarks up to multi-paragraph analyses).
+- Uncoordinated hashtag, mention, and URL usage.
 - Ground truth contains `has_coordination: false` and zero campaigns.
 
 ---
@@ -26,7 +29,7 @@ Models an authentic social ecosystem where independent users discuss diverse top
 - **Scenario Type:** Campaign (Overt)
 
 ### Description
-Simulates an overt astroturf / botnet operation designed to flood specific narratives in synchronized bursts.
+Simulates an overt astroturf / botnet operation designed to amplify specific narratives in synchronized bursts.
 
 ### Characteristics
 - Coordinated bot accounts with recent registration windows and skewed follower ratios.
@@ -66,4 +69,34 @@ Simulates a real-world viral breaking news or cultural event (e.g., a major sola
 ### Characteristics
 - High lexical and semantic overlap among completely independent users.
 - Diverse account creation histories, authentic device clients, and organic personal phrasings.
+- Multi-sentence rich reflections, photography logs, and community discussions.
 - Used to evaluate whether analytical correlation models correctly distinguish high topical similarity from coordinated operations.
+
+---
+
+## 5. Extreme Geopolitical Information Operation (`extreme_information_operation`)
+
+- **Alias:** `extreme_campaign`, `extreme_io`, `extreme`, `geopolitical`
+- **Coordination Status:** True
+- **Scenario Type:** High-Intensity Fictional Geopolitical Operation
+
+### Description
+Simulates a high-intensity, multi-stage influence campaign in a fictional geopolitical universe involving state-aligned media, whistleblower seeding, astroturf grassroots outrage, counter-narrative attacks, and narrative escalation.
+
+### Fictional Universe Context
+All entities, nations, institutions, and individuals in this scenario are fictional:
+- **Nations:** Republic of Asteria, State of Velmora, Federal Territory of Oakhaven.
+- **Institutions:** Asteria Ministry of Maritime Safety (AMMS), Velmoran Maritime Security Directorate, Kestrel Sound Environmental Alliance (KSEA).
+- **Fictional Incident:** Allegations of a covert naval chemical discharge and pipeline rupture in the Kestrel Sound maritime corridor.
+
+### Multi-Stage Campaign Timeline
+The campaign unfolds across six distinct temporal stages:
+1. **Stage 1 (Narrative Seeding):** Purported whistleblower memos and telemetry drops (`vanguardleaks.cc`).
+2. **Stage 2 (Breaking Amplification):** Wire alerts and automated bots surging with breaking headers.
+3. **Stage 3 (Manufactured Grassroots Outrage):** Astroturf local citizen personas posting emotional accounts.
+4. **Stage 4 (Counter-Narrative Attacks):** Discrediting official government statements and fact-checking reviews as censorship.
+5. **Stage 5 (Geopolitical Escalation):** Broadening claims to treaty violations (Treaty of Oakhaven) and demanding international sanctions.
+6. **Stage 6 (Persistent Reinforcement):** Evergreen summary dossiers, decentralized archive links, and petitions.
+
+### Heterogeneous Actor Roles
+Campaign accounts are assigned specialized narrative roles (seed leakers, state-aligned media, wire broadcasters, astroturf citizens, counter-attackers, geopolitical analysts, and amplifier bots), producing multi-dimensional behavioral signals.
