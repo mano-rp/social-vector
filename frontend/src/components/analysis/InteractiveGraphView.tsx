@@ -119,21 +119,21 @@ export const InteractiveGraphView: React.FC<InteractiveGraphViewProps> = ({
   return (
     <div className="space-y-4">
       {/* Controls Bar */}
-      <div className="p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0f141c] flex flex-wrap items-center justify-between gap-3 text-xs">
+      <div className="p-2.5 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0f141c] flex flex-wrap items-center justify-between gap-3 text-xs">
         {/* Node type filters */}
-        <div className="flex items-center gap-1.5">
+        <div className="flex items-center gap-1">
           <span className="text-[10px] font-mono uppercase text-slate-400 mr-1">Filter:</span>
           {(['all', 'user', 'domain', 'cluster'] as const).map((type) => (
             <button
               key={type}
               onClick={() => setFilterType(type)}
-              className={`px-2.5 py-1 rounded-md text-[11px] font-medium transition-colors ${
+              className={`px-2.5 py-0.5 rounded text-[11px] font-mono transition-colors ${
                 filterType === type
-                  ? 'bg-slate-900 dark:bg-cyan-400 text-white dark:text-slate-950 font-semibold'
+                  ? 'bg-slate-900 dark:bg-cyan-500 text-white dark:text-slate-950 font-semibold'
                   : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800'
               }`}
             >
-              {type === 'all' ? 'All Entities' : type === 'user' ? 'Accounts' : type === 'domain' ? 'Domains' : 'Clusters'}
+              {type === 'all' ? 'All' : type === 'user' ? 'Accounts' : type === 'domain' ? 'Domains' : 'Clusters'}
             </button>
           ))}
         </div>
@@ -144,14 +144,14 @@ export const InteractiveGraphView: React.FC<InteractiveGraphViewProps> = ({
             <Search className="w-3.5 h-3.5 text-slate-400 absolute left-2.5 top-1/2 -translate-y-1/2" />
             <input
               type="text"
-              placeholder="Search node ID or label..."
+              placeholder="Search node ID..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="pl-8 pr-2.5 py-1 text-xs rounded-md bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-slate-100 placeholder-slate-400 w-44 focus:outline-none focus:border-blue-500 dark:focus:border-cyan-400"
+              className="pl-8 pr-2.5 py-1 text-xs rounded bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-slate-100 placeholder-slate-400 w-40 focus:outline-none focus:border-slate-400 dark:focus:border-slate-600"
             />
           </div>
 
-          <div className="flex items-center border border-slate-200 dark:border-slate-800 rounded-md overflow-hidden bg-slate-50 dark:bg-slate-900">
+          <div className="flex items-center border border-slate-200 dark:border-slate-800 rounded overflow-hidden bg-slate-50 dark:bg-slate-900">
             <button
               onClick={() => setZoomLevel((z) => Math.min(2, z + 0.15))}
               className="p-1 hover:bg-slate-200 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-300"
@@ -175,11 +175,11 @@ export const InteractiveGraphView: React.FC<InteractiveGraphViewProps> = ({
       </div>
 
       {/* Main Canvas & Inspector Side by Side */}
-      <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 lg:grid-cols-4 gap-3.5">
         {/* SVG Graph Viewport */}
-        <div className="lg:col-span-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0b0f17] relative overflow-hidden flex items-center justify-center min-h-[460px]">
+        <div className="lg:col-span-3 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0b0f17] relative overflow-hidden flex items-center justify-center min-h-[460px]">
           {/* Legend */}
-          <div className="absolute top-3 left-3 z-10 flex items-center gap-3 p-2 rounded-lg bg-white/80 dark:bg-slate-900/80 backdrop-blur border border-slate-200/80 dark:border-slate-800 text-[10px] font-mono">
+          <div className="absolute top-3 left-3 z-10 flex items-center gap-3 p-1.5 rounded-md bg-white/90 dark:bg-slate-900/90 backdrop-blur border border-slate-200/80 dark:border-slate-800 text-[10px] font-mono">
             <div className="flex items-center gap-1">
               <span className="w-2.5 h-2.5 rounded-full bg-blue-600 dark:bg-cyan-400" />
               <span>Accounts ({filteredNodes.filter((n) => n.type === 'user').length})</span>

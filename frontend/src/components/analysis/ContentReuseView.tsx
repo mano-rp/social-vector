@@ -21,7 +21,7 @@ export const ContentReuseView: React.FC<ContentReuseViewProps> = ({
   return (
     <div className="space-y-4">
       {/* Header Metric */}
-      <div className="p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0f141c] flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+      <div className="p-3.5 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0f141c] flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div>
           <div className="text-[10px] font-mono uppercase text-slate-400">Verbatim Reuse Metrics</div>
           <div className="text-lg font-bold text-slate-900 dark:text-slate-100 flex items-center gap-2 mt-0.5">
@@ -38,7 +38,7 @@ export const ContentReuseView: React.FC<ContentReuseViewProps> = ({
       </div>
 
       {/* Duplicate Template Groups List */}
-      <div className="space-y-3">
+      <div className="space-y-2.5">
         {groups.length > 0 ? (
           groups.map((group) => {
             const isExpanded = expandedGroup === group.group_id;
@@ -46,11 +46,11 @@ export const ContentReuseView: React.FC<ContentReuseViewProps> = ({
             return (
               <div
                 key={group.group_id}
-                className="p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0f141c] space-y-2.5 transition-colors"
+                className="p-3.5 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0f141c] space-y-2 transition-colors"
               >
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                   <div className="flex items-center gap-2">
-                    <Copy className="w-3.5 h-3.5 text-blue-600 dark:text-cyan-400" />
+                    <Copy className="w-3.5 h-3.5 text-slate-400 dark:text-slate-500" />
                     <span className="font-mono font-semibold text-xs text-slate-900 dark:text-slate-100">
                       {group.group_id.toUpperCase()}
                     </span>
