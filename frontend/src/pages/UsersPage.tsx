@@ -61,14 +61,14 @@ export const UsersPage: React.FC = () => {
               setSearchQuery(e.target.value);
               setPage(1);
             }}
-            className="w-full pl-9 pr-3 py-1.5 text-xs bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-md text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-slate-800 dark:focus:ring-cyan-400"
+            className="w-full pl-9 pr-3 py-1.5 text-xs bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-md text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:border-slate-400 dark:focus:border-slate-600"
           />
         </div>
       </div>
 
       {filteredUsers.length > 0 ? (
         <>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5">
             {paginatedUsers.map((u) => (
               <div
                 key={u.user_id}
@@ -76,7 +76,7 @@ export const UsersPage: React.FC = () => {
                 className="p-4 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0f141c] hover:border-slate-300 dark:hover:border-slate-700 cursor-pointer transition-all flex flex-col justify-between group"
               >
                 <div>
-                  <div className="flex items-start justify-between gap-2 mb-3">
+                  <div className="flex items-start justify-between gap-2 mb-2.5">
                     <div className="flex items-center gap-2.5">
                       <Avatar name={u.display_name} username={u.username} size="md" />
                       <div>
@@ -98,43 +98,43 @@ export const UsersPage: React.FC = () => {
                         openAnalysis('feed', u.user_id, u);
                       }}
                       title="Analyse this user feed"
-                      className="p-1.5 rounded text-slate-400 hover:text-blue-600 dark:hover:text-cyan-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+                      className="p-1 rounded text-slate-400 hover:text-blue-600 dark:hover:text-cyan-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
                     >
                       <Activity className="w-3.5 h-3.5" />
                     </button>
                   </div>
 
                   {u.bio && (
-                    <p className="text-xs text-slate-600 dark:text-slate-400 line-clamp-2 mb-3 leading-relaxed">
+                    <p className="text-xs text-slate-600 dark:text-slate-400 line-clamp-2 mb-2.5 leading-relaxed">
                       {u.bio}
                     </p>
                   )}
 
                   {u.location && (
-                    <div className="flex items-center gap-1 text-[11px] text-slate-400 dark:text-slate-500 mb-3">
+                    <div className="flex items-center gap-1 text-[11px] text-slate-400 dark:text-slate-500 mb-2.5">
                       <MapPin className="w-3 h-3 shrink-0" />
                       <span className="truncate">{u.location}</span>
                     </div>
                   )}
                 </div>
 
-                <div className="pt-3 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between text-xs font-mono text-slate-500">
+                <div className="pt-2.5 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between text-xs font-mono text-slate-500">
                   <div className="flex items-center gap-3">
                     <span>
                       <strong className="text-slate-800 dark:text-slate-200">
                         {u.metrics.followers_count.toLocaleString()}
                       </strong>{' '}
-                      <span className="text-[10px]">flw</span>
+                      <span className="text-[10px] text-slate-400">flw</span>
                     </span>
                     <span>
                       <strong className="text-slate-800 dark:text-slate-200">
                         {u.metrics.following_count.toLocaleString()}
                       </strong>{' '}
-                      <span className="text-[10px]">ing</span>
+                      <span className="text-[10px] text-slate-400">ing</span>
                     </span>
                   </div>
 
-                  <span className="text-blue-600 dark:text-cyan-400 group-hover:translate-x-0.5 transition-transform flex items-center gap-0.5 text-[11px]">
+                  <span className="text-blue-600 dark:text-cyan-400 group-hover:translate-x-0.5 transition-transform flex items-center gap-0.5 text-[11px] font-medium">
                     Feed &rarr;
                   </span>
                 </div>
@@ -147,7 +147,7 @@ export const UsersPage: React.FC = () => {
               <button
                 onClick={() => setPage((p) => Math.max(1, p - 1))}
                 disabled={page === 1}
-                className="px-3 py-1.5 rounded text-xs font-medium bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 disabled:opacity-40"
+                className="px-3 py-1.5 rounded text-xs font-medium bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 disabled:opacity-40 hover:bg-slate-50 dark:hover:bg-slate-700"
               >
                 &larr; Previous
               </button>
@@ -157,7 +157,7 @@ export const UsersPage: React.FC = () => {
               <button
                 onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
                 disabled={page === totalPages}
-                className="px-3 py-1.5 rounded text-xs font-medium bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 disabled:opacity-40"
+                className="px-3 py-1.5 rounded text-xs font-medium bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 disabled:opacity-40 hover:bg-slate-50 dark:hover:bg-slate-700"
               >
                 Next &rarr;
               </button>

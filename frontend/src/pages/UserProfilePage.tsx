@@ -53,7 +53,7 @@ export const UserProfilePage: React.FC = () => {
     : 'Unknown';
 
   return (
-    <div className="max-w-3xl mx-auto space-y-6">
+    <div className="max-w-3xl mx-auto space-y-5">
       <button
         onClick={() => navigate(`/datasets/${datasetId}/users`)}
         className="flex items-center gap-1.5 text-xs text-slate-500 hover:text-slate-900 dark:hover:text-slate-100 font-medium transition-colors"
@@ -62,13 +62,13 @@ export const UserProfilePage: React.FC = () => {
         <span>Back to Users Directory</span>
       </button>
 
-      <div className="p-6 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0f141c] space-y-5">
-        <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
-          <div className="flex items-start gap-4">
+      <div className="p-5 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0f141c] space-y-4">
+        <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3">
+          <div className="flex items-start gap-3.5">
             <Avatar name={user.display_name} username={user.username} size="xl" />
-            <div className="space-y-1">
+            <div className="space-y-0.5">
               <div className="flex items-center gap-1.5">
-                <h1 className="text-lg font-bold text-slate-900 dark:text-slate-100">
+                <h1 className="text-base font-bold text-slate-900 dark:text-slate-100">
                   {user.display_name}
                 </h1>
                 {user.verified && (
@@ -90,7 +90,7 @@ export const UserProfilePage: React.FC = () => {
             icon={<Activity className="w-3.5 h-3.5" />}
             onClick={() => openAnalysis('feed', user.user_id, user)}
           >
-            Analyse User Feed
+            Analyse User
           </Button>
         </div>
 
@@ -100,7 +100,7 @@ export const UserProfilePage: React.FC = () => {
           </p>
         )}
 
-        <div className="flex flex-wrap items-center gap-y-2 gap-x-5 text-xs text-slate-500 dark:text-slate-400 font-mono pt-1">
+        <div className="flex flex-wrap items-center gap-y-1.5 gap-x-4 text-xs text-slate-500 dark:text-slate-400 font-mono">
           {user.location && (
             <div className="flex items-center gap-1.5">
               <MapPin className="w-3.5 h-3.5 text-slate-400" />
@@ -141,8 +141,8 @@ export const UserProfilePage: React.FC = () => {
         </div>
       </div>
 
-      <div className="space-y-3 pt-2">
-        <h2 className="text-xs font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500 font-mono">
+      <div className="space-y-3 pt-1">
+        <h2 className="text-xs font-semibold text-slate-900 dark:text-slate-100">
           Observable Feed ({userPosts.length} posts)
         </h2>
 
