@@ -100,3 +100,20 @@ The campaign unfolds across six distinct temporal stages:
 
 ### Heterogeneous Actor Roles
 Campaign accounts are assigned specialized narrative roles (seed leakers, state-aligned media, wire broadcasters, astroturf citizens, counter-attackers, geopolitical analysts, and amplifier bots), producing multi-dimensional behavioral signals.
+
+---
+
+## 6. Real-World Geopolitical Conflict & Defense IO (`realworld_geopolitical_conflict`)
+
+- **Alias:** `realworld`, `real_world`, `realworld_geopolitical`, `global_conflict`
+- **Coordination Status:** True
+- **Scenario Type:** Real-World Conflict & Spatial Intelligence Benchmark
+
+### Description
+Models an authentic information operation simulating sovereign war politics, frontline troop movements, maritime choke-point anomalies, critical infrastructure cyber attacks, and international sanctions across genuine world capitals and defense theaters.
+
+### Characteristics
+- **Real Geographic Coordinates & Capitals:** Users are situated in actual geopolitical hubs (Kyiv, Warsaw, Berlin, Washington DC, London, Taipei, Tokyo, Helsinki, Tallinn, Brussels, etc.) for high-precision Threat Map testing.
+- **Authentic Geopolitical Discourse:** Defense logistics, Baltic infrastructure security, radar telemetry, and international policy communiques.
+- **Real-World Media & Research Domains:** Integrates citations from defense analysts, think tanks, and major news wires (`reuters.com`, `atlanticcouncil.org`, `iswresearch.org`, `defensenews.com`, `bellingcat.com`).
+- **Synchronized Flashpoint Bursts:** Multi-wave burst amplification modeling breaking crisis alerts and astroturfed citizen panic.

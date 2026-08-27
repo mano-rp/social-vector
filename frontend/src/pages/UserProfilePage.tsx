@@ -53,7 +53,7 @@ export const UserProfilePage: React.FC = () => {
     : 'Unknown';
 
   return (
-    <div className="max-w-3xl mx-auto space-y-5">
+    <div className="space-y-6 w-full">
       <button
         onClick={() => navigate(`/datasets/${datasetId}/users`)}
         className="flex items-center gap-1.5 text-xs text-slate-500 hover:text-slate-900 dark:hover:text-slate-100 font-medium transition-colors"

@@ -95,6 +95,7 @@ The repository includes deterministic sample datasets in the `datasets/` directo
 
 | Dataset File | Scenario | Users | Posts | Description |
 |---|---|---|---|---|
+| `datasets/sample_realworld_geopolitical_conflict.json` | `realworld_geopolitical_conflict` | 500 | 1,976 | Real-world war politics, defense agendas, and sovereign info operations |
 | `datasets/sample_extreme_geopolitical_operation.json` | `extreme_information_operation` | 500 | 2,953 | 6-stage fictional geopolitical information operation |
 | `datasets/sample_coordinated_campaign.json` | `coordinated_campaign` | 1,000 | 5,791 | Large overt campaign with synchronized bursts |
 | `datasets/sample_paraphrased_coordination.json` | `paraphrased_coordination` | 50 | 284 | Subtle semantic paraphrasing operation |

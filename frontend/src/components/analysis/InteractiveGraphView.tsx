@@ -57,33 +57,40 @@ export const InteractiveGraphView: React.FC<InteractiveGraphViewProps> = ({
     const domains = filteredNodes.filter((n) => n.type === 'domain');
     const users = filteredNodes.filter((n) => n.type === 'user');
 
-    // Place clusters in inner circle
+    // Place clusters in layered inner orbits
+    const clustersPerLayer = Math.min(10, Math.max(6, Math.ceil(clusters.length / 3)));
     clusters.forEach((c, idx) => {
-      const angle = (idx / Math.max(1, clusters.length)) * 2 * Math.PI;
-      const radius = 90;
+      const layer = Math.floor(idx / clustersPerLayer);
+      const layerIdx = idx % clustersPerLayer;
+      const countInLayer = Math.min(clustersPerLayer, clusters.length - layer * clustersPerLayer);
+      const angle = (layerIdx / Math.max(1, countInLayer)) * 2 * Math.PI + layer * 0.3;
+      const radius = 55 + layer * 38;
       positions[c.id] = {
         x: centerX + radius * Math.cos(angle),
         y: centerY + radius * Math.sin(angle),
       };
     });
 
-    // Place domains in middle circle
+    const maxClusterRadius = 55 + Math.ceil(clusters.length / clustersPerLayer) * 38;
+    const domainRadius = Math.max(150, maxClusterRadius + 30);
+
+    // Place domains in middle orbit
     domains.forEach((d, idx) => {
-      const angle = (idx / Math.max(1, domains.length)) * 2 * Math.PI + 0.3;
-      const radius = 160;
+      const angle = (idx / Math.max(1, domains.length)) * 2 * Math.PI + 0.2;
       positions[d.id] = {
-        x: centerX + radius * Math.cos(angle),
-        y: centerY + radius * Math.sin(angle),
+        x: centerX + domainRadius * Math.cos(angle),
+        y: centerY + domainRadius * Math.sin(angle),
       };
     });
 
-    // Place users in outer perimeter
+    // Place users in outer orbit
+    const userRadius = domainRadius + 50;
     users.forEach((u, idx) => {
       const angle = (idx / Math.max(1, users.length)) * 2 * Math.PI;
-      const radius = 220 + (idx % 3) * 15;
+      const r = userRadius + (idx % 3) * 16;
       positions[u.id] = {
-        x: centerX + radius * Math.cos(angle),
-        y: centerY + radius * Math.sin(angle),
+        x: centerX + r * Math.cos(angle),
+        y: centerY + r * Math.sin(angle),
       };
     });
 
@@ -103,17 +110,10 @@ export const InteractiveGraphView: React.FC<InteractiveGraphViewProps> = ({
   }, [activeNodeId, filteredEdges]);
 
   const getNodeColor = (type: string, isDimmed: boolean) => {
-    if (isDimmed) return 'fill-slate-300 dark:fill-slate-800 stroke-slate-400 dark:stroke-slate-700';
-    if (type === 'cluster') return 'fill-purple-500 stroke-purple-600 dark:fill-purple-400 dark:stroke-purple-300';
+    if (isDimmed) return 'fill-slate-200 dark:fill-slate-800 stroke-slate-300 dark:stroke-slate-700 opacity-40';
+    if (type === 'cluster') return 'fill-purple-600 stroke-purple-700 dark:fill-purple-500 dark:stroke-purple-400';
     if (type === 'domain') return 'fill-amber-500 stroke-amber-600 dark:fill-amber-400 dark:stroke-amber-300';
     return 'fill-blue-600 stroke-blue-700 dark:fill-cyan-400 dark:stroke-cyan-300';
-  };
-
-  const getEdgeColor = (rel: string, isHighlighted: boolean) => {
-    if (isHighlighted) return 'stroke-blue-600 dark:stroke-cyan-400 stroke-2';
-    if (rel === 'shared_domain') return 'stroke-amber-400/40 dark:stroke-amber-500/30';
-    if (rel === 'temporal_burst') return 'stroke-rose-400/40 dark:stroke-rose-500/30';
-    return 'stroke-slate-300 dark:stroke-slate-700/60';
   };
 
   return (
@@ -155,18 +155,21 @@ export const InteractiveGraphView: React.FC<InteractiveGraphViewProps> = ({
             <button
               onClick={() => setZoomLevel((z) => Math.min(2, z + 0.15))}
               className="p-1 hover:bg-slate-200 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-300"
+              title="Zoom in"
             >
               <ZoomIn className="w-3.5 h-3.5" />
             </button>
             <button
               onClick={() => setZoomLevel((z) => Math.max(0.6, z - 0.15))}
               className="p-1 hover:bg-slate-200 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-300"
+              title="Zoom out"
             >
               <ZoomOut className="w-3.5 h-3.5" />
             </button>
             <button
               onClick={() => { setZoomLevel(1); setSearchQuery(''); setSelectedNode(null); }}
               className="p-1 hover:bg-slate-200 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-300"
+              title="Reset view"
             >
               <RotateCcw className="w-3.5 h-3.5" />
             </button>
@@ -216,8 +219,13 @@ export const InteractiveGraphView: React.FC<InteractiveGraphViewProps> = ({
                     y1={src.y}
                     x2={tgt.x}
                     y2={tgt.y}
-                    className={`transition-all ${getEdgeColor(edge.relationship, !!isConnected)}`}
-                    strokeWidth={isConnected ? 2 : 1}
+                    className={`transition-all ${
+                      isConnected
+                        ? 'stroke-blue-600 dark:stroke-cyan-400 opacity-100 stroke-[1.5]'
+                        : activeNodeId
+                        ? 'stroke-slate-200 dark:stroke-slate-800/40 opacity-10 stroke-[0.5]'
+                        : 'stroke-slate-300 dark:stroke-slate-700/40 opacity-20 stroke-[0.75]'
+                    }`}
                   />
                 );
               })}
@@ -225,14 +233,20 @@ export const InteractiveGraphView: React.FC<InteractiveGraphViewProps> = ({
 
             {/* Nodes */}
             <g className="nodes">
-              {filteredNodes.map((node) => {
+              {filteredNodes.map((node, idx) => {
                 const pos = layoutPositions[node.id];
                 if (!pos) return null;
 
                 const isSelected = selectedNode?.id === node.id;
                 const isHovered = hoveredNodeId === node.id;
                 const isConnected = !activeNodeId || connectedNodeIds.has(node.id);
-                const radius = node.type === 'cluster' ? 12 : node.type === 'domain' ? 9 : 6;
+                const radius = node.type === 'cluster' ? 10 : node.type === 'domain' ? 8 : 5;
+
+                const shouldShowLabel =
+                  isSelected ||
+                  isHovered ||
+                  (filteredNodes.length < 25) ||
+                  (node.type === 'domain' && isConnected && !activeNodeId && filteredNodes.length < 50);
 
                 return (
                   <g
@@ -248,15 +262,36 @@ export const InteractiveGraphView: React.FC<InteractiveGraphViewProps> = ({
                       className={`stroke-2 transition-all ${getNodeColor(node.type, !isConnected)}`}
                     />
 
-                    {/* Label for clusters/domains or hovered node */}
-                    {(node.type !== 'user' || isSelected || isHovered || filteredNodes.length < 30) && (
+                    {/* Compact index number inside cluster circle */}
+                    {node.type === 'cluster' && !shouldShowLabel && (
                       <text
-                        dy={radius + 10}
+                        dy={3}
                         textAnchor="middle"
-                        className="text-[9px] font-mono fill-slate-700 dark:fill-slate-300 pointer-events-none font-medium"
+                        className="text-[8px] font-mono fill-white pointer-events-none font-bold"
                       >
-                        {node.label}
+                        {idx + 1}
                       </text>
+                    )}
+
+                    {/* Interactive label on hover / select */}
+                    {shouldShowLabel && (
+                      <g className="pointer-events-none">
+                        <rect
+                          x={-(node.label.length * 3 + 6)}
+                          y={radius + 3}
+                          width={node.label.length * 6 + 12}
+                          height={14}
+                          rx={3}
+                          className="fill-slate-900/90 dark:fill-black/90"
+                        />
+                        <text
+                          dy={radius + 13}
+                          textAnchor="middle"
+                          className="text-[9px] font-mono fill-white font-medium"
+                        >
+                          {node.label}
+                        </text>
+                      </g>
                     )}
                   </g>
                 );

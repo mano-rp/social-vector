@@ -19,9 +19,9 @@ export const SignalProfileChart: React.FC<SignalProfileChartProps> = ({
   };
 
   const getScoreBadge = (score: number) => {
-    if (score >= 0.7) return 'text-rose-600 dark:text-rose-400 border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-800/80';
-    if (score >= 0.4) return 'text-amber-600 dark:text-amber-400 border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-800/80';
-    return 'text-blue-600 dark:text-cyan-400 border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-800/80';
+    if (score >= 0.7) return 'text-rose-600 dark:text-rose-400';
+    if (score >= 0.4) return 'text-amber-600 dark:text-amber-400';
+    return 'text-blue-600 dark:text-cyan-400';
   };
 
   return (
@@ -57,7 +57,7 @@ export const SignalProfileChart: React.FC<SignalProfileChartProps> = ({
                   contrib: +{(weightedScore * 100).toFixed(1)}%
                 </span>
                 <span
-                  className={`px-1.5 py-0.5 rounded text-[11px] font-mono font-bold border ${getScoreBadge(
+                  className={`text-[11px] font-mono font-bold ${getScoreBadge(
                     sig.score
                   )}`}
                 >

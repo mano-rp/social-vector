@@ -13,7 +13,7 @@ export const Header: React.FC = () => {
   const postsCount = activeDataset?.posts.length ?? activeDatasetMeta?.totalPosts ?? 0;
 
   return (
-    <header className="h-14 border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-[#0f141c]/80 backdrop-blur-sm sticky top-0 z-30 px-4 sm:px-6 flex items-center justify-between transition-colors shrink-0">
+    <header className="h-14 border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0b0f17] sticky top-0 z-30 px-4 sm:px-6 flex items-center justify-between transition-colors shrink-0">
       {/* Left: Brand + Active Dataset context */}
       <div className="flex items-center gap-4">
         <Link to="/datasets" className="flex items-center gap-2 group">
@@ -46,7 +46,7 @@ export const Header: React.FC = () => {
         <button
           onClick={toggleTheme}
           aria-label="Toggle visual theme"
-          className="flex items-center justify-center p-2 rounded-md text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 transition-colors"
+          className="flex items-center justify-center p-1.5 text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-100 transition-colors"
           title={`Switch to ${isHacker ? 'Professional' : 'Hacker'} theme`}
         >
           {isHacker ? (
