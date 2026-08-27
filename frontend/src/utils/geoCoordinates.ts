@@ -179,9 +179,25 @@ export function getDeterministicCoordinates(locationName: string): { coordinates
 
   // 2. Fictional / Regional Semantic Country Grouping
   // If location is "Neo-Veridia, District 4", country cluster is "Neo-Veridia"
-  const parts = rawClean.split(/[,–—\-\/]/).map((p) => p.trim());
-  const parentCluster = parts.length > 1 ? parts[parts.length - 1] || parts[0] : parts[0];
-  const subLocation = parts[0];
+  const commaParts = rawClean.split(/[,;|]/).map((p) => p.trim()).filter(Boolean);
+  
+  let parentCluster = rawClean;
+  let subLocation = rawClean;
+
+  if (commaParts.length > 1) {
+    // If one of the parts looks like a subunit (District, Sector, City, Alpha, Beta, etc.), use the other as country
+    const subunitKeywords = ['district', 'sector', 'city', 'zone', 'ward', 'alpha', 'beta', 'gamma', 'outpost', 'area', 'subdivision'];
+    const part0Subunit = subunitKeywords.some((k) => commaParts[0].toLowerCase().includes(k));
+    const part1Subunit = subunitKeywords.some((k) => commaParts[commaParts.length - 1].toLowerCase().includes(k));
+
+    if (part0Subunit && !part1Subunit) {
+      parentCluster = commaParts[commaParts.length - 1];
+      subLocation = commaParts[0];
+    } else {
+      parentCluster = commaParts[0];
+      subLocation = commaParts[commaParts.length - 1];
+    }
+  }
 
   const parentHash = hashString(parentCluster.toLowerCase());
   const zoneIndex = parentHash % CONTINENTAL_LAND_ZONES.length;
@@ -195,8 +211,9 @@ export function getDeterministicCoordinates(locationName: string): { coordinates
   const subHash = hashString(subLocation.toLowerCase() + ':' + parentCluster.toLowerCase());
   const prng = createPRNG(subHash);
 
-  const latSpan = (zone.maxLat - zone.minLat) * 0.7;
-  const lngSpan = (zone.maxLng - zone.minLng) * 0.7;
+  // Keep sub-locations in the same country tightly clustered within 1-2 degrees
+  const latSpan = Math.min(3.0, (zone.maxLat - zone.minLat) * 0.4);
+  const lngSpan = Math.min(4.0, (zone.maxLng - zone.minLng) * 0.4);
 
   const lat = centerLat + (prng() - 0.5) * latSpan;
   const lng = centerLng + (prng() - 0.5) * lngSpan;
@@ -206,7 +223,7 @@ export function getDeterministicCoordinates(locationName: string): { coordinates
       lat: Number(lat.toFixed(4)),
       lng: Number(lng.toFixed(4)),
     },
-    country: parts.length > 1 ? parts[parts.length - 1] : zone.country,
+    country: parentCluster,
   };
 }
 
