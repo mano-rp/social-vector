@@ -46,27 +46,33 @@ class SemanticEmbeddingEngine:
                 user_max_similarity={},
             )
 
-        # 1. Multi-scale Word & Character N-gram TF-IDF
+        # 1. Multi-scale Word N-gram TF-IDF
         vectorizer = TfidfVectorizer(
-            ngram_range=(1, 3),
+            ngram_range=(1, 2),
             analyzer="word",
-            max_features=5000,
+            max_features=4000,
             sublinear_tf=True,
             min_df=1,
         )
         tfidf_matrix = vectorizer.fit_transform(texts)
 
-        # 2. Dense Semantic Dimensionality Reduction
+        # 2. Dense Semantic Dimensionality Reduction (Randomized SVD)
         n_features = tfidf_matrix.shape[1]
-        n_components = min(self.target_dimension, n_samples, n_features)
+        latent_dim = min(64, n_samples - 1, n_features)
 
-        if n_components > 1 and n_samples > 1 and n_features > 1:
-            svd = TruncatedSVD(n_components=n_components, random_state=self.random_seed)
+        if latent_dim > 1 and n_samples > 1 and n_features > 1:
+            svd = TruncatedSVD(
+                n_components=latent_dim,
+                algorithm="randomized",
+                n_iter=3,
+                random_state=self.random_seed,
+            )
             dense_vectors = svd.fit_transform(tfidf_matrix)
-            # Pad if n_components < target_dimension
             if dense_vectors.shape[1] < self.target_dimension:
                 pad_width = self.target_dimension - dense_vectors.shape[1]
                 dense_vectors = np.pad(dense_vectors, ((0, 0), (0, pad_width)), mode="constant")
+            else:
+                dense_vectors = dense_vectors[:, : self.target_dimension]
         else:
             dense_vectors = tfidf_matrix.toarray()
             if dense_vectors.shape[1] < self.target_dimension:
@@ -80,25 +86,28 @@ class SemanticEmbeddingEngine:
         norms[norms == 0] = 1.0
         normalized_embeddings = dense_vectors / norms
 
-        # 4. Pairwise Cosine Similarity
+        # 4. Pairwise Cosine Similarity (Vectorized)
         similarity_matrix = cosine_similarity(normalized_embeddings)
         np.fill_diagonal(similarity_matrix, 0.0)
 
-        candidate_pairs: List[Tuple[int, int, float]] = []
+        rows, cols = np.triu_indices(n_samples, k=1)
+        sims = similarity_matrix[rows, cols]
+
+        above_thresh = np.where(sims >= similarity_threshold)[0]
+        candidate_pairs: List[Tuple[int, int, float]] = [
+            (int(rows[idx]), int(cols[idx]), float(sims[idx]))
+            for idx in above_thresh
+        ]
+
         user_max_similarity: Dict[Tuple[str, str], float] = {}
-
-        for i in range(n_samples):
-            for j in range(i + 1, n_samples):
-                sim = float(similarity_matrix[i, j])
-                u_i = author_ids[i]
-                u_j = author_ids[j]
-
-                if u_i != u_j:
-                    pair_key = (min(u_i, u_j), max(u_i, u_j))
-                    user_max_similarity[pair_key] = max(user_max_similarity.get(pair_key, 0.0), sim)
-
-                if sim >= similarity_threshold:
-                    candidate_pairs.append((i, j, sim))
+        for idx in above_thresh:
+            i = int(rows[idx])
+            j = int(cols[idx])
+            u_i = author_ids[i]
+            u_j = author_ids[j]
+            if u_i != u_j:
+                pair_key = (min(u_i, u_j), max(u_i, u_j))
+                user_max_similarity[pair_key] = max(user_max_similarity.get(pair_key, 0.0), float(sims[idx]))
 
         strong_pairs_count = len(candidate_pairs)
         mean_sim = float(np.mean(similarity_matrix[similarity_matrix > 0])) if np.any(similarity_matrix > 0) else 0.0

@@ -46,11 +46,16 @@ def extract_domain(url: str) -> str:
         host = parsed.netloc.lower()
         if host.startswith("www."):
             host = host[4:]
-        return host
-    except Exception:
+        if host:
+            return host
         # Fallback regex
         m = re.search(r"https?://([^/]+)", url)
-        return m.group(1).lower() if m else url.lower()
+        if m:
+            h = m.group(1).lower()
+            return h[4:] if h.startswith("www.") else h
+        return url.strip().lower()
+    except Exception:
+        return url.strip().lower()
 
 
 def parse_iso_timestamp(ts: str) -> float:

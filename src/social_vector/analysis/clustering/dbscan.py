@@ -74,28 +74,31 @@ class DBSCANClusteringEngine:
         ts_diff = np.abs(ts[:, None] - ts[None, :])
         temp_dist = np.clip(ts_diff / float(temporal_window_seconds), 0.0, 1.0)
 
-        # C. Domain & Hashtag Jaccard Overlap
+        # C. Domain & Hashtag Inverted Index Overlap (O(K * M) instead of O(N^2))
         domain_sim = np.zeros((n_posts, n_posts), dtype=np.float32)
         hashtag_sim = np.zeros((n_posts, n_posts), dtype=np.float32)
 
-        for i in range(n_posts):
-            d_i = set(preprocessed.post_domains[i])
-            h_i = set(preprocessed.post_hashtags[i])
-            for j in range(i + 1, n_posts):
-                d_j = set(preprocessed.post_domains[j])
-                h_j = set(preprocessed.post_hashtags[j])
+        domain_to_posts: Dict[str, List[int]] = {}
+        for i, doms in enumerate(preprocessed.post_domains):
+            for d in doms:
+                domain_to_posts.setdefault(d, []).append(i)
 
-                if d_i and d_j:
-                    inter = len(d_i & d_j)
-                    union = len(d_i | d_j)
-                    if union > 0:
-                        domain_sim[i, j] = domain_sim[j, i] = inter / union
+        for d, p_list in domain_to_posts.items():
+            if len(p_list) > 1:
+                for idx1, p1 in enumerate(p_list):
+                    for p2 in p_list[idx1 + 1 :]:
+                        domain_sim[p1, p2] = domain_sim[p2, p1] = 1.0
 
-                if h_i and h_j:
-                    inter_h = len(h_i & h_j)
-                    union_h = len(h_i | h_j)
-                    if union_h > 0:
-                        hashtag_sim[i, j] = hashtag_sim[j, i] = inter_h / union_h
+        hashtag_to_posts: Dict[str, List[int]] = {}
+        for i, tags in enumerate(preprocessed.post_hashtags):
+            for t in tags:
+                hashtag_to_posts.setdefault(t, []).append(i)
+
+        for t, p_list in hashtag_to_posts.items():
+            if len(p_list) > 1:
+                for idx1, p1 in enumerate(p_list):
+                    for p2 in p_list[idx1 + 1 :]:
+                        hashtag_sim[p1, p2] = hashtag_sim[p2, p1] = 1.0
 
         # Composite distance matrix: 50% semantic, 30% temporal, 10% domain, 10% hashtag
         composite_sim = (
