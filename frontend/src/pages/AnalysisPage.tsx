@@ -202,7 +202,7 @@ export const AnalysisPage: React.FC = () => {
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2 border-b border-slate-100 dark:border-slate-800">
             <div className="flex items-center gap-2 text-xs font-semibold text-slate-900 dark:text-slate-100">
               <CheckCircle2 className="w-4 h-4 text-emerald-500" />
-              <span>Latest Analysis Intelligence Summary</span>
+              <span>Latest Pipeline Run Summary</span>
             </div>
             <span className="text-[10px] font-mono text-slate-400">
               Executed in {latestAnalysisResult.total_duration_ms.toFixed(1)} ms
@@ -240,26 +240,9 @@ export const AnalysisPage: React.FC = () => {
             </div>
           </div>
 
-          {/* Signal Profile Micro Preview */}
-          <div className="space-y-1.5 pt-1">
-            <div className="text-[10px] font-mono uppercase text-slate-400">Signal Vector Contributions:</div>
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
-              {latestAnalysisResult.signals.map((sig) => (
-                <div key={sig.signal_id} className="p-2 rounded bg-slate-50 dark:bg-slate-900/40 border border-slate-100 dark:border-slate-800 text-[10px] space-y-1">
-                  <div className="flex justify-between">
-                    <span className="font-medium text-slate-700 dark:text-slate-300 truncate">{sig.name}</span>
-                    <span className="font-mono font-bold text-slate-900 dark:text-cyan-400">{(sig.score * 100).toFixed(0)}%</span>
-                  </div>
-                  <div className="w-full h-1 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
-                    <div className="h-full bg-blue-600 dark:bg-cyan-400 rounded-full" style={{ width: `${Math.max(4, sig.score * 100)}%` }} />
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
           {/* Action to Workspace */}
-          <div className="pt-2 border-t border-slate-100 dark:border-slate-800 flex justify-end">
+          <div className="pt-2 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+            <span className="text-xs text-slate-500">Full evidence dossier, signals, bursts, and graph topology ready.</span>
             <Button
               variant="primary"
               size="sm"

@@ -169,13 +169,13 @@ export const AnalysisModal: React.FC = () => {
           <span>Analytical Investigation Pipeline</span>
         </div>
       }
-      size="xl"
+      size="lg"
       footer={
         <div className="flex items-center justify-between w-full">
-          <div className="text-xs text-slate-500 dark:text-slate-400">
+          <div className="text-xs text-slate-500 dark:text-slate-400 font-mono">
             {analysisResult && (
               <span>
-                Completed in <strong className="font-mono text-slate-700 dark:text-slate-200">{analysisResult.total_duration_ms.toFixed(1)}ms</strong>
+                Completed in <strong className="text-slate-700 dark:text-slate-200">{analysisResult.total_duration_ms.toFixed(1)}ms</strong>
               </span>
             )}
           </div>
@@ -197,14 +197,14 @@ export const AnalysisModal: React.FC = () => {
         </div>
       }
     >
-      <div className="space-y-5">
+      <div className="space-y-4">
         {/* Scope Header */}
-        <div className="p-3.5 rounded-lg border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/50 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <div className="p-3 rounded-lg border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/50 flex items-center justify-between gap-3">
           <div>
-            <div className="text-[10px] font-mono uppercase tracking-wider text-slate-400 dark:text-slate-500">
-              Investigation Scope: {analysisTarget.scope.toUpperCase()}
+            <div className="text-[10px] font-mono uppercase text-slate-400">
+              Scope: {analysisTarget.scope.toUpperCase()}
             </div>
-            <div className="text-sm font-semibold text-slate-900 dark:text-slate-100 flex items-center gap-2 mt-0.5">
+            <div className="text-xs font-semibold text-slate-900 dark:text-slate-100 flex items-center gap-2 mt-0.5">
               <span>{targetName}</span>
               <Badge variant="blue" size="sm">
                 Canonical Python Engine
@@ -212,21 +212,19 @@ export const AnalysisModal: React.FC = () => {
             </div>
           </div>
 
-          <div className="flex items-center gap-2">
-            <Button
-              size="sm"
-              variant="outline"
-              icon={isRunning ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <RotateCcw className="w-3.5 h-3.5" />}
-              disabled={isRunning}
-              onClick={startAnalysis}
-            >
-              {isRunning ? 'Analyzing...' : 'Re-Run Pipeline'}
-            </Button>
-          </div>
+          <Button
+            size="sm"
+            variant="outline"
+            icon={isRunning ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <RotateCcw className="w-3.5 h-3.5" />}
+            disabled={isRunning}
+            onClick={startAnalysis}
+          >
+            {isRunning ? 'Analyzing...' : 'Re-Run'}
+          </Button>
         </div>
 
         {error && (
-          <div className="p-3.5 rounded-md bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-900 text-xs text-rose-700 dark:text-rose-300 flex items-start gap-2">
+          <div className="p-3 rounded-md bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-900 text-xs text-rose-700 dark:text-rose-300 flex items-start gap-2">
             <AlertCircle className="w-4 h-4 shrink-0 mt-0.5" />
             <div>
               <p className="font-semibold">Pipeline Error</p>
@@ -246,7 +244,7 @@ export const AnalysisModal: React.FC = () => {
             )}
           </div>
 
-          <div className="space-y-1.5 max-h-64 overflow-y-auto pr-1">
+          <div className="space-y-1.5 max-h-72 overflow-y-auto pr-1">
             {stages.map((stage, idx) => {
               const isCompleted = stage.status === 'completed';
               const isStageRunning = stage.status === 'running';
@@ -255,7 +253,7 @@ export const AnalysisModal: React.FC = () => {
               return (
                 <div
                   key={stage.stage_id}
-                  className={`p-2 rounded-md border transition-all text-xs ${
+                  className={`px-3 py-2 rounded-md border transition-all text-xs flex items-center justify-between ${
                     isStageRunning
                       ? 'border-slate-800 dark:border-cyan-400 bg-slate-50 dark:bg-cyan-950/20 shadow-xs'
                       : isCompleted
@@ -263,101 +261,38 @@ export const AnalysisModal: React.FC = () => {
                       : 'border-slate-100 dark:border-slate-900 bg-slate-50/40 dark:bg-slate-900/20 opacity-60'
                   }`}
                 >
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2">
-                      {isCompleted ? (
-                        <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
-                      ) : isStageRunning ? (
-                        <Loader2 className="w-3.5 h-3.5 text-blue-600 dark:text-cyan-400 animate-spin shrink-0" />
-                      ) : isFailed ? (
-                        <AlertCircle className="w-3.5 h-3.5 text-rose-500 shrink-0" />
-                      ) : (
-                        <div className="w-3.5 h-3.5 rounded-full border border-slate-300 dark:border-slate-700 shrink-0" />
-                      )}
-                      <span className={`font-medium ${isStageRunning ? 'text-slate-900 dark:text-cyan-200 font-semibold' : 'text-slate-800 dark:text-slate-200'}`}>
-                        {idx + 1}. {stage.name}
-                      </span>
-                    </div>
-
-                    <span className="font-mono text-[10px] text-slate-400 dark:text-slate-500">
-                      {stage.duration_ms !== undefined ? `${stage.duration_ms.toFixed(1)} ms` : isStageRunning ? 'running...' : 'pending'}
+                  <div className="flex items-center gap-2 min-w-0">
+                    {isCompleted ? (
+                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
+                    ) : isStageRunning ? (
+                      <Loader2 className="w-3.5 h-3.5 text-blue-600 dark:text-cyan-400 animate-spin shrink-0" />
+                    ) : isFailed ? (
+                      <AlertCircle className="w-3.5 h-3.5 text-rose-500 shrink-0" />
+                    ) : (
+                      <div className="w-3.5 h-3.5 rounded-full border border-slate-300 dark:border-slate-700 shrink-0" />
+                    )}
+                    <span className={`font-medium truncate ${isStageRunning ? 'text-slate-900 dark:text-cyan-200 font-semibold' : 'text-slate-800 dark:text-slate-200'}`}>
+                      {idx + 1}. {stage.name}
                     </span>
                   </div>
 
-                  {/* Stage Metrics */}
-                  {stage.metrics && Object.keys(stage.metrics).length > 0 && (
-                    <div className="mt-1.5 pl-5.5 flex flex-wrap gap-1">
-                      {Object.entries(stage.metrics).slice(0, 4).map(([k, v]) => (
-                        <span
-                          key={k}
-                          className="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800/80 text-[10px] font-mono text-slate-600 dark:text-slate-300"
-                        >
-                          {k.replace(/_/g, ' ')}: <strong className="text-slate-900 dark:text-cyan-400">{typeof v === 'number' ? (Number.isInteger(v) ? v : v.toFixed(2)) : String(v)}</strong>
-                        </span>
-                      ))}
-                    </div>
-                  )}
+                  <span className="font-mono text-[10px] text-slate-400 dark:text-slate-500 shrink-0 pl-2">
+                    {stage.duration_ms !== undefined ? `${stage.duration_ms.toFixed(1)} ms` : isStageRunning ? 'running...' : 'pending'}
+                  </span>
                 </div>
               );
             })}
           </div>
         </div>
 
-        {/* Quantitative Result Banner */}
+        {/* Completion Notice */}
         {analysisResult && (
-          <div className="p-3.5 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0f141c] space-y-3">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-2.5 border-b border-slate-100 dark:border-slate-800">
-              <div>
-                <div className="text-[10px] font-mono uppercase text-slate-400 dark:text-slate-500">
-                  Coordination Risk Score
-                </div>
-                <div className="text-xl font-bold text-slate-900 dark:text-slate-100 flex items-center gap-2 mt-0.5">
-                  <span className="font-mono text-blue-600 dark:text-cyan-400">
-                    {(analysisResult.overall_coordination_score * 100).toFixed(1)}%
-                  </span>
-                  <Badge
-                    variant={
-                      analysisResult.confidence_assessment.includes('high')
-                        ? 'danger'
-                        : analysisResult.confidence_assessment.includes('moderate')
-                        ? 'warning'
-                        : 'success'
-                    }
-                    size="sm"
-                  >
-                    {analysisResult.confidence_assessment.replace(/_/g, ' ')}
-                  </Badge>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-3 text-xs text-slate-500 dark:text-slate-400 font-mono">
-                <div>Accounts: <strong className="text-slate-700 dark:text-slate-200">{analysisResult.total_users_analyzed}</strong></div>
-                <div>Posts: <strong className="text-slate-700 dark:text-slate-200">{analysisResult.total_posts_analyzed}</strong></div>
-                <div>Clusters: <strong className="text-slate-700 dark:text-slate-200">{analysisResult.clusters.length}</strong></div>
-              </div>
-            </div>
-
-            {/* Signal Vector Micro Bars */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
-              {analysisResult.signals.map((sig) => (
-                <div
-                  key={sig.signal_id}
-                  className="p-2 rounded bg-slate-50 dark:bg-slate-900/40 border border-slate-100 dark:border-slate-800 text-[10px] space-y-1"
-                >
-                  <div className="flex items-center justify-between">
-                    <span className="font-medium text-slate-700 dark:text-slate-300 truncate">{sig.name}</span>
-                    <span className="font-mono font-bold text-slate-900 dark:text-cyan-400">
-                      {(sig.score * 100).toFixed(0)}%
-                    </span>
-                  </div>
-                  <div className="w-full h-1 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
-                    <div
-                      className="h-full bg-blue-600 dark:bg-cyan-400 rounded-full"
-                      style={{ width: `${Math.max(4, sig.score * 100)}%` }}
-                    />
-                  </div>
-                </div>
-              ))}
+          <div className="p-3 rounded-lg border border-slate-200 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-900/40 text-xs flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
+              <span className="text-slate-700 dark:text-slate-300">
+                Analysis complete. Detailed multi-signal evidence, temporal bursts, and cluster dossiers ready.
+              </span>
             </div>
           </div>
         )}
