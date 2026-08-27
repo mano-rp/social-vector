@@ -87,40 +87,35 @@ class PersonaProfile:
 
 
 def generate_username(rng: DeterministicRNG, first_name: str, last_name: str, index: int, bot_style: bool = False) -> str:
-    """Generate a realistic username given name components and generation style."""
+    """Generate a realistic, unique username given name components, user index, and generation style."""
     fn = first_name.lower()
     ln = last_name.lower()
 
     if bot_style:
-        # Campaign / bot style often uses patterns like word + random digits or name + multi-digits
         style = rng.randint(1, 4)
         if style == 1:
-            digits = rng.randint(10000, 999999)
-            return f"{fn}_{ln}{digits}"
+            return f"{fn}_{ln}{index:04d}"
         elif style == 2:
-            digits = rng.randint(1000, 99999)
-            return f"{fn}{ln[0]}_{digits}"
+            return f"{fn}{ln[0]}_{index:05d}"
         elif style == 3:
-            digits = rng.randint(100000, 9999999)
-            return f"{fn}_{digits}"
+            return f"{fn}_{index:06d}"
         else:
-            digits = rng.randint(1000, 9999)
-            return f"{ln}_{fn}_{digits}"
+            return f"{ln}_{fn}_{index:04d}"
 
     # Organic styles
     style = rng.randint(1, 6)
     if style == 1:
-        return f"{fn}_{ln}"
+        return f"{fn}_{ln}_{index}"
     elif style == 2:
-        return f"{fn}{ln[0]}_{rng.randint(10, 99)}"
+        return f"{fn}{ln[0]}_{index:03d}"
     elif style == 3:
-        return f"{ln}_{fn}"
+        return f"{ln}_{fn}_{index}"
     elif style == 4:
-        return f"{fn}_{ln[0]}{rng.randint(1, 9)}"
+        return f"{fn}_{ln[0]}{index:02d}"
     elif style == 5:
-        return f"the_{fn}_{ln}"
+        return f"the_{fn}_{ln}_{index}"
     else:
-        return f"{fn}_{rng.randint(10, 999)}"
+        return f"{fn}_{index:04d}"
 
 
 def generate_user_persona(
