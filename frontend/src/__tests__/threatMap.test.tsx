@@ -1,6 +1,5 @@
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
-import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import {
   getDeterministicCoordinates,
@@ -86,6 +85,7 @@ describe('Dataset Location Aggregation', () => {
         location: 'Tokyo, Japan',
         metrics: { followers_count: 100, following_count: 50, posts_count: 2, listed_count: 0 },
         verified: false,
+        profile_image_url: null,
         account_type: 'individual',
         language: 'en',
         device_client: 'Web Client',
@@ -100,6 +100,7 @@ describe('Dataset Location Aggregation', () => {
         location: 'Tokyo, Japan',
         metrics: { followers_count: 200, following_count: 50, posts_count: 1, listed_count: 0 },
         verified: false,
+        profile_image_url: null,
         account_type: 'individual',
         language: 'en',
         device_client: 'Web Client',
@@ -114,6 +115,7 @@ describe('Dataset Location Aggregation', () => {
         location: 'Nairobi, Kenya',
         metrics: { followers_count: 500, following_count: 10, posts_count: 1, listed_count: 0 },
         verified: true,
+        profile_image_url: null,
         account_type: 'individual',
         language: 'en',
         device_client: 'Twitter Web App',
@@ -129,6 +131,10 @@ describe('Dataset Location Aggregation', () => {
         language: 'en',
         entities: { hashtags: ['intel'], mentions: [], urls: ['https://source.org/report'], media_urls: [] },
         metrics: { likes_count: 5, reposts_count: 2, replies_count: 1, quotes_count: 0, impressions_count: 100 },
+        reply_to_post_id: null,
+        repost_of_post_id: null,
+        client_source: 'Web Client',
+        custom_attributes: {},
       },
       {
         post_id: 'p2',
@@ -138,6 +144,10 @@ describe('Dataset Location Aggregation', () => {
         language: 'en',
         entities: { hashtags: ['breaking'], mentions: [], urls: [], media_urls: [] },
         metrics: { likes_count: 1, reposts_count: 0, replies_count: 0, quotes_count: 0, impressions_count: 50 },
+        reply_to_post_id: null,
+        repost_of_post_id: null,
+        client_source: 'Web Client',
+        custom_attributes: {},
       },
       {
         post_id: 'p3',
@@ -147,6 +157,10 @@ describe('Dataset Location Aggregation', () => {
         language: 'en',
         entities: { hashtags: ['intel'], mentions: [], urls: [], media_urls: [] },
         metrics: { likes_count: 3, reposts_count: 1, replies_count: 0, quotes_count: 0, impressions_count: 80 },
+        reply_to_post_id: null,
+        repost_of_post_id: null,
+        client_source: 'Web Client',
+        custom_attributes: {},
       },
       {
         post_id: 'p4',
@@ -156,6 +170,10 @@ describe('Dataset Location Aggregation', () => {
         language: 'en',
         entities: { hashtags: [], mentions: [], urls: [], media_urls: [] },
         metrics: { likes_count: 10, reposts_count: 5, replies_count: 2, quotes_count: 0, impressions_count: 300 },
+        reply_to_post_id: null,
+        repost_of_post_id: null,
+        client_source: 'Twitter Web App',
+        custom_attributes: {},
       },
     ],
   };
