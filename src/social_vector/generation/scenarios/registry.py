@@ -19,7 +19,7 @@ def register_scenario(scenario_cls: Type[BaseScenario]) -> Type[BaseScenario]:
 def get_scenario(name: str) -> Type[BaseScenario]:
     """Retrieve a registered scenario class by name or alias."""
     clean_name = name.lower().strip().replace("-", "_")
-    
+
     # Aliases
     aliases = {
         "organic": "organic_activity",
@@ -28,6 +28,11 @@ def get_scenario(name: str) -> Type[BaseScenario]:
         "subtle": "paraphrased_coordination",
         "false_positive": "organic_topical_similarity",
         "similarity": "organic_topical_similarity",
+        "extreme": "extreme_information_operation",
+        "extreme_campaign": "extreme_information_operation",
+        "extreme_io": "extreme_information_operation",
+        "geopolitical": "extreme_information_operation",
+        "high_intensity": "extreme_information_operation",
     }
     resolved = aliases.get(clean_name, clean_name)
 

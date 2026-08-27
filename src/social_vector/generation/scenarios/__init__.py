@@ -6,6 +6,7 @@ from social_vector.generation.scenarios.organic import OrganicActivityScenario
 from social_vector.generation.scenarios.coordinated_campaign import CoordinatedCampaignScenario
 from social_vector.generation.scenarios.paraphrased_coordination import ParaphrasedCoordinationScenario
 from social_vector.generation.scenarios.false_positive import OrganicTopicalSimilarityScenario
+from social_vector.generation.scenarios.extreme_campaign import ExtremeInformationOperationScenario
 
 __all__ = [
     "BaseScenario",
@@ -17,4 +18,5 @@ __all__ = [
     "CoordinatedCampaignScenario",
     "ParaphrasedCoordinationScenario",
     "OrganicTopicalSimilarityScenario",
+    "ExtremeInformationOperationScenario",
 ]
