@@ -6,7 +6,6 @@ import { LoadingState } from '../components/common/LoadingState';
 import {
   Radio,
   Users,
-  MessageSquare,
   Activity,
   Hash,
   Globe,
