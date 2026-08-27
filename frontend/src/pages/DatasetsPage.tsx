@@ -62,36 +62,36 @@ export const DatasetsPage: React.FC = () => {
       </div>
 
       <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
-        <div className="flex items-center gap-1 p-1 bg-slate-100 dark:bg-slate-900 rounded-lg text-xs font-medium self-start">
+        <div className="flex items-center gap-1 p-0.5 bg-slate-100 dark:bg-slate-900/80 border border-slate-200/80 dark:border-slate-800 rounded-md text-xs font-medium self-start">
           <button
             onClick={() => setTab('all')}
-            className={`px-3 py-1.5 rounded-md transition-colors ${
+            className={`px-3 py-1 rounded transition-colors ${
               tab === 'all'
                 ? 'bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 shadow-sm font-semibold'
                 : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200'
             }`}
           >
-            All Datasets ({datasets.length})
+            All ({datasets.length})
           </button>
           <button
             onClick={() => setTab('bundled')}
-            className={`px-3 py-1.5 rounded-md transition-colors ${
+            className={`px-3 py-1 rounded transition-colors ${
               tab === 'bundled'
                 ? 'bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 shadow-sm font-semibold'
                 : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200'
             }`}
           >
-            Bundled Benchmarks
+            Benchmarks
           </button>
           <button
             onClick={() => setTab('user_generated')}
-            className={`px-3 py-1.5 rounded-md transition-colors ${
+            className={`px-3 py-1 rounded transition-colors ${
               tab === 'user_generated'
                 ? 'bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 shadow-sm font-semibold'
                 : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200'
             }`}
           >
-            User Generated
+            Generated
           </button>
         </div>
 
@@ -99,10 +99,10 @@ export const DatasetsPage: React.FC = () => {
           <Search className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
           <input
             type="text"
-            placeholder="Search datasets..."
+            placeholder="Filter datasets..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-9 pr-3 py-1.5 text-xs bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-md text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-slate-800 dark:focus:ring-cyan-400"
+            className="w-full pl-9 pr-3 py-1.5 text-xs bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-md text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:border-slate-400 dark:focus:border-slate-600"
           />
         </div>
       </div>
@@ -123,16 +123,16 @@ export const DatasetsPage: React.FC = () => {
               <div
                 key={d.filename}
                 onClick={() => handleOpenDataset(d.filename, d.id)}
-                className={`p-5 rounded-lg border bg-white dark:bg-[#0f141c] hover:border-slate-400 dark:hover:border-slate-600 cursor-pointer transition-all flex flex-col justify-between group ${
+                className={`p-4 rounded-lg border bg-white dark:bg-[#0f141c] hover:border-slate-300 dark:hover:border-slate-700 cursor-pointer transition-all flex flex-col justify-between group ${
                   isActive
-                    ? 'border-slate-900 dark:border-cyan-400 ring-1 ring-slate-900/5 dark:ring-cyan-400/20'
+                    ? 'border-slate-800 dark:border-cyan-500 shadow-xs'
                     : 'border-slate-200 dark:border-slate-800'
                 }`}
               >
                 <div>
-                  <div className="flex items-start justify-between gap-2 mb-2.5">
+                  <div className="flex items-center justify-between gap-2 mb-2">
                     <Badge variant={d.type === 'bundled' ? 'default' : 'info'} size="sm">
-                      {d.type === 'bundled' ? 'Bundled Benchmark' : 'User Generated'}
+                      {d.type === 'bundled' ? 'Benchmark' : 'Generated'}
                     </Badge>
                     {isActive && (
                       <span className="flex items-center gap-1 text-[11px] font-mono text-emerald-600 dark:text-cyan-400 font-semibold">
@@ -142,48 +142,48 @@ export const DatasetsPage: React.FC = () => {
                     )}
                   </div>
 
-                  <h3 className="font-semibold text-sm text-slate-900 dark:text-slate-100 group-hover:text-blue-600 dark:group-hover:text-cyan-400 transition-colors mb-1">
+                  <h3 className="font-semibold text-xs text-slate-900 dark:text-slate-100 group-hover:text-blue-600 dark:group-hover:text-cyan-400 transition-colors mb-0.5">
                     {d.scenario.replace(/_/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase())}
                   </h3>
 
-                  <p className="text-[11px] font-mono text-slate-400 dark:text-slate-500 mb-4 truncate">
+                  <p className="text-[11px] font-mono text-slate-400 dark:text-slate-500 mb-3 truncate">
                     {d.filename}
                   </p>
 
-                  <div className="grid grid-cols-2 gap-2 text-xs py-3 border-y border-slate-100 dark:border-slate-800/80 mb-4 font-mono">
+                  <div className="grid grid-cols-2 gap-2 text-xs py-2.5 border-t border-slate-100 dark:border-slate-800/80 mb-3 font-mono">
                     <div>
-                      <span className="text-[10px] text-slate-400 dark:text-slate-500 block uppercase">Users</span>
-                      <span className="font-semibold text-slate-800 dark:text-slate-200">
+                      <span className="text-[10px] text-slate-400 dark:text-slate-500 block">USERS</span>
+                      <span className="font-semibold text-slate-800 dark:text-slate-200 text-xs">
                         {d.totalUsers.toLocaleString()}
                       </span>
                     </div>
                     <div>
-                      <span className="text-[10px] text-slate-400 dark:text-slate-500 block uppercase">Posts</span>
-                      <span className="font-semibold text-slate-800 dark:text-slate-200">
+                      <span className="text-[10px] text-slate-400 dark:text-slate-500 block">POSTS</span>
+                      <span className="font-semibold text-slate-800 dark:text-slate-200 text-xs">
                         {d.totalPosts.toLocaleString()}
                       </span>
                     </div>
                     <div>
-                      <span className="text-[10px] text-slate-400 dark:text-slate-500 block uppercase">Profile</span>
-                      <span className="text-slate-700 dark:text-slate-300 capitalize text-[11px]">
+                      <span className="text-[10px] text-slate-400 dark:text-slate-500 block">PROFILE</span>
+                      <span className="text-slate-700 dark:text-slate-300 capitalize text-xs">
                         {d.contentProfile}
                       </span>
                     </div>
                     <div>
-                      <span className="text-[10px] text-slate-400 dark:text-slate-500 block uppercase">Seed</span>
-                      <span className="text-slate-700 dark:text-slate-300 text-[11px]">{d.seed}</span>
+                      <span className="text-[10px] text-slate-400 dark:text-slate-500 block">SEED</span>
+                      <span className="text-slate-700 dark:text-slate-300 text-xs">{d.seed}</span>
                     </div>
                   </div>
                 </div>
 
-                <div className="flex items-center justify-between pt-1 text-xs">
+                <div className="flex items-center justify-between pt-2 border-t border-slate-100 dark:border-slate-800/80 text-xs">
                   <span className="text-[11px] text-slate-400 font-mono flex items-center gap-1">
                     <Calendar className="w-3 h-3" />
                     <span>{formattedDate}</span>
                   </span>
 
                   <span className="text-xs font-medium text-slate-700 dark:text-slate-300 group-hover:text-blue-600 dark:group-hover:text-cyan-400 flex items-center gap-1 transition-colors">
-                    <span>{isActive ? 'Open Feed' : 'Select Dataset'}</span>
+                    <span>{isActive ? 'Open Feed' : 'Select'}</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </span>
                 </div>
@@ -196,7 +196,7 @@ export const DatasetsPage: React.FC = () => {
           icon={<Database className="w-6 h-6" />}
           title="No datasets found"
           description="No observation datasets match your current filter criteria."
-          actionLabel="Generate New Dataset"
+          actionLabel="Generate Dataset"
           onAction={openGenerator}
         />
       )}
