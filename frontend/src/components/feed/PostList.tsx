@@ -113,8 +113,8 @@ export const PostList: React.FC<PostListProps> = ({
   return (
     <div className="space-y-4">
       {/* Search & Filter Bar */}
-      <div className="p-3 bg-white dark:bg-[#0f141c] border border-slate-200 dark:border-slate-800 rounded-lg space-y-3">
-        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5">
+      <div className="p-3 bg-white dark:bg-[#0f141c] border border-slate-200 dark:border-slate-800 rounded-lg space-y-2.5">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
           <div className="relative flex-1">
             <Search className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
             <input
@@ -125,7 +125,7 @@ export const PostList: React.FC<PostListProps> = ({
                 setSearchQuery(e.target.value);
                 setPage(1);
               }}
-              className="w-full pl-9 pr-8 py-1.5 text-xs bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-md text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-slate-900 dark:focus:ring-cyan-400 transition-colors"
+              className="w-full pl-9 pr-8 py-1.5 text-xs bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-md text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:border-slate-400 dark:focus:border-slate-600 transition-colors"
             />
             {searchQuery && (
               <button
@@ -148,7 +148,7 @@ export const PostList: React.FC<PostListProps> = ({
 
         {(topTags.length > 0 || topDomains.length > 0) && (
           <div className="flex flex-wrap items-center gap-1.5 pt-2 border-t border-slate-100 dark:border-slate-800/60 text-xs">
-            <span className="text-[11px] text-slate-400 dark:text-slate-500 font-mono mr-1">Trending:</span>
+            <span className="text-[10px] text-slate-400 dark:text-slate-500 font-mono uppercase mr-1">Filter:</span>
 
             {topTags.slice(0, 6).map(tag => (
               <button
@@ -157,10 +157,10 @@ export const PostList: React.FC<PostListProps> = ({
                   setSelectedTag(selectedTag === tag ? '' : tag);
                   setPage(1);
                 }}
-                className={`px-2 py-0.5 rounded text-[11px] font-medium transition-colors ${
+                className={`px-2 py-0.5 rounded text-[11px] font-mono border transition-colors ${
                   selectedTag === tag
-                    ? 'bg-blue-600 dark:bg-cyan-500 text-white dark:text-slate-950'
-                    : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700'
+                    ? 'border-slate-900 dark:border-cyan-400 bg-slate-900 dark:bg-cyan-500 text-white dark:text-slate-950 font-semibold'
+                    : 'border-slate-200/80 dark:border-slate-800 bg-slate-100/80 dark:bg-slate-800/60 text-slate-700 dark:text-slate-300 hover:bg-slate-200/80 dark:hover:bg-slate-700/60'
                 }`}
               >
                 #{tag}
@@ -174,10 +174,10 @@ export const PostList: React.FC<PostListProps> = ({
                   setSelectedDomain(selectedDomain === dom ? '' : dom);
                   setPage(1);
                 }}
-                className={`px-2 py-0.5 rounded text-[11px] font-mono transition-colors ${
+                className={`px-2 py-0.5 rounded text-[11px] font-mono border transition-colors ${
                   selectedDomain === dom
-                    ? 'bg-purple-600 text-white'
-                    : 'bg-slate-100 dark:bg-slate-800/80 text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700'
+                    ? 'border-slate-900 dark:border-cyan-400 bg-slate-900 dark:bg-cyan-500 text-white dark:text-slate-950 font-semibold'
+                    : 'border-slate-200/80 dark:border-slate-800 bg-slate-100/80 dark:bg-slate-800/60 text-slate-700 dark:text-slate-300 hover:bg-slate-200/80 dark:hover:bg-slate-700/60'
                 }`}
               >
                 {dom}
@@ -187,9 +187,9 @@ export const PostList: React.FC<PostListProps> = ({
             {hasActiveFilters && (
               <button
                 onClick={clearFilters}
-                className="text-[11px] text-rose-500 hover:underline ml-auto font-medium"
+                className="text-[11px] text-slate-500 hover:text-slate-900 dark:hover:text-slate-100 hover:underline ml-auto font-mono"
               >
-                Reset filters
+                Clear filters
               </button>
             )}
           </div>
