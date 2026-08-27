@@ -1,0 +1,6231 @@
+{
+  "metadata": {
+    "dataset_id": "ds_organic_topical_similarity_999_50u",
+    "schema_version": "1.0.0",
+    "generator_name": "SocialVector Dataset Generator",
+    "generator_version": "0.1.0",
+    "scenario": "organic_topical_similarity",
+    "seed": 999,
+    "created_at": "2026-08-27T16:40:22Z",
+    "parameters": {
+      "scenario": "organic_topical_similarity",
+      "user_count": 50,
+      "posts_per_user": 4,
+      "campaign_ratio": 0.15,
+      "seed": 999
+    },
+    "statistics": {
+      "total_users": 50,
+      "total_posts": 200,
+      "total_likes": 416,
+      "total_reposts": 29,
+      "total_replies": 13,
+      "avg_posts_per_user": 4.0,
+      "start_time": "2026-08-01T00:00:00Z",
+      "end_time": "2026-08-07T00:00:00Z"
+    }
+  },
+  "users": [
+    {
+      "user_id": "usr_fp_000001",
+      "username": "elena_0001",
+      "display_name": "Elena Silva",
+      "bio": "Research Scientist @ tech / research. Exploring renewable energy & climate policy.",
+      "created_at": "2025-12-02T00:57:58Z",
+      "location": "Seattle, WA",
+      "metrics": {
+        "followers_count": 77,
+        "following_count": 65,
+        "posts_count": 43,
+        "listed_count": 0
+      },
+      "verified": false,
+      "profile_image_url": null,
+      "account_type": "organization",
+      "language": "en",
+      "device_client": "Mobile Web Client",
+      "custom_attributes": {}
+    },
+    {
+      "user_id": "usr_fp_000002",
+      "username": "ananya_r02",
+      "display_name": "Ananya Ramirez",
+      "bio": "Observations on public transit, technology, and policy. Views belong to me.",
+      "created_at": "2020-03-17T18:19:44Z",
+      "location": "Tokyo, Japan",
+      "metrics": {
+        "followers_count": 69,
+        "following_count": 62,
+        "posts_count": 47,
+        "listed_count": 0
+      },
+      "verified": false,
+      "profile_image_url": null,
+      "account_type": "individual",
+      "language": "en",
+      "device_client": "Android App",
+      "custom_attributes": {}
+    },
+    {
+      "user_id": "usr_fp_000003",
+      "username": "mikkel_chen_3",
+      "display_name": "Mikkel Chen",
+      "bio": "machine learning enthusiast. Building things with open protocols.",
+      "created_at": "2025-11-20T22:51:53Z",
+      "location": "São Paulo, Brazil",
+      "metrics": {
+        "followers_count": 131,
+        "following_count": 89,
+        "posts_count": 67,
+        "listed_count": 0
+      },
+      "verified": false,
+      "profile_image_url": null,
+      "account_type": "individual",
+      "language": "en",
+      "device_client": "Web Client",
+      "custom_attributes": {}
+    },
+    {
+      "user_id": "usr_fp_000004",
+      "username": "valentina_novak_4",
+      "display_name": "Valentina Novak",
+      "bio": "Focusing on local journalism, civic tech, and modern infrastructure. Living in the world.",
+      "created_at": "2024-08-23T02:14:54Z",
+      "location": null,
+      "metrics": {
+        "followers_count": 71,
+        "following_count": 77,
+        "posts_count": 76,
+        "listed_count": 0
+      },
+      "verified": false,
+      "profile_image_url": null,
+      "account_type": "individual",
+      "language": "en",
+      "device_client": "iOS App",
+      "custom_attributes": {}
+    },
+    {
+      "user_id": "usr_fp_000005",
+      "username": "lucas_0005",
+      "display_name": "Lucas Lee",
+      "bio": "Just another human navigating space exploration and astronomy.",
+      "created_at": "2018-12-05T17:03:19Z",
+      "location": "Chicago, IL",
+      "metrics": {
+        "followers_count": 65,
+        "following_count": 91,
+        "posts_count": 44,
+        "listed_count": 0
+      },
+      "verified": false,
+      "profile_image_url": null,
+      "account_type": "individual",
+      "language": "en",
+      "device_client": "Android App",
+      "custom_attributes": {}
+    },
+    {
+      "user_id": "usr_fp_000006",
+      "username": "jun_0006",
+      "display_name": "Jun Johansson",
+      "bio": "Observations on sustainable agriculture, technology, and policy. Views belong to me.",
+      "created_at": "2020-07-12T10:20:00Z",
+      "location": "Berlin, Germany",
+      "metrics": {
+        "followers_count": 89,
+        "following_count": 96,
+        "posts_count": 37,
+        "listed_count": 0
+      },
+      "verified": false,
+      "profile_image_url": null,
+      "account_type": "individual",
+      "language": "en",
+      "device_client": "Android App",
+      "custom_attributes": {}
+    },
+    {
+      "user_id": "usr_fp_000007",
+      "username": "amina_park_7",
+      "display_name": "Amina Park",
+      "bio": "Energy Analyst @ tech / research. Exploring renewable energy & sustainable agriculture.",
+      "created_at": "2018-11-21T12:15:19Z",
+      "location": "Chicago, IL",
+      "metrics": {
+        "followers_count": 79,
+        "following_count": 56,
+        "posts_count": 35,
+        "listed_count": 0
+      },
+      "verified": false,
+      "profile_image_url": null,
+      "account_type": "individual",
+      "language": "en",
+      "device_client": "Android App",
+      "custom_attributes": {}
+    },
+    {
+      "user_id": "usr_fp_000008",
+      "username": "the_aria_johnson_8",
+      "display_name": "Aria Johnson",
+      "bio": "",
+      "created_at": "2025-05-03T22:43:22Z",
+      "location": "Singapore",
+      "metrics": {
+        "followers_count": 67,
+        "following_count": 111,
+        "posts_count": 35,
+        "listed_count": 0
+      },
+      "verified": false,
+      "profile_image_url": null,
+      "account_type": "individual",
+      "language": "en",
+      "device_client": "iOS App",
+      "custom_attributes": {}
+    },
+    {
+      "user_id": "usr_fp_000009",
+      "username": "elena_m09",
+      "display_name": "Elena Mueller",
+      "bio": "biotechnology enthusiast. Building things with open protocols.",
+      "created_at": "2023-01-29T23:35:33Z",
+      "location": "Mumbai, India",
+      "metrics": {
+        "followers_count": 215,
+        "following_count": 60,
+        "posts_count": 53,
+        "listed_count": 1
+      },
+      "verified": false,
+      "profile_image_url": null,
+      "account_type": "organization",
+      "language": "en",
+      "device_client": "Web Client",
+      "custom_attributes": {}
+    },
+    {
+      "user_id": "usr_fp_000010",
+      "username": "henrik_clark_10",
+      "display_name": "Henrik Clark",
+      "bio": "Researcher in machine learning. Former Energy Analyst. Based in Buenos Aires.",
+      "created_at": "2018-08-22T13:41:42Z",
+      "location": "Buenos Aires, Argentina",
+      "metrics": {
+        "followers_count": 124,
+        "following_count": 217,
+        "posts_count": 49,
+        "listed_count": 0
+      },
+      "verified": false,
+      "profile_image_url": null,
+      "account_type": "individual",
+      "language": "en",
+      "device_client": "Android App",
+      "custom_attributes": {}
+    },
+    {
+      "user_id": "usr_fp_000011",
+      "username": "rodriguez_jordan_11",
+      "display_name": "Jordan Rodriguez",
+      "bio": "Focusing on macroeconomics, astronomy, and modern infrastructure. Living in the world.",
+      "created_at": "2018-10-17T11:23:53Z",
+      "location": null,
+      "metrics": {
+        "followers_count": 70,
+        "following_count": 58,
+        "posts_count": 86,
+        "listed_count": 0
+      },
+      "verified": false,
+      "profile_image_url": null,
+      "account_type": "individual",
+      "language": "en",
+      "device_client": "ThirdPartyClient/3.1",
+      "custom_attributes": {}
+    },
+    {
+      "user_id": "usr_fp_000012",
+      "username": "lucia_r12",
+      "display_name": "Lucia Rodriguez",
+      "bio": "Observations on data ethics, technology, and policy. Views belong to me.",
+      "created_at": "2018-10-30T17:14:29Z",
+      "location": "Austin, TX",
+      "metrics": {
+        "followers_count": 65,
+        "following_count": 95,
+        "posts_count": 49,
+        "listed_count": 0
+      },
+      "verified": false,
+      "profile_image_url": null,
+      "account_type": "individual",
+      "language": "en",
+      "device_client": "ThirdPartyClient/3.1",
+      "custom_attributes": {}
+    },
+    {
+      "user_id": "usr_fp_000013",
+      "username": "johansson_astrid_13",
+      "display_name": "Astrid Johansson",
+      "bio": "",
+      "created_at": "2024-01-27T13:39:03Z",
+      "location": "São Paulo, Brazil",
+      "metrics": {
+        "followers_count": 166,
+        "following_count": 68,
+        "posts_count": 44,
+        "listed_count": 1
+      },
+      "verified": false,
+      "profile_image_url": null,
+      "account_type": "individual",
+      "language": "en",
+      "device_client": "Mobile Web Client",
+      "custom_attributes": {}
+    },
+    {
+      "user_id": "usr_fp_000014",
+      "username": "smith_carlos_14",
+      "display_name": "Carlos Smith",
+      "bio": "",
+      "created_at": "2025-12-16T00:07:09Z",
+      "location": null,
+      "metrics": {
+        "followers_count": 100,
+        "following_count": 55,
+        "posts_count": 50,
+        "listed_count": 0
+      },
+      "verified": false,
+      "profile_image_url": null,
+      "account_type": "individual",
+      "language": "en",
+      "device_client": "iOS App",
+      "custom_attributes": {}
+    },
+    {
+      "user_id": "usr_fp_000015",
+      "username": "the_camila_kowalski_15",
+      "display_name": "Camila Kowalski",
+      "bio": "space exploration enthusiast. Building things with open protocols.",
+      "created_at": "2019-01-22T19:53:39Z",
+      "location": "Sydney, Australia",
+      "metrics": {
+        "followers_count": 368,
+        "following_count": 140,
+        "posts_count": 39,
+        "listed_count": 2
+      },
+      "verified": false,
+      "profile_image_url": null,
+      "account_type": "individual",
+      "language": "en",
+      "device_client": "Mobile Web Client",
+      "custom_attributes": {}
+    },
+    {
+      "user_id": "usr_fp_000016",
+      "username": "carlos_0016",
+      "display_name": "Carlos Clark",
+      "bio": "Graphic Designer based in Bengaluru. Interested in data ethics and urban mobility. Thoughts are my own.",
+      "created_at": "2025-12-18T09:52:33Z",
+      "location": "Bengaluru, India",
+      "metrics": {
+        "followers_count": 117,
+        "following_count": 64,
+        "posts_count": 43,
+        "listed_count": 0
+      },
+      "verified": false,
+      "profile_image_url": null,
+      "account_type": "individual",
+      "language": "en",
+      "device_client": "Android App",
+      "custom_attributes": {}
+    },
+    {
+      "user_id": "usr_fp_000017",
+      "username": "mueller_lucia_17",
+      "display_name": "Lucia Mueller",
+      "bio": "Observations on public transit, technology, and policy. Views belong to me.",
+      "created_at": "2018-12-19T20:26:17Z",
+      "location": "Bengaluru, India",
+      "metrics": {
+        "followers_count": 116,
+        "following_count": 80,
+        "posts_count": 49,
+        "listed_count": 0
+      },
+      "verified": false,
+      "profile_image_url": null,
+      "account_type": "individual",
+      "language": "en",
+      "device_client": "iOS App",
+      "custom_attributes": {}
+    },
+    {
+      "user_id": "usr_fp_000018",
+      "username": "nia_a18",
+      "display_name": "Nia Anderson",
+      "bio": "Policy Analyst based in the world. Interested in climate policy and distributed systems. Thoughts are my own.",
+      "created_at": "2022-12-05T19:06:17Z",
+      "location": null,
+      "metrics": {
+        "followers_count": 93,
+        "following_count": 50,
+        "posts_count": 48,
+        "listed_count": 0
+      },
+      "verified": false,
+      "profile_image_url": null,
+      "account_type": "individual",
+      "language": "en",
+      "device_client": "ThirdPartyClient/3.1",
+      "custom_attributes": {}
+    },
+    {
+      "user_id": "usr_fp_000019",
+      "username": "sharma_jun_19",
+      "display_name": "Jun Sharma",
+      "bio": "Working on cybersecurity. Occasional thoughts on space exploration and urban mobility.",
+      "created_at": "2022-02-20T16:45:23Z",
+      "location": "London, UK",
+      "metrics": {
+        "followers_count": 75,
+        "following_count": 56,
+        "posts_count": 52,
+        "listed_count": 0
+      },
+      "verified": false,
+      "profile_image_url": null,
+      "account_type": "individual",
+      "language": "en",
+      "device_client": "Android App",
+      "custom_attributes": {}
+    },
+    {
+      "user_id": "usr_fp_000020",
+      "username": "maya_s20",
+      "display_name": "Maya Sanchez",
+      "bio": "space exploration enthusiast. Building things with open protocols.",
+      "created_at": "2022-12-17T18:52:32Z",
+      "location": "Austin, TX",
+      "metrics": {
+        "followers_count": 83,
+        "following_count": 55,
+        "posts_count": 61,
+        "listed_count": 0
+      },
+      "verified": false,
+      "profile_image_url": null,
+      "account_type": "individual",
+      "language": "en",
+      "device_client": "Android App",
+      "custom_attributes": {}
+    },
+    {
+      "user_id": "usr_fp_000021",
+      "username": "fatimam_021",
+      "display_name": "Fatima Mensah",
+      "bio": "Focusing on sustainable agriculture, cryptography, and modern infrastructure. Living in Zurich.",
+      "created_at": "2021-02-05T18:14:57Z",
+      "location": "Zurich, Switzerland",
+      "metrics": {
+        "followers_count": 111,
+        "following_count": 80,
+        "posts_count": 80,
+        "listed_count": 0
+      },
+      "verified": false,
+      "profile_image_url": null,
+      "account_type": "individual",
+      "language": "en",
+      "device_client": "iOS App",
+      "custom_attributes": {}
+    },
+    {
+      "user_id": "usr_fp_000022",
+      "username": "priya_0022",
+      "display_name": "Priya Park",
+      "bio": "Energy Analyst @ tech / research. Exploring public transit & machine learning.",
+      "created_at": "2021-05-24T22:58:50Z",
+      "location": "Denver, CO",
+      "metrics": {
+        "followers_count": 97,
+        "following_count": 54,
+        "posts_count": 470,
+        "listed_count": 0
+      },
+      "verified": false,
+      "profile_image_url": null,
+      "account_type": "individual",
+      "language": "en",
+      "device_client": "iOS App",
+      "custom_attributes": {}
+    },
+    {
+      "user_id": "usr_fp_000023",
+      "username": "sam_novak_23",
+      "display_name": "Sam Novak",
+      "bio": "Just another human navigating cloud computing and urban mobility.",
+      "created_at": "2025-04-07T14:29:01Z",
+      "location": "Tokyo, Japan",
+      "metrics": {
+        "followers_count": 82,
+        "following_count": 180,
+        "posts_count": 60,
+        "listed_count": 0
+      },
+      "verified": false,
+      "profile_image_url": null,
+      "account_type": "individual",
+      "language": "en",
+      "device_client": "ThirdPartyClient/3.1",
+      "custom_attributes": {}
+    },
+    {
+      "user_id": "usr_fp_000024",
+      "username": "lindholm_sigrid_24",
+      "display_name": "Sigrid Lindholm",
+      "bio": "Focusing on cryptography, renewable energy, and modern infrastructure. Living in Seoul.",
+      "created_at": "2023-11-28T23:30:06Z",
+      "location": "Seoul, South Korea",
+      "metrics": {
+        "followers_count": 110,
+        "following_count": 51,
+        "posts_count": 98,
+        "listed_count": 0
+      },
+      "verified": false,
+      "profile_image_url": null,
+      "account_type": "organization",
+      "language": "en",
+      "device_client": "iOS App",
+      "custom_attributes": {}
+    },
+    {
+      "user_id": "usr_fp_000025",
+      "username": "perez_priya_25",
+      "display_name": "Priya Perez",
+      "bio": "Focusing on cloud computing, renewable energy, and modern infrastructure. Living in the world.",
+      "created_at": "2022-06-17T07:02:00Z",
+      "location": null,
+      "metrics": {
+        "followers_count": 72,
+        "following_count": 51,
+        "posts_count": 38,
+        "listed_count": 0
+      },
+      "verified": false,
+      "profile_image_url": null,
+      "account_type": "individual",
+      "language": "en",
+      "device_client": "iOS App",
+      "custom_attributes": {}
+    },
+    {
+      "user_id": "usr_fp_000026",
+      "username": "mikkel_k26",
+      "display_name": "Mikkel Kowalski",
+      "bio": "Advocate for public transit and sustainable systems. Systems Architect in Sydney.",
+      "created_at": "2024-08-18T03:17:39Z",
+      "location": "Sydney, Australia",
+      "metrics": {
+        "followers_count": 72,
+        "following_count": 50,
+        "posts_count": 95,
+        "listed_count": 0
+      },
+      "verified": false,
+      "profile_image_url": null,
+      "account_type": "individual",
+      "language": "en",
+      "device_client": "ThirdPartyClient/3.1",
+      "custom_attributes": {}
+    },
+    {
+      "user_id": "usr_fp_000027",
+      "username": "rileyp_027",
+      "display_name": "Riley Patel",
+      "bio": "",
+      "created_at": "2018-09-30T12:20:23Z",
+      "location": "São Paulo, Brazil",
+      "metrics": {
+        "followers_count": 256,
+        "following_count": 82,
+        "posts_count": 41,
+        "listed_count": 1
+      },
+      "verified": false,
+      "profile_image_url": null,
+      "account_type": "individual",
+      "language": "en",
+      "device_client": "iOS App",
+      "custom_attributes": {}
+    },
+    {
+      "user_id": "usr_fp_000028",
+      "username": "avery_s28",
+      "display_name": "Avery Sato",
+      "bio": "Just another human navigating civic tech and space exploration.",
+      "created_at": "2020-03-09T10:47:18Z",
+      "location": "Paris, France",
+      "metrics": {
+        "followers_count": 80,
+        "following_count": 55,
+        "posts_count": 40,
+        "listed_count": 0
+      },
+      "verified": false,
+      "profile_image_url": null,
+      "account_type": "individual",
+      "language": "en",
+      "device_client": "Android App",
+      "custom_attributes": {}
+    },
+    {
+      "user_id": "usr_fp_000029",
+      "username": "taylor_lucas_29",
+      "display_name": "Lucas Taylor",
+      "bio": "Focusing on machine learning, space exploration, and modern infrastructure. Living in Zurich.",
+      "created_at": "2019-04-25T06:13:15Z",
+      "location": "Zurich, Switzerland",
+      "metrics": {
+        "followers_count": 134,
+        "following_count": 51,
+        "posts_count": 39,
+        "listed_count": 0
+      },
+      "verified": false,
+      "profile_image_url": null,
+      "account_type": "individual",
+      "language": "en",
+      "device_client": "Web Client",
+      "custom_attributes": {}
+    },
+    {
+      "user_id": "usr_fp_000030",
+      "username": "the_soren_diallo_30",
+      "display_name": "Soren Diallo",
+      "bio": "Software Engineer @ tech / research. Exploring macroeconomics & data ethics.",
+      "created_at": "2022-06-04T21:16:22Z",
+      "location": null,
+      "metrics": {
+        "followers_count": 263,
+        "following_count": 50,
+        "posts_count": 116,
+        "listed_count": 1
+      },
+      "verified": false,
+      "profile_image_url": null,
+      "account_type": "individual",
+      "language": "en",
+      "device_client": "Android App",
+      "custom_attributes": {}
+    },
+    {
+      "user_id": "usr_fp_000031",
+      "username": "hana_clark_31",
+      "display_name": "Hana Clark",
+      "bio": "Researcher in sustainable agriculture. Former Community Organizer. Based in Austin.",
+      "created_at": "2018-08-27T15:47:07Z",
+      "location": "Austin, TX",
+      "metrics": {
+        "followers_count": 76,
+        "following_count": 69,
+        "posts_count": 59,
+        "listed_count": 0
+      },
+      "verified": false,
+      "profile_image_url": null,
+      "account_type": "individual",
+      "language": "en",
+      "device_client": "iOS App",
+      "custom_attributes": {}
+    },
+    {
+      "user_id": "usr_fp_000032",
+      "username": "thompson_jun_32",
+      "display_name": "Jun Thompson",
+      "bio": "",
+      "created_at": "2019-11-28T23:23:34Z",
+      "location": "Sydney, Australia",
+      "metrics": {
+        "followers_count": 71,
+        "following_count": 51,
+        "posts_count": 73,
+        "listed_count": 0
+      },
+      "verified": false,
+      "profile_image_url": null,
+      "account_type": "individual",
+      "language": "en",
+      "device_client": "Android App",
+      "custom_attributes": {}
+    },
+    {
+      "user_id": "usr_fp_000033",
+      "username": "pat_moore_33",
+      "display_name": "Pat Moore",
+      "bio": "Researcher in astronomy. Former Journalist. Based in Boston.",
+      "created_at": "2022-03-17T07:19:37Z",
+      "location": "Boston, MA",
+      "metrics": {
+        "followers_count": 74,
+        "following_count": 81,
+        "posts_count": 46,
+        "listed_count": 0
+      },
+      "verified": false,
+      "profile_image_url": null,
+      "account_type": "individual",
+      "language": "en",
+      "device_client": "Mobile Web Client",
+      "custom_attributes": {}
+    },
+    {
+      "user_id": "usr_fp_000034",
+      "username": "tariq_w34",
+      "display_name": "Tariq White",
+      "bio": "Curious about data ethics | Reading widely on local journalism | Tokyo",
+      "created_at": "2019-01-11T07:07:33Z",
+      "location": "Tokyo, Japan",
+      "metrics": {
+        "followers_count": 66,
+        "following_count": 64,
+        "posts_count": 36,
+        "listed_count": 0
+      },
+      "verified": false,
+      "profile_image_url": null,
+      "account_type": "individual",
+      "language": "en",
+      "device_client": "Mobile Web Client",
+      "custom_attributes": {}
+    },
+    {
+      "user_id": "usr_fp_000035",
+      "username": "fatima_0035",
+      "display_name": "Fatima Tanaka",
+      "bio": "Advocate for civic tech and sustainable systems. Policy Analyst in the world.",
+      "created_at": "2023-02-17T14:56:51Z",
+      "location": null,
+      "metrics": {
+        "followers_count": 80,
+        "following_count": 52,
+        "posts_count": 40,
+        "listed_count": 0
+      },
+      "verified": false,
+      "profile_image_url": null,
+      "account_type": "individual",
+      "language": "en",
+      "device_client": "Android App",
+      "custom_attributes": {}
+    },
+    {
+      "user_id": "usr_fp_000036",
+      "username": "gabriel_0036",
+      "display_name": "Gabriel Harris",
+      "bio": "Researcher in digital rights. Former Student. Based in Sydney.",
+      "created_at": "2020-07-11T20:02:52Z",
+      "location": "Sydney, Australia",
+      "metrics": {
+        "followers_count": 67,
+        "following_count": 51,
+        "posts_count": 36,
+        "listed_count": 0
+      },
+      "verified": false,
+      "profile_image_url": null,
+      "account_type": "individual",
+      "language": "en",
+      "device_client": "iOS App",
+      "custom_attributes": {}
+    },
+    {
+      "user_id": "usr_fp_000037",
+      "username": "omar_johansson_37",
+      "display_name": "Omar Johansson",
+      "bio": "cloud computing enthusiast. Building things with open protocols.",
+      "created_at": "2023-04-20T22:59:35Z",
+      "location": "Seoul, South Korea",
+      "metrics": {
+        "followers_count": 101,
+        "following_count": 91,
+        "posts_count": 79,
+        "listed_count": 0
+      },
+      "verified": false,
+      "profile_image_url": null,
+      "account_type": "individual",
+      "language": "en",
+      "device_client": "Android App",
+      "custom_attributes": {}
+    },
+    {
+      "user_id": "usr_fp_000038",
+      "username": "the_liam_wilson_38",
+      "display_name": "Liam Wilson",
+      "bio": "Observations on sustainable agriculture, technology, and policy. Views belong to me.",
+      "created_at": "2022-01-21T12:32:16Z",
+      "location": "Austin, TX",
+      "metrics": {
+        "followers_count": 205,
+        "following_count": 82,
+        "posts_count": 44,
+        "listed_count": 1
+      },
+      "verified": false,
+      "profile_image_url": null,
+      "account_type": "individual",
+      "language": "en",
+      "device_client": "iOS App",
+      "custom_attributes": {}
+    },
+    {
+      "user_id": "usr_fp_000039",
+      "username": "jordan_0039",
+      "display_name": "Jordan Rodriguez",
+      "bio": "public transit enthusiast. Building things with open protocols.",
+      "created_at": "2024-12-04T07:42:21Z",
+      "location": "New York, NY",
+      "metrics": {
+        "followers_count": 70,
+        "following_count": 58,
+        "posts_count": 37,
+        "listed_count": 0
+      },
+      "verified": false,
+      "profile_image_url": null,
+      "account_type": "individual",
+      "language": "en",
+      "device_client": "Web Client",
+      "custom_attributes": {}
+    },
+    {
+      "user_id": "usr_fp_000040",
+      "username": "dubois_chris_40",
+      "display_name": "Chris Dubois",
+      "bio": "Just another human navigating data ethics and cloud computing.",
+      "created_at": "2023-05-25T11:59:16Z",
+      "location": "Austin, TX",
+      "metrics": {
+        "followers_count": 78,
+        "following_count": 53,
+        "posts_count": 104,
+        "listed_count": 0
+      },
+      "verified": false,
+      "profile_image_url": null,
+      "account_type": "individual",
+      "language": "en",
+      "device_client": "ThirdPartyClient/3.1",
+      "custom_attributes": {}
+    },
+    {
+      "user_id": "usr_fp_000041",
+      "username": "zainab_n41",
+      "display_name": "Zainab Novak",
+      "bio": "Working on astronomy. Occasional thoughts on cybersecurity and urban mobility.",
+      "created_at": "2023-11-10T07:38:13Z",
+      "location": "Seattle, WA",
+      "metrics": {
+        "followers_count": 135,
+        "following_count": 54,
+        "posts_count": 36,
+        "listed_count": 0
+      },
+      "verified": false,
+      "profile_image_url": null,
+      "account_type": "individual",
+      "language": "en",
+      "device_client": "Android App",
+      "custom_attributes": {}
+    },
+    {
+      "user_id": "usr_fp_000042",
+      "username": "henrikh_042",
+      "display_name": "Henrik Harris",
+      "bio": "Policy Analyst based in São Paulo. Interested in data ethics and climate policy. Thoughts are my own.",
+      "created_at": "2024-11-06T08:45:33Z",
+      "location": "São Paulo, Brazil",
+      "metrics": {
+        "followers_count": 82,
+        "following_count": 52,
+        "posts_count": 40,
+        "listed_count": 0
+      },
+      "verified": false,
+      "profile_image_url": null,
+      "account_type": "individual",
+      "language": "en",
+      "device_client": "Android App",
+      "custom_attributes": {}
+    },
+    {
+      "user_id": "usr_fp_000043",
+      "username": "diegos_043",
+      "display_name": "Diego Sanchez",
+      "bio": "Content Strategist based in Chicago. Interested in astronomy and data ethics. Thoughts are my own.",
+      "created_at": "2023-06-01T22:22:45Z",
+      "location": "Chicago, IL",
+      "metrics": {
+        "followers_count": 85,
+        "following_count": 54,
+        "posts_count": 66,
+        "listed_count": 0
+      },
+      "verified": false,
+      "profile_image_url": null,
+      "account_type": "individual",
+      "language": "en",
+      "device_client": "iOS App",
+      "custom_attributes": {}
+    },
+    {
+      "user_id": "usr_fp_000044",
+      "username": "the_henrik_rodriguez_44",
+      "display_name": "Henrik Rodriguez",
+      "bio": "Graphic Designer based in Nairobi. Interested in cloud computing and grid infrastructure. Thoughts are my own.",
+      "created_at": "2023-04-06T09:29:45Z",
+      "location": "Nairobi, Kenya",
+      "metrics": {
+        "followers_count": 74,
+        "following_count": 57,
+        "posts_count": 49,
+        "listed_count": 0
+      },
+      "verified": false,
+      "profile_image_url": null,
+      "account_type": "individual",
+      "language": "en",
+      "device_client": "ThirdPartyClient/3.1",
+      "custom_attributes": {}
+    },
+    {
+      "user_id": "usr_fp_000045",
+      "username": "noah_m45",
+      "display_name": "Noah Moore",
+      "bio": "Curious about distributed systems | Reading widely on cybersecurity | Dublin",
+      "created_at": "2019-06-25T23:59:08Z",
+      "location": "Dublin, Ireland",
+      "metrics": {
+        "followers_count": 89,
+        "following_count": 70,
+        "posts_count": 42,
+        "listed_count": 0
+      },
+      "verified": false,
+      "profile_image_url": null,
+      "account_type": "individual",
+      "language": "en",
+      "device_client": "Web Client",
+      "custom_attributes": {}
+    },
+    {
+      "user_id": "usr_fp_000046",
+      "username": "ethans_046",
+      "display_name": "Ethan Sato",
+      "bio": "Student @ tech / research. Exploring renewable energy & cybersecurity.",
+      "created_at": "2020-12-19T03:25:46Z",
+      "location": "Mumbai, India",
+      "metrics": {
+        "followers_count": 128,
+        "following_count": 62,
+        "posts_count": 66,
+        "listed_count": 0
+      },
+      "verified": false,
+      "profile_image_url": null,
+      "account_type": "individual",
+      "language": "en",
+      "device_client": "Android App",
+      "custom_attributes": {}
+    },
+    {
+      "user_id": "usr_fp_000047",
+      "username": "clark_diego_47",
+      "display_name": "Diego Clark",
+      "bio": "Working on grid infrastructure. Occasional thoughts on cryptography and urban mobility.",
+      "created_at": "2020-08-04T13:14:02Z",
+      "location": "London, UK",
+      "metrics": {
+        "followers_count": 159,
+        "following_count": 50,
+        "posts_count": 44,
+        "listed_count": 1
+      },
+      "verified": false,
+      "profile_image_url": null,
+      "account_type": "individual",
+      "language": "en",
+      "device_client": "Mobile Web Client",
+      "custom_attributes": {}
+    },
+    {
+      "user_id": "usr_fp_000048",
+      "username": "the_diego_moore_48",
+      "display_name": "Diego Moore",
+      "bio": "Healthcare Worker based in Denver. Interested in distributed systems and space exploration. Thoughts are my own.",
+      "created_at": "2024-08-04T15:55:21Z",
+      "location": "Denver, CO",
+      "metrics": {
+        "followers_count": 87,
+        "following_count": 77,
+        "posts_count": 67,
+        "listed_count": 0
+      },
+      "verified": false,
+      "profile_image_url": null,
+      "account_type": "individual",
+      "language": "en",
+      "device_client": "ThirdPartyClient/3.1",
+      "custom_attributes": {}
+    },
+    {
+      "user_id": "usr_fp_000049",
+      "username": "chrisw_049",
+      "display_name": "Chris Wilson",
+      "bio": "Curious about cryptography | Reading widely on digital rights | Seoul",
+      "created_at": "2020-03-02T14:10:55Z",
+      "location": "Seoul, South Korea",
+      "metrics": {
+        "followers_count": 67,
+        "following_count": 55,
+        "posts_count": 99,
+        "listed_count": 0
+      },
+      "verified": false,
+      "profile_image_url": null,
+      "account_type": "individual",
+      "language": "en",
+      "device_client": "Web Client",
+      "custom_attributes": {}
+    },
+    {
+      "user_id": "usr_fp_000050",
+      "username": "ingrid_conti_50",
+      "display_name": "Ingrid Conti",
+      "bio": "space exploration enthusiast. Building things with open protocols.",
+      "created_at": "2020-08-14T19:16:32Z",
+      "location": "San Francisco, CA",
+      "metrics": {
+        "followers_count": 172,
+        "following_count": 76,
+        "posts_count": 40,
+        "listed_count": 1
+      },
+      "verified": false,
+      "profile_image_url": null,
+      "account_type": "individual",
+      "language": "en",
+      "device_client": "Android App",
+      "custom_attributes": {}
+    }
+  ],
+  "posts": [
+    {
+      "post_id": "pst_fp_0000065",
+      "author_id": "usr_fp_000017",
+      "created_at": "2026-08-01T06:44:00Z",
+      "content": "@rileyp_027 Looking forward to the peer-reviewed breakdown of the latest space weather monitoring findings. #NASA",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "NASA"
+        ],
+        "mentions": [
+          "rileyp_027"
+        ],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 1,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 75
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "iOS App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000173",
+      "author_id": "usr_fp_000044",
+      "created_at": "2026-08-01T06:53:14Z",
+      "content": "New dataset from the deep-space spectroscopy reveals intriguing atmospheric chemical signatures. https://techcrunch.com/news/article-4905",
+      "language": "en",
+      "entities": {
+        "hashtags": [],
+        "mentions": [],
+        "urls": [
+          "https://techcrunch.com/news/article-4905"
+        ],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 0,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 29
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "ThirdPartyClient/3.1",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000105",
+      "author_id": "usr_fp_000027",
+      "created_at": "2026-08-01T07:16:04Z",
+      "content": "Reading up on recent developments in runtime profiling. Clean architecture makes all the difference. https://economist.com/news/article-7992",
+      "language": "en",
+      "entities": {
+        "hashtags": [],
+        "mentions": [],
+        "urls": [
+          "https://economist.com/news/article-7992"
+        ],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 10,
+        "reposts_count": 2,
+        "replies_count": 1,
+        "quotes_count": 0,
+        "impressions_count": 289
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "iOS App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000029",
+      "author_id": "usr_fp_000008",
+      "created_at": "2026-08-01T07:21:05Z",
+      "content": "Working through a tricky race condition in the database index. Standard logging saved the day. #OpenSource",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "OpenSource"
+        ],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 2,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 48
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "iOS App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000109",
+      "author_id": "usr_fp_000028",
+      "created_at": "2026-08-01T07:27:38Z",
+      "content": "Researchers just observed an unprecedented high-resolution view of the transit event.",
+      "language": "en",
+      "entities": {
+        "hashtags": [],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 0,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 32
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Android App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000117",
+      "author_id": "usr_fp_000030",
+      "created_at": "2026-08-01T07:32:32Z",
+      "content": "Our municipal team evaluated the new solar telemetry feed. Clear gains during peak demand hours.",
+      "language": "en",
+      "entities": {
+        "hashtags": [],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 6,
+        "reposts_count": 1,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 153
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Android App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000037",
+      "author_id": "usr_fp_000010",
+      "created_at": "2026-08-01T08:31:46Z",
+      "content": "Just finished evaluating our new runtime profiling. The performance improvement is substantial. #OpenSource",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "OpenSource"
+        ],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 1,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 67
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Android App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000021",
+      "author_id": "usr_fp_000006",
+      "created_at": "2026-08-01T08:50:13Z",
+      "content": "The newly completed neighborhood park expansion has noticeably improved morning commute times downtown. #UrbanPlanning",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "UrbanPlanning"
+        ],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 11,
+        "reposts_count": 2,
+        "replies_count": 1,
+        "quotes_count": 0,
+        "impressions_count": 217
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Android App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000085",
+      "author_id": "usr_fp_000022",
+      "created_at": "2026-08-01T08:57:54Z",
+      "content": "Clear skies tonight allowed our observatory team to verify the preliminary deep-space spectroscopy metrics. #ScienceDaily",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "ScienceDaily"
+        ],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 0,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 38
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "iOS App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000189",
+      "author_id": "usr_fp_000048",
+      "created_at": "2026-08-01T09:01:22Z",
+      "content": "The precision of modern lunar orbital survey instruments continues to astonish me.",
+      "language": "en",
+      "entities": {
+        "hashtags": [],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 1,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 44
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "ThirdPartyClient/3.1",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000045",
+      "author_id": "usr_fp_000012",
+      "created_at": "2026-08-01T09:02:38Z",
+      "content": "Researchers just published an unprecedented high-resolution view of the transit event. #ScienceDaily",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "ScienceDaily"
+        ],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 3,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 114
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "ThirdPartyClient/3.1",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000069",
+      "author_id": "usr_fp_000018",
+      "created_at": "2026-08-01T09:24:38Z",
+      "content": "Great turnout at the community hall discussing the upcoming bus rapid transit proposal.",
+      "language": "en",
+      "entities": {
+        "hashtags": [],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 0,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 37
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "ThirdPartyClient/3.1",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000009",
+      "author_id": "usr_fp_000003",
+      "created_at": "2026-08-01T09:41:02Z",
+      "content": "Great turnout at the community hall discussing the upcoming public library initiative proposal. #WalkableCities",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "WalkableCities"
+        ],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 2,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 90
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Web Client",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000081",
+      "author_id": "usr_fp_000021",
+      "created_at": "2026-08-01T09:45:04Z",
+      "content": "Interesting observations after we refactored the telemetry pipeline this morning. Highly recommend checking memory profiles. https://techcrunch.com/news/article-14699",
+      "language": "en",
+      "entities": {
+        "hashtags": [],
+        "mentions": [],
+        "urls": [
+          "https://techcrunch.com/news/article-14699"
+        ],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 1,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 63
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "iOS App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000086",
+      "author_id": "usr_fp_000022",
+      "created_at": "2026-08-01T09:50:12Z",
+      "content": "Researchers just confirmed an unprecedented high-resolution view of the transit event. #Astronomy",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "Astronomy"
+        ],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 4,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 134
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "iOS App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000073",
+      "author_id": "usr_fp_000019",
+      "created_at": "2026-08-01T11:30:20Z",
+      "content": "Researchers just detected an unprecedented high-resolution view of the transit event. #Cosmology",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "Cosmology"
+        ],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 0,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 30
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Android App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000005",
+      "author_id": "usr_fp_000002",
+      "created_at": "2026-08-01T11:47:30Z",
+      "content": "@smith_carlos_14 Looking forward to the peer-reviewed breakdown of the latest exoplanet transit data findings. #ScienceDaily https://apnews.com/news/article-91091",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "ScienceDaily"
+        ],
+        "mentions": [
+          "smith_carlos_14"
+        ],
+        "urls": [
+          "https://apnews.com/news/article-91091"
+        ],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 1,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 43
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Android App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000041",
+      "author_id": "usr_fp_000011",
+      "created_at": "2026-08-01T13:33:01Z",
+      "content": "@the_soren_diallo_30 Excited to see modern tooling making distributed system so much easier to maintain across large teams.",
+      "language": "en",
+      "entities": {
+        "hashtags": [],
+        "mentions": [
+          "the_soren_diallo_30"
+        ],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 4,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 102
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "ThirdPartyClient/3.1",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000025",
+      "author_id": "usr_fp_000007",
+      "created_at": "2026-08-01T13:48:45Z",
+      "content": "Reading up on recent developments in runtime profiling. Clean architecture makes all the difference.",
+      "language": "en",
+      "entities": {
+        "hashtags": [],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 4,
+        "reposts_count": 1,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 73
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Android App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000106",
+      "author_id": "usr_fp_000027",
+      "created_at": "2026-08-01T13:50:21Z",
+      "content": "Stopped by the community garden on the way home. Vibrant civic spaces make our city thrive.",
+      "language": "en",
+      "entities": {
+        "hashtags": [],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 6,
+        "reposts_count": 1,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 249
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "iOS App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000118",
+      "author_id": "usr_fp_000030",
+      "created_at": "2026-08-01T15:50:12Z",
+      "content": "New dataset from the deep-space spectroscopy reveals intriguing atmospheric chemical signatures.",
+      "language": "en",
+      "entities": {
+        "hashtags": [],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 4,
+        "reposts_count": 1,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 212
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Android App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000165",
+      "author_id": "usr_fp_000042",
+      "created_at": "2026-08-01T16:04:00Z",
+      "content": "Working through a tricky race condition in the latency benchmark. Standard logging saved the day. https://bloomberg.com/news/article-59306",
+      "language": "en",
+      "entities": {
+        "hashtags": [],
+        "mentions": [],
+        "urls": [
+          "https://bloomberg.com/news/article-59306"
+        ],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 3,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 92
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Android App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000057",
+      "author_id": "usr_fp_000015",
+      "created_at": "2026-08-01T16:08:29Z",
+      "content": "Great turnout at the community hall discussing the upcoming neighborhood park expansion proposal. #UrbanPlanning",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "UrbanPlanning"
+        ],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 8,
+        "reposts_count": 2,
+        "replies_count": 1,
+        "quotes_count": 0,
+        "impressions_count": 275
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Mobile Web Client",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000049",
+      "author_id": "usr_fp_000013",
+      "created_at": "2026-08-01T18:21:16Z",
+      "content": "Stopped by the public library initiative on the way home. Vibrant civic spaces make our city thrive. #Community",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "Community"
+        ],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 7,
+        "reposts_count": 0,
+        "replies_count": 1,
+        "quotes_count": 0,
+        "impressions_count": 176
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Mobile Web Client",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000141",
+      "author_id": "usr_fp_000036",
+      "created_at": "2026-08-01T18:24:06Z",
+      "content": "Interesting observations after we analyzed the telemetry pipeline this morning. Highly recommend checking memory profiles. #SystemsDesign",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "SystemsDesign"
+        ],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 0,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 26
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "iOS App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000042",
+      "author_id": "usr_fp_000011",
+      "created_at": "2026-08-01T18:36:24Z",
+      "content": "Investing in smart meter deployment pays off far sooner than older cost models predicted.",
+      "language": "en",
+      "entities": {
+        "hashtags": [],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 0,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 28
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "ThirdPartyClient/3.1",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000074",
+      "author_id": "usr_fp_000019",
+      "created_at": "2026-08-01T18:50:26Z",
+      "content": "Good urban infrastructure starts with accessible community garden for everyone. #Community",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "Community"
+        ],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 3,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 99
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Android App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000169",
+      "author_id": "usr_fp_000043",
+      "created_at": "2026-08-01T19:01:25Z",
+      "content": "Researchers just detected an unprecedented high-resolution view of the transit event.",
+      "language": "en",
+      "entities": {
+        "hashtags": [],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 1,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 48
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "iOS App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000125",
+      "author_id": "usr_fp_000032",
+      "created_at": "2026-08-01T19:29:20Z",
+      "content": "Interesting observations after we migrated the telemetry pipeline this morning. Highly recommend checking memory profiles.",
+      "language": "en",
+      "entities": {
+        "hashtags": [],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 0,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 28
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Android App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000070",
+      "author_id": "usr_fp_000018",
+      "created_at": "2026-08-01T20:17:18Z",
+      "content": "@mikkel_k26 Reading up on recent developments in memory allocator. Clean architecture makes all the difference.",
+      "language": "en",
+      "entities": {
+        "hashtags": [],
+        "mentions": [
+          "mikkel_k26"
+        ],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 0,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 37
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "ThirdPartyClient/3.1",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000001",
+      "author_id": "usr_fp_000001",
+      "created_at": "2026-08-01T20:35:57Z",
+      "content": "Interesting observations after we debugged the telemetry pipeline this morning. Highly recommend checking memory profiles. #CloudComputing",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "CloudComputing"
+        ],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 0,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 30
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Mobile Web Client",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000157",
+      "author_id": "usr_fp_000040",
+      "created_at": "2026-08-01T20:38:17Z",
+      "content": "The precision of modern exoplanet transit data instruments continues to astonish me. #Astronomy",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "Astronomy"
+        ],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 3,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 106
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "ThirdPartyClient/3.1",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000153",
+      "author_id": "usr_fp_000039",
+      "created_at": "2026-08-01T20:53:31Z",
+      "content": "Regional data shows microgrid resilience grew by over 18% quarter-over-quarter. Solid momentum. https://arstechnica.com/news/article-29223",
+      "language": "en",
+      "entities": {
+        "hashtags": [],
+        "mentions": [],
+        "urls": [
+          "https://arstechnica.com/news/article-29223"
+        ],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 1,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 54
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Web Client",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000093",
+      "author_id": "usr_fp_000024",
+      "created_at": "2026-08-01T21:17:54Z",
+      "content": "Fascinating analysis on how rooftop solar adoption balances frequency fluctuations during seasonal shifts. #GridModernization",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "GridModernization"
+        ],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 0,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 44
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "iOS App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000101",
+      "author_id": "usr_fp_000026",
+      "created_at": "2026-08-01T23:22:52Z",
+      "content": "Fascinating analysis on how smart meter deployment balances frequency fluctuations during seasonal shifts.",
+      "language": "en",
+      "entities": {
+        "hashtags": [],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 0,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 28
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "ThirdPartyClient/3.1",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000110",
+      "author_id": "usr_fp_000028",
+      "created_at": "2026-08-01T23:28:26Z",
+      "content": "@jordan_0039 Reading up on recent developments in latency benchmark. Clean architecture makes all the difference.",
+      "language": "en",
+      "entities": {
+        "hashtags": [],
+        "mentions": [
+          "jordan_0039"
+        ],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 1,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 52
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Android App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000102",
+      "author_id": "usr_fp_000026",
+      "created_at": "2026-08-02T00:23:21Z",
+      "content": "@fatimam_021 Working through a tricky race condition in the distributed system. Standard logging saved the day.",
+      "language": "en",
+      "entities": {
+        "hashtags": [],
+        "mentions": [
+          "fatimam_021"
+        ],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 1,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 55
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "ThirdPartyClient/3.1",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000061",
+      "author_id": "usr_fp_000016",
+      "created_at": "2026-08-02T02:54:47Z",
+      "content": "Regional data shows grid battery storage grew by over 18% quarter-over-quarter. Solid momentum. #SolarPower",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "SolarPower"
+        ],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 0,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 46
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Android App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000121",
+      "author_id": "usr_fp_000031",
+      "created_at": "2026-08-02T07:12:59Z",
+      "content": "@zainab_n41 Investing in rooftop solar adoption pays off far sooner than older cost models predicted.",
+      "language": "en",
+      "entities": {
+        "hashtags": [],
+        "mentions": [
+          "zainab_n41"
+        ],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 2,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 53
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "iOS App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000181",
+      "author_id": "usr_fp_000046",
+      "created_at": "2026-08-02T07:13:13Z",
+      "content": "Just finished evaluating our new memory allocator. The performance improvement is substantial.",
+      "language": "en",
+      "entities": {
+        "hashtags": [],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 0,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 51
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Android App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000158",
+      "author_id": "usr_fp_000040",
+      "created_at": "2026-08-02T07:22:53Z",
+      "content": "Investing in offshore wind farm pays off far sooner than older cost models predicted. #GridModernization",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "GridModernization"
+        ],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 1,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 45
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "ThirdPartyClient/3.1",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000159",
+      "author_id": "usr_fp_000040",
+      "created_at": "2026-08-02T08:11:39Z",
+      "content": "The precision of modern exoplanet transit data instruments continues to astonish me. https://sciencedaily.com/news/article-65252",
+      "language": "en",
+      "entities": {
+        "hashtags": [],
+        "mentions": [],
+        "urls": [
+          "https://sciencedaily.com/news/article-65252"
+        ],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 3,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 90
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "ThirdPartyClient/3.1",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000111",
+      "author_id": "usr_fp_000028",
+      "created_at": "2026-08-02T10:00:44Z",
+      "content": "Really impressed by how quickly local residents embraced the new pedestrian plaza. #Community https://economist.com/news/article-96793",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "Community"
+        ],
+        "mentions": [],
+        "urls": [
+          "https://economist.com/news/article-96793"
+        ],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 2,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 59
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Android App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000133",
+      "author_id": "usr_fp_000034",
+      "created_at": "2026-08-02T10:01:25Z",
+      "content": "New dataset from the lunar orbital survey reveals intriguing atmospheric chemical signatures. #Astronomy",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "Astronomy"
+        ],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 7,
+        "reposts_count": 1,
+        "replies_count": 1,
+        "quotes_count": 0,
+        "impressions_count": 96
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Mobile Web Client",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000137",
+      "author_id": "usr_fp_000035",
+      "created_at": "2026-08-02T10:20:19Z",
+      "content": "Looking forward to the peer-reviewed breakdown of the latest radio telescope array findings.",
+      "language": "en",
+      "entities": {
+        "hashtags": [],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 2,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 54
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Android App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000071",
+      "author_id": "usr_fp_000018",
+      "created_at": "2026-08-02T10:24:37Z",
+      "content": "Stopped by the bus rapid transit on the way home. Vibrant civic spaces make our city thrive. #CityLife",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "CityLife"
+        ],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 3,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 121
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "ThirdPartyClient/3.1",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000154",
+      "author_id": "usr_fp_000039",
+      "created_at": "2026-08-02T10:59:20Z",
+      "content": "@sharma_jun_19 Fascinating analysis on how heat pump efficiency balances frequency fluctuations during seasonal shifts. #SolarPower",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "SolarPower"
+        ],
+        "mentions": [
+          "sharma_jun_19"
+        ],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 0,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 28
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Web Client",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000058",
+      "author_id": "usr_fp_000015",
+      "created_at": "2026-08-02T11:16:57Z",
+      "content": "The precision of modern radio telescope array instruments continues to astonish me. #NASA",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "NASA"
+        ],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 6,
+        "reposts_count": 1,
+        "replies_count": 1,
+        "quotes_count": 0,
+        "impressions_count": 316
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Mobile Web Client",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000129",
+      "author_id": "usr_fp_000033",
+      "created_at": "2026-08-02T11:18:14Z",
+      "content": "The newly completed public library initiative has noticeably improved morning commute times downtown. #UrbanPlanning",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "UrbanPlanning"
+        ],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 3,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 99
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Mobile Web Client",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000107",
+      "author_id": "usr_fp_000027",
+      "created_at": "2026-08-02T11:20:29Z",
+      "content": "Working through a tricky race condition in the runtime profiling. Standard logging saved the day.",
+      "language": "en",
+      "entities": {
+        "hashtags": [],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 5,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 224
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "iOS App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000190",
+      "author_id": "usr_fp_000048",
+      "created_at": "2026-08-02T11:29:36Z",
+      "content": "Just finished evaluating our new latency benchmark. The performance improvement is substantial. https://ieee.org/news/article-4418",
+      "language": "en",
+      "entities": {
+        "hashtags": [],
+        "mentions": [],
+        "urls": [
+          "https://ieee.org/news/article-4418"
+        ],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 3,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 70
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "ThirdPartyClient/3.1",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000149",
+      "author_id": "usr_fp_000038",
+      "created_at": "2026-08-02T11:40:12Z",
+      "content": "Regional data shows offshore wind farm grew by over 18% quarter-over-quarter. Solid momentum. https://bbc.com/news/article-62887",
+      "language": "en",
+      "entities": {
+        "hashtags": [],
+        "mentions": [],
+        "urls": [
+          "https://bbc.com/news/article-62887"
+        ],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 1,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 90
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "iOS App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000193",
+      "author_id": "usr_fp_000049",
+      "created_at": "2026-08-02T12:09:27Z",
+      "content": "Really impressed by how quickly local residents embraced the new community garden.",
+      "language": "en",
+      "entities": {
+        "hashtags": [],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 0,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 26
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Web Client",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000194",
+      "author_id": "usr_fp_000049",
+      "created_at": "2026-08-02T12:20:41Z",
+      "content": "Fascinating analysis on how transmission capacity balances frequency fluctuations during seasonal shifts. https://economist.com/news/article-36270",
+      "language": "en",
+      "entities": {
+        "hashtags": [],
+        "mentions": [],
+        "urls": [
+          "https://economist.com/news/article-36270"
+        ],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 0,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 26
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Web Client",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000185",
+      "author_id": "usr_fp_000047",
+      "created_at": "2026-08-02T12:41:25Z",
+      "content": "Great turnout at the community hall discussing the upcoming community garden proposal. https://ieee.org/news/article-47746",
+      "language": "en",
+      "entities": {
+        "hashtags": [],
+        "mentions": [],
+        "urls": [
+          "https://ieee.org/news/article-47746"
+        ],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 0,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 63
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Mobile Web Client",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000119",
+      "author_id": "usr_fp_000030",
+      "created_at": "2026-08-02T17:17:07Z",
+      "content": "@the_aria_johnson_8 Good urban infrastructure starts with accessible neighborhood park expansion for everyone.",
+      "language": "en",
+      "entities": {
+        "hashtags": [],
+        "mentions": [
+          "the_aria_johnson_8"
+        ],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 2,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 125
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Android App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000177",
+      "author_id": "usr_fp_000045",
+      "created_at": "2026-08-02T17:38:04Z",
+      "content": "The newly completed public library initiative has noticeably improved morning commute times downtown. https://nature.com/news/article-71555",
+      "language": "en",
+      "entities": {
+        "hashtags": [],
+        "mentions": [],
+        "urls": [
+          "https://nature.com/news/article-71555"
+        ],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 1,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 44
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Web Client",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000082",
+      "author_id": "usr_fp_000021",
+      "created_at": "2026-08-02T17:39:07Z",
+      "content": "The newly completed pedestrian plaza has noticeably improved morning commute times downtown. #CityLife",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "CityLife"
+        ],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 4,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 94
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "iOS App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000033",
+      "author_id": "usr_fp_000009",
+      "created_at": "2026-08-02T17:42:02Z",
+      "content": "Fascinating analysis on how grid battery storage balances frequency fluctuations during seasonal shifts.",
+      "language": "en",
+      "entities": {
+        "hashtags": [],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 3,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 160
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Web Client",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000017",
+      "author_id": "usr_fp_000005",
+      "created_at": "2026-08-02T18:07:54Z",
+      "content": "Great turnout at the community hall discussing the upcoming community garden proposal. #Community",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "Community"
+        ],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 0,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 26
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Android App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000026",
+      "author_id": "usr_fp_000007",
+      "created_at": "2026-08-02T18:16:35Z",
+      "content": "Researchers just detected an unprecedented high-resolution view of the transit event. https://arstechnica.com/news/article-20044",
+      "language": "en",
+      "entities": {
+        "hashtags": [],
+        "mentions": [],
+        "urls": [
+          "https://arstechnica.com/news/article-20044"
+        ],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 2,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 74
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Android App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000142",
+      "author_id": "usr_fp_000036",
+      "created_at": "2026-08-02T19:03:19Z",
+      "content": "@pat_moore_33 Researchers just observed an unprecedented high-resolution view of the transit event. #Cosmology",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "Cosmology"
+        ],
+        "mentions": [
+          "pat_moore_33"
+        ],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 5,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 148
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "iOS App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000050",
+      "author_id": "usr_fp_000013",
+      "created_at": "2026-08-02T19:24:21Z",
+      "content": "Reading up on recent developments in latency benchmark. Clean architecture makes all the difference. #CloudComputing",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "CloudComputing"
+        ],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 0,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 66
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Mobile Web Client",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000059",
+      "author_id": "usr_fp_000015",
+      "created_at": "2026-08-02T19:53:08Z",
+      "content": "The precision of modern deep-space spectroscopy instruments continues to astonish me.",
+      "language": "en",
+      "entities": {
+        "hashtags": [],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 12,
+        "reposts_count": 1,
+        "replies_count": 2,
+        "quotes_count": 0,
+        "impressions_count": 489
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Mobile Web Client",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000126",
+      "author_id": "usr_fp_000032",
+      "created_at": "2026-08-02T20:14:59Z",
+      "content": "Key takeaway from the renewable summit: smart meter deployment remains vital for long-term grid reliability. https://bbc.com/news/article-89890",
+      "language": "en",
+      "entities": {
+        "hashtags": [],
+        "mentions": [],
+        "urls": [
+          "https://bbc.com/news/article-89890"
+        ],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 5,
+        "reposts_count": 0,
+        "replies_count": 1,
+        "quotes_count": 0,
+        "impressions_count": 173
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Android App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000138",
+      "author_id": "usr_fp_000035",
+      "created_at": "2026-08-02T20:16:44Z",
+      "content": "The newly completed protected bike lane has noticeably improved morning commute times downtown.",
+      "language": "en",
+      "entities": {
+        "hashtags": [],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 1,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 49
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Android App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000170",
+      "author_id": "usr_fp_000043",
+      "created_at": "2026-08-02T21:04:34Z",
+      "content": "@diegos_043 Our municipal team measured the new solar telemetry feed. Clear gains during peak demand hours.",
+      "language": "en",
+      "entities": {
+        "hashtags": [],
+        "mentions": [
+          "diegos_043"
+        ],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 0,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 34
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "iOS App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000150",
+      "author_id": "usr_fp_000038",
+      "created_at": "2026-08-02T22:57:25Z",
+      "content": "@lucas_0005 Fascinating analysis on how smart meter deployment balances frequency fluctuations during seasonal shifts. #EnergyTransition",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "EnergyTransition"
+        ],
+        "mentions": [
+          "lucas_0005"
+        ],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 3,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 123
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "iOS App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000130",
+      "author_id": "usr_fp_000033",
+      "created_at": "2026-08-03T06:17:51Z",
+      "content": "Regional data shows grid battery storage grew by over 18% quarter-over-quarter. Solid momentum.",
+      "language": "en",
+      "entities": {
+        "hashtags": [],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 0,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 29
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Mobile Web Client",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000186",
+      "author_id": "usr_fp_000047",
+      "created_at": "2026-08-03T07:30:37Z",
+      "content": "Fascinating analysis on how offshore wind farm balances frequency fluctuations during seasonal shifts.",
+      "language": "en",
+      "entities": {
+        "hashtags": [],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 0,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 63
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Mobile Web Client",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000034",
+      "author_id": "usr_fp_000009",
+      "created_at": "2026-08-03T08:20:56Z",
+      "content": "@jordan_0039 Fascinating analysis on how smart meter deployment balances frequency fluctuations during seasonal shifts. #CleanEnergy https://arstechnica.com/news/article-86112",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "CleanEnergy"
+        ],
+        "mentions": [
+          "jordan_0039"
+        ],
+        "urls": [
+          "https://arstechnica.com/news/article-86112"
+        ],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 2,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 116
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Web Client",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000131",
+      "author_id": "usr_fp_000033",
+      "created_at": "2026-08-03T08:34:04Z",
+      "content": "Our municipal team modeled the new solar telemetry feed. Clear gains during peak demand hours.",
+      "language": "en",
+      "entities": {
+        "hashtags": [],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 0,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 29
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Mobile Web Client",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000030",
+      "author_id": "usr_fp_000008",
+      "created_at": "2026-08-03T08:39:49Z",
+      "content": "Clear skies tonight allowed our observatory team to verify the preliminary radio telescope array metrics. https://ieee.org/news/article-44283",
+      "language": "en",
+      "entities": {
+        "hashtags": [],
+        "mentions": [],
+        "urls": [
+          "https://ieee.org/news/article-44283"
+        ],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 0,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 26
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "iOS App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000197",
+      "author_id": "usr_fp_000050",
+      "created_at": "2026-08-03T08:55:53Z",
+      "content": "Looking forward to the peer-reviewed breakdown of the latest deep-space spectroscopy findings. https://theatlantic.com/news/article-12322",
+      "language": "en",
+      "entities": {
+        "hashtags": [],
+        "mentions": [],
+        "urls": [
+          "https://theatlantic.com/news/article-12322"
+        ],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 3,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 148
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Android App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000018",
+      "author_id": "usr_fp_000005",
+      "created_at": "2026-08-03T09:53:41Z",
+      "content": "The newly completed community garden has noticeably improved morning commute times downtown. https://arstechnica.com/news/article-22150",
+      "language": "en",
+      "entities": {
+        "hashtags": [],
+        "mentions": [],
+        "urls": [
+          "https://arstechnica.com/news/article-22150"
+        ],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 4,
+        "reposts_count": 1,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 130
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Android App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000151",
+      "author_id": "usr_fp_000038",
+      "created_at": "2026-08-03T10:40:19Z",
+      "content": "The newly completed public library initiative has noticeably improved morning commute times downtown. #UrbanPlanning",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "UrbanPlanning"
+        ],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 10,
+        "reposts_count": 1,
+        "replies_count": 1,
+        "quotes_count": 0,
+        "impressions_count": 361
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "iOS App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000134",
+      "author_id": "usr_fp_000034",
+      "created_at": "2026-08-03T11:04:11Z",
+      "content": "Regional data shows grid battery storage grew by over 18% quarter-over-quarter. Solid momentum. #Sustainability",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "Sustainability"
+        ],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 2,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 74
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Mobile Web Client",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000022",
+      "author_id": "usr_fp_000006",
+      "created_at": "2026-08-03T11:25:35Z",
+      "content": "@the_henrik_rodriguez_44 The newly completed protected bike lane has noticeably improved morning commute times downtown.",
+      "language": "en",
+      "entities": {
+        "hashtags": [],
+        "mentions": [
+          "the_henrik_rodriguez_44"
+        ],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 0,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 35
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Android App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000132",
+      "author_id": "usr_fp_000033",
+      "created_at": "2026-08-03T11:44:11Z",
+      "content": "Excited to see modern tooling making database index so much easier to maintain across large teams.",
+      "language": "en",
+      "entities": {
+        "hashtags": [],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 5,
+        "reposts_count": 1,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 137
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Mobile Web Client",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000077",
+      "author_id": "usr_fp_000020",
+      "created_at": "2026-08-03T13:20:04Z",
+      "content": "Absolutely stunning view of the solar eclipse today! Captured some raw frames on my camera. #EclipseDay",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "EclipseDay"
+        ],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 0,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 33
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Android App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000002",
+      "author_id": "usr_fp_000001",
+      "created_at": "2026-08-03T14:17:49Z",
+      "content": "Still processing how incredible totality was. Nature is awe-inspiring. My kids were completely mesmerized. #Totality",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "Totality"
+        ],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 1,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 60
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Mobile Web Client",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000010",
+      "author_id": "usr_fp_000003",
+      "created_at": "2026-08-03T16:34:32Z",
+      "content": "The newly completed public library initiative has noticeably improved morning commute times downtown.",
+      "language": "en",
+      "entities": {
+        "hashtags": [],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 2,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 86
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Web Client",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000011",
+      "author_id": "usr_fp_000003",
+      "created_at": "2026-08-03T16:41:24Z",
+      "content": "Our municipal team expanded the new solar telemetry feed. Clear gains during peak demand hours.",
+      "language": "en",
+      "entities": {
+        "hashtags": [],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 1,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 80
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Web Client",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000135",
+      "author_id": "usr_fp_000034",
+      "created_at": "2026-08-03T17:13:09Z",
+      "content": "Really impressed by how quickly local residents embraced the new neighborhood park expansion.",
+      "language": "en",
+      "entities": {
+        "hashtags": [],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 0,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 26
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Mobile Web Client",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000046",
+      "author_id": "usr_fp_000012",
+      "created_at": "2026-08-03T17:22:41Z",
+      "content": "Look at these eclipse shadow bands on the ground! Science is amazing. Captured some raw frames on my camera. #AstronomyLovers",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "AstronomyLovers"
+        ],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 0,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 26
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "ThirdPartyClient/3.1",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000038",
+      "author_id": "usr_fp_000010",
+      "created_at": "2026-08-03T17:31:51Z",
+      "content": "Absolutely stunning view of the solar eclipse today! Glad the clouds cleared up just in time! #AstronomyLovers",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "AstronomyLovers"
+        ],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 2,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 67
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Android App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000075",
+      "author_id": "usr_fp_000019",
+      "created_at": "2026-08-03T18:16:12Z",
+      "content": "Never seen anything quite like totality. The temperature drop was unreal. #SolarEclipse2026",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "SolarEclipse2026"
+        ],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 1,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 40
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Android App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000161",
+      "author_id": "usr_fp_000041",
+      "created_at": "2026-08-03T18:17:37Z",
+      "content": "Really impressed by how quickly local residents embraced the new public library initiative. #PublicTransit https://mit.edu/news/article-66847",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "PublicTransit"
+        ],
+        "mentions": [],
+        "urls": [
+          "https://mit.edu/news/article-66847"
+        ],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 5,
+        "reposts_count": 1,
+        "replies_count": 1,
+        "quotes_count": 0,
+        "impressions_count": 103
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Android App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000062",
+      "author_id": "usr_fp_000016",
+      "created_at": "2026-08-03T18:27:36Z",
+      "content": "Viewing the eclipse with friends from the park was an unforgettable experience. Worth the drive. #Totality",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "Totality"
+        ],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 0,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 46
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Android App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000063",
+      "author_id": "usr_fp_000016",
+      "created_at": "2026-08-03T19:09:37Z",
+      "content": "Fascinating analysis on how transmission capacity balances frequency fluctuations during seasonal shifts. #RenewableEnergy https://economist.com/news/article-81997",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "RenewableEnergy"
+        ],
+        "mentions": [],
+        "urls": [
+          "https://economist.com/news/article-81997"
+        ],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 0,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 46
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Android App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000027",
+      "author_id": "usr_fp_000007",
+      "created_at": "2026-08-03T19:26:52Z",
+      "content": "Absolutely stunning view of the solar eclipse today! #SolarEclipse2026",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "SolarEclipse2026"
+        ],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 0,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 31
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Android App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000066",
+      "author_id": "usr_fp_000017",
+      "created_at": "2026-08-03T19:52:42Z",
+      "content": "Never seen anything quite like totality. The temperature drop was unreal. Can't wait for the next one in 2045. #SkyWatch",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "SkyWatch"
+        ],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 4,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 114
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "iOS App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000174",
+      "author_id": "usr_fp_000044",
+      "created_at": "2026-08-03T20:07:33Z",
+      "content": "The coronal flares visible during the eclipse were unbelievable. Worth the drive. #AstronomyLovers",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "AstronomyLovers"
+        ],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 0,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 29
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "ThirdPartyClient/3.1",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000127",
+      "author_id": "usr_fp_000032",
+      "created_at": "2026-08-03T20:11:16Z",
+      "content": "The precision of modern gravitational wave detection instruments continues to astonish me.",
+      "language": "en",
+      "entities": {
+        "hashtags": [],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 6,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 178
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Android App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000006",
+      "author_id": "usr_fp_000002",
+      "created_at": "2026-08-03T20:16:24Z",
+      "content": "Look at these eclipse shadow bands on the ground! Science is amazing. #SolarEclipse2026",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "SolarEclipse2026"
+        ],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 0,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 27
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Android App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000039",
+      "author_id": "usr_fp_000010",
+      "created_at": "2026-08-03T20:24:57Z",
+      "content": "Look at these eclipse shadow bands on the ground! Science is amazing. My kids were completely mesmerized. #AstronomyLovers",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "AstronomyLovers"
+        ],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 0,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 49
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Android App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000182",
+      "author_id": "usr_fp_000046",
+      "created_at": "2026-08-03T21:25:13Z",
+      "content": "Viewing the eclipse with friends from the park was an unforgettable experience. Glad the clouds cleared up just in time! #Totality",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "Totality"
+        ],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 0,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 51
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Android App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000028",
+      "author_id": "usr_fp_000007",
+      "created_at": "2026-08-03T21:40:47Z",
+      "content": "Never seen anything quite like totality. The temperature drop was unreal. My kids were completely mesmerized. #SolarEclipse2026",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "SolarEclipse2026"
+        ],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 1,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 45
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Android App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000013",
+      "author_id": "usr_fp_000004",
+      "created_at": "2026-08-03T21:41:41Z",
+      "content": "The newly completed public library initiative has noticeably improved morning commute times downtown. #PublicTransit https://sciencedaily.com/news/article-44169",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "PublicTransit"
+        ],
+        "mentions": [],
+        "urls": [
+          "https://sciencedaily.com/news/article-44169"
+        ],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 1,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 57
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "iOS App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000014",
+      "author_id": "usr_fp_000004",
+      "created_at": "2026-08-03T22:15:42Z",
+      "content": "Viewing the eclipse with friends from the park was an unforgettable experience. Can't wait for the next one in 2045. #EclipseDay",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "EclipseDay"
+        ],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 1,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 50
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "iOS App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000072",
+      "author_id": "usr_fp_000018",
+      "created_at": "2026-08-03T22:38:43Z",
+      "content": "Never seen anything quite like totality. The temperature drop was unreal. Glad the clouds cleared up just in time! #Totality",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "Totality"
+        ],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 2,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 63
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "ThirdPartyClient/3.1",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000012",
+      "author_id": "usr_fp_000003",
+      "created_at": "2026-08-03T23:36:24Z",
+      "content": "Caught the eclipse peak right through the solar filter glasses. Breathtaking. Glad the clouds cleared up just in time! #SkyWatch",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "SkyWatch"
+        ],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 0,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 52
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Web Client",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000019",
+      "author_id": "usr_fp_000005",
+      "created_at": "2026-08-04T00:59:31Z",
+      "content": "Still processing how incredible totality was. Nature is awe-inspiring. #EclipseDay",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "EclipseDay"
+        ],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 0,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 26
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Android App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000171",
+      "author_id": "usr_fp_000043",
+      "created_at": "2026-08-04T01:21:34Z",
+      "content": "Key takeaway from the renewable summit: transmission capacity remains vital for long-term grid reliability. #RenewableEnergy",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "RenewableEnergy"
+        ],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 2,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 54
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "iOS App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000191",
+      "author_id": "usr_fp_000048",
+      "created_at": "2026-08-04T06:37:48Z",
+      "content": "Our municipal team measured the new solar telemetry feed. Clear gains during peak demand hours. #CleanEnergy",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "CleanEnergy"
+        ],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 1,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 64
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "ThirdPartyClient/3.1",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000015",
+      "author_id": "usr_fp_000004",
+      "created_at": "2026-08-04T07:28:28Z",
+      "content": "@rileyp_027 Fascinating analysis on how heat pump efficiency balances frequency fluctuations during seasonal shifts.",
+      "language": "en",
+      "entities": {
+        "hashtags": [],
+        "mentions": [
+          "rileyp_027"
+        ],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 0,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 28
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "iOS App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000043",
+      "author_id": "usr_fp_000011",
+      "created_at": "2026-08-04T07:39:30Z",
+      "content": "Caught the eclipse peak right through the solar filter glasses. Breathtaking. Can't wait for the next one in 2045. #SolarEclipse2026",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "SolarEclipse2026"
+        ],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 1,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 43
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "ThirdPartyClient/3.1",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000162",
+      "author_id": "usr_fp_000041",
+      "created_at": "2026-08-04T08:21:20Z",
+      "content": "Viewing the eclipse with friends from the park was an unforgettable experience. Captured some raw frames on my camera. #SolarEclipse2026",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "SolarEclipse2026"
+        ],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 3,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 103
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Android App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000053",
+      "author_id": "usr_fp_000014",
+      "created_at": "2026-08-04T08:31:34Z",
+      "content": "The coronal flares visible during the eclipse were unbelievable. Can't wait for the next one in 2045. #AstronomyLovers",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "AstronomyLovers"
+        ],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 1,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 49
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "iOS App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000175",
+      "author_id": "usr_fp_000044",
+      "created_at": "2026-08-04T08:55:55Z",
+      "content": "Caught the eclipse peak right through the solar filter glasses. Breathtaking. Can't wait for the next one in 2045. #Totality",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "Totality"
+        ],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 4,
+        "reposts_count": 1,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 71
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "ThirdPartyClient/3.1",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000136",
+      "author_id": "usr_fp_000034",
+      "created_at": "2026-08-04T09:20:30Z",
+      "content": "The coronal flares visible during the eclipse were unbelievable. Worth the drive. #EclipseDay",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "EclipseDay"
+        ],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 3,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 57
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Mobile Web Client",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000023",
+      "author_id": "usr_fp_000006",
+      "created_at": "2026-08-04T09:29:32Z",
+      "content": "Still processing how incredible totality was. Nature is awe-inspiring. Captured some raw frames on my camera. #EclipseDay",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "EclipseDay"
+        ],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 0,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 35
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Android App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000040",
+      "author_id": "usr_fp_000010",
+      "created_at": "2026-08-04T10:08:23Z",
+      "content": "Investing in transmission capacity pays off far sooner than older cost models predicted.",
+      "language": "en",
+      "entities": {
+        "hashtags": [],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 9,
+        "reposts_count": 1,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 289
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Android App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000145",
+      "author_id": "usr_fp_000037",
+      "created_at": "2026-08-04T11:02:46Z",
+      "content": "Fascinating analysis on how heat pump efficiency balances frequency fluctuations during seasonal shifts.",
+      "language": "en",
+      "entities": {
+        "hashtags": [],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 2,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 66
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Android App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000064",
+      "author_id": "usr_fp_000016",
+      "created_at": "2026-08-04T11:25:09Z",
+      "content": "Never seen anything quite like totality. The temperature drop was unreal. Can't wait for the next one in 2045. #EclipseDay",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "EclipseDay"
+        ],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 2,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 77
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Android App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000094",
+      "author_id": "usr_fp_000024",
+      "created_at": "2026-08-04T11:33:10Z",
+      "content": "Absolutely stunning view of the solar eclipse today! #SolarEclipse2026",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "SolarEclipse2026"
+        ],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 6,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 133
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "iOS App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000108",
+      "author_id": "usr_fp_000027",
+      "created_at": "2026-08-04T12:02:11Z",
+      "content": "The newly completed public library initiative has noticeably improved morning commute times downtown. #Community",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "Community"
+        ],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 4,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 178
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "iOS App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000054",
+      "author_id": "usr_fp_000014",
+      "created_at": "2026-08-04T12:06:54Z",
+      "content": "Really impressed by how quickly local residents embraced the new bus rapid transit. #Community https://bloomberg.com/news/article-35926",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "Community"
+        ],
+        "mentions": [],
+        "urls": [
+          "https://bloomberg.com/news/article-35926"
+        ],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 1,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 64
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "iOS App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000003",
+      "author_id": "usr_fp_000001",
+      "created_at": "2026-08-04T12:48:54Z",
+      "content": "Good urban infrastructure starts with accessible community garden for everyone.",
+      "language": "en",
+      "entities": {
+        "hashtags": [],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 3,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 107
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Mobile Web Client",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000097",
+      "author_id": "usr_fp_000025",
+      "created_at": "2026-08-04T13:34:52Z",
+      "content": "Investing in rooftop solar adoption pays off far sooner than older cost models predicted.",
+      "language": "en",
+      "entities": {
+        "hashtags": [],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 0,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 28
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "iOS App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000007",
+      "author_id": "usr_fp_000002",
+      "created_at": "2026-08-04T14:24:38Z",
+      "content": "Clear skies tonight allowed our observatory team to verify the preliminary gravitational wave detection metrics. #SpaceScience https://sciencedaily.com/news/article-23962",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "SpaceScience"
+        ],
+        "mentions": [],
+        "urls": [
+          "https://sciencedaily.com/news/article-23962"
+        ],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 0,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 27
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Android App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000187",
+      "author_id": "usr_fp_000047",
+      "created_at": "2026-08-04T14:54:41Z",
+      "content": "New dataset from the exoplanet transit data reveals intriguing atmospheric chemical signatures. https://nature.com/news/article-91143",
+      "language": "en",
+      "entities": {
+        "hashtags": [],
+        "mentions": [],
+        "urls": [
+          "https://nature.com/news/article-91143"
+        ],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 8,
+        "reposts_count": 2,
+        "replies_count": 1,
+        "quotes_count": 0,
+        "impressions_count": 227
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Mobile Web Client",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000008",
+      "author_id": "usr_fp_000002",
+      "created_at": "2026-08-04T14:58:05Z",
+      "content": "@jordan_0039 Good urban infrastructure starts with accessible community garden for everyone.",
+      "language": "en",
+      "entities": {
+        "hashtags": [],
+        "mentions": [
+          "jordan_0039"
+        ],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 0,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 27
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Android App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000095",
+      "author_id": "usr_fp_000024",
+      "created_at": "2026-08-04T15:41:07Z",
+      "content": "Working through a tricky race condition in the distributed system. Standard logging saved the day. #OpenSource",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "OpenSource"
+        ],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 0,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 44
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "iOS App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000089",
+      "author_id": "usr_fp_000023",
+      "created_at": "2026-08-04T16:20:13Z",
+      "content": "Researchers just cataloged an unprecedented high-resolution view of the transit event. #NASA",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "NASA"
+        ],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 2,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 83
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "ThirdPartyClient/3.1",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000083",
+      "author_id": "usr_fp_000021",
+      "created_at": "2026-08-04T16:20:40Z",
+      "content": "Interesting observations after we deployed the telemetry pipeline this morning. Highly recommend checking memory profiles. #OpenSource",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "OpenSource"
+        ],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 0,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 44
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "iOS App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000004",
+      "author_id": "usr_fp_000001",
+      "created_at": "2026-08-04T16:29:12Z",
+      "content": "@chrisw_049 Reading up on recent developments in database index. Clean architecture makes all the difference.",
+      "language": "en",
+      "entities": {
+        "hashtags": [],
+        "mentions": [
+          "chrisw_049"
+        ],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 4,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 63
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Mobile Web Client",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000103",
+      "author_id": "usr_fp_000026",
+      "created_at": "2026-08-04T17:00:04Z",
+      "content": "Reading up on recent developments in API gateway. Clean architecture makes all the difference. #RustLang",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "RustLang"
+        ],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 1,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 55
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "ThirdPartyClient/3.1",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000146",
+      "author_id": "usr_fp_000037",
+      "created_at": "2026-08-04T17:19:02Z",
+      "content": "Excited to see modern tooling making memory allocator so much easier to maintain across large teams.",
+      "language": "en",
+      "entities": {
+        "hashtags": [],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 2,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 93
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Android App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000178",
+      "author_id": "usr_fp_000045",
+      "created_at": "2026-08-04T17:46:37Z",
+      "content": "Working through a tricky race condition in the latency benchmark. Standard logging saved the day. #OpenSource",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "OpenSource"
+        ],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 0,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 35
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Web Client",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000087",
+      "author_id": "usr_fp_000022",
+      "created_at": "2026-08-04T17:51:42Z",
+      "content": "Reading up on recent developments in compiler optimization. Clean architecture makes all the difference.",
+      "language": "en",
+      "entities": {
+        "hashtags": [],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 0,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 38
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "iOS App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000147",
+      "author_id": "usr_fp_000037",
+      "created_at": "2026-08-04T17:54:15Z",
+      "content": "Clear skies tonight allowed our observatory team to verify the preliminary lunar orbital survey metrics. https://economist.com/news/article-34301",
+      "language": "en",
+      "entities": {
+        "hashtags": [],
+        "mentions": [],
+        "urls": [
+          "https://economist.com/news/article-34301"
+        ],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 1,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 59
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Android App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000055",
+      "author_id": "usr_fp_000014",
+      "created_at": "2026-08-04T18:09:22Z",
+      "content": "Really impressed by how quickly local residents embraced the new public library initiative.",
+      "language": "en",
+      "entities": {
+        "hashtags": [],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 0,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 40
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "iOS App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000076",
+      "author_id": "usr_fp_000019",
+      "created_at": "2026-08-04T18:27:08Z",
+      "content": "New dataset from the radio telescope array reveals intriguing atmospheric chemical signatures. #ScienceDaily",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "ScienceDaily"
+        ],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 1,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 45
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Android App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000176",
+      "author_id": "usr_fp_000044",
+      "created_at": "2026-08-04T18:35:52Z",
+      "content": "Great turnout at the community hall discussing the upcoming community garden proposal. #ActiveTransit",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "ActiveTransit"
+        ],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 4,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 91
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "ThirdPartyClient/3.1",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000024",
+      "author_id": "usr_fp_000006",
+      "created_at": "2026-08-04T18:43:49Z",
+      "content": "Really impressed by how quickly local residents embraced the new community garden.",
+      "language": "en",
+      "entities": {
+        "hashtags": [],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 0,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 35
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Android App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000035",
+      "author_id": "usr_fp_000009",
+      "created_at": "2026-08-04T18:54:44Z",
+      "content": "Good urban infrastructure starts with accessible bus rapid transit for everyone. https://nature.com/news/article-90122",
+      "language": "en",
+      "entities": {
+        "hashtags": [],
+        "mentions": [],
+        "urls": [
+          "https://nature.com/news/article-90122"
+        ],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 2,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 128
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Web Client",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000179",
+      "author_id": "usr_fp_000045",
+      "created_at": "2026-08-04T18:55:25Z",
+      "content": "Investing in rooftop solar adoption pays off far sooner than older cost models predicted. #GridModernization https://economist.com/news/article-21043",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "GridModernization"
+        ],
+        "mentions": [],
+        "urls": [
+          "https://economist.com/news/article-21043"
+        ],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 0,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 35
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Web Client",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000113",
+      "author_id": "usr_fp_000029",
+      "created_at": "2026-08-04T19:04:51Z",
+      "content": "Our municipal team integrated the new solar telemetry feed. Clear gains during peak demand hours.",
+      "language": "en",
+      "entities": {
+        "hashtags": [],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 4,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 117
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Web Client",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000044",
+      "author_id": "usr_fp_000011",
+      "created_at": "2026-08-04T20:43:39Z",
+      "content": "Our municipal team measured the new solar telemetry feed. Clear gains during peak demand hours. #SolarPower",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "SolarPower"
+        ],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 5,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 76
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "ThirdPartyClient/3.1",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000166",
+      "author_id": "usr_fp_000042",
+      "created_at": "2026-08-04T20:53:57Z",
+      "content": "Key takeaway from the renewable summit: microgrid resilience remains vital for long-term grid reliability.",
+      "language": "en",
+      "entities": {
+        "hashtags": [],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 1,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 60
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Android App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000120",
+      "author_id": "usr_fp_000030",
+      "created_at": "2026-08-04T21:58:06Z",
+      "content": "Researchers just cataloged an unprecedented high-resolution view of the transit event. #NASA https://apnews.com/news/article-97114",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "NASA"
+        ],
+        "mentions": [],
+        "urls": [
+          "https://apnews.com/news/article-97114"
+        ],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 11,
+        "reposts_count": 3,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 414
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Android App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000088",
+      "author_id": "usr_fp_000022",
+      "created_at": "2026-08-04T22:17:06Z",
+      "content": "Looking forward to the peer-reviewed breakdown of the latest gravitational wave detection findings. #SpaceScience",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "SpaceScience"
+        ],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 2,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 56
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "iOS App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000152",
+      "author_id": "usr_fp_000038",
+      "created_at": "2026-08-05T00:27:24Z",
+      "content": "Key takeaway from the renewable summit: smart meter deployment remains vital for long-term grid reliability.",
+      "language": "en",
+      "entities": {
+        "hashtags": [],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 0,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 82
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "iOS App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000167",
+      "author_id": "usr_fp_000042",
+      "created_at": "2026-08-05T05:19:03Z",
+      "content": "Working through a tricky race condition in the API gateway. Standard logging saved the day. https://arstechnica.com/news/article-15636",
+      "language": "en",
+      "entities": {
+        "hashtags": [],
+        "mentions": [],
+        "urls": [
+          "https://arstechnica.com/news/article-15636"
+        ],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 0,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 32
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Android App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000084",
+      "author_id": "usr_fp_000021",
+      "created_at": "2026-08-05T06:20:46Z",
+      "content": "Really impressed by how quickly local residents embraced the new protected bike lane. https://theverge.com/news/article-71373",
+      "language": "en",
+      "entities": {
+        "hashtags": [],
+        "mentions": [],
+        "urls": [
+          "https://theverge.com/news/article-71373"
+        ],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 0,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 44
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "iOS App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000090",
+      "author_id": "usr_fp_000023",
+      "created_at": "2026-08-05T07:51:52Z",
+      "content": "The precision of modern radio telescope array instruments continues to astonish me. #ScienceDaily",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "ScienceDaily"
+        ],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 3,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 72
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "ThirdPartyClient/3.1",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000192",
+      "author_id": "usr_fp_000048",
+      "created_at": "2026-08-05T08:06:28Z",
+      "content": "Working through a tricky race condition in the compiler optimization. Standard logging saved the day. #SoftwareEngineering",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "SoftwareEngineering"
+        ],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 1,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 46
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "ThirdPartyClient/3.1",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000198",
+      "author_id": "usr_fp_000050",
+      "created_at": "2026-08-05T08:08:32Z",
+      "content": "Fascinating analysis on how heat pump efficiency balances frequency fluctuations during seasonal shifts. #RenewableEnergy",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "RenewableEnergy"
+        ],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 6,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 161
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Android App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000143",
+      "author_id": "usr_fp_000036",
+      "created_at": "2026-08-05T08:29:41Z",
+      "content": "Working through a tricky race condition in the runtime profiling. Standard logging saved the day.",
+      "language": "en",
+      "entities": {
+        "hashtags": [],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 0,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 26
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "iOS App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000139",
+      "author_id": "usr_fp_000035",
+      "created_at": "2026-08-05T08:33:03Z",
+      "content": "Fascinating analysis on how heat pump efficiency balances frequency fluctuations during seasonal shifts.",
+      "language": "en",
+      "entities": {
+        "hashtags": [],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 1,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 61
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Android App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000144",
+      "author_id": "usr_fp_000036",
+      "created_at": "2026-08-05T08:42:56Z",
+      "content": "Fascinating analysis on how rooftop solar adoption balances frequency fluctuations during seasonal shifts.",
+      "language": "en",
+      "entities": {
+        "hashtags": [],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 6,
+        "reposts_count": 1,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 189
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "iOS App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000060",
+      "author_id": "usr_fp_000015",
+      "created_at": "2026-08-05T08:44:41Z",
+      "content": "Excited to see modern tooling making open source kernel so much easier to maintain across large teams. #OpenSource",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "OpenSource"
+        ],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 1,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 168
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Mobile Web Client",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000067",
+      "author_id": "usr_fp_000017",
+      "created_at": "2026-08-05T09:34:08Z",
+      "content": "New dataset from the gravitational wave detection reveals intriguing atmospheric chemical signatures.",
+      "language": "en",
+      "entities": {
+        "hashtags": [],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 3,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 82
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "iOS App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000195",
+      "author_id": "usr_fp_000049",
+      "created_at": "2026-08-05T09:41:24Z",
+      "content": "Clear skies tonight allowed our observatory team to verify the preliminary space weather monitoring metrics.",
+      "language": "en",
+      "entities": {
+        "hashtags": [],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 1,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 37
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Web Client",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000188",
+      "author_id": "usr_fp_000047",
+      "created_at": "2026-08-05T10:01:53Z",
+      "content": "Stopped by the community garden on the way home. Vibrant civic spaces make our city thrive. #PublicTransit",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "PublicTransit"
+        ],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 4,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 163
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Mobile Web Client",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000031",
+      "author_id": "usr_fp_000008",
+      "created_at": "2026-08-05T10:42:04Z",
+      "content": "Investing in smart meter deployment pays off far sooner than older cost models predicted.",
+      "language": "en",
+      "entities": {
+        "hashtags": [],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 0,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 26
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "iOS App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000128",
+      "author_id": "usr_fp_000032",
+      "created_at": "2026-08-05T10:43:48Z",
+      "content": "Just finished evaluating our new memory allocator. The performance improvement is substantial. #OpenSource https://nature.com/news/article-23888",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "OpenSource"
+        ],
+        "mentions": [],
+        "urls": [
+          "https://nature.com/news/article-23888"
+        ],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 0,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 28
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Android App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000016",
+      "author_id": "usr_fp_000004",
+      "created_at": "2026-08-05T11:47:46Z",
+      "content": "Good urban infrastructure starts with accessible pedestrian plaza for everyone. #UrbanPlanning",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "UrbanPlanning"
+        ],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 0,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 28
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "iOS App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000104",
+      "author_id": "usr_fp_000026",
+      "created_at": "2026-08-05T12:11:44Z",
+      "content": "Regional data shows transmission capacity grew by over 18% quarter-over-quarter. Solid momentum. #EnergyTransition",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "EnergyTransition"
+        ],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 3,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 90
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "ThirdPartyClient/3.1",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000163",
+      "author_id": "usr_fp_000041",
+      "created_at": "2026-08-05T12:37:59Z",
+      "content": "Really impressed by how quickly local residents embraced the new bus rapid transit. #ActiveTransit",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "ActiveTransit"
+        ],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 2,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 110
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Android App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000096",
+      "author_id": "usr_fp_000024",
+      "created_at": "2026-08-05T14:00:21Z",
+      "content": "Great turnout at the community hall discussing the upcoming community garden proposal.",
+      "language": "en",
+      "entities": {
+        "hashtags": [],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 0,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 44
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "iOS App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000091",
+      "author_id": "usr_fp_000023",
+      "created_at": "2026-08-05T14:03:47Z",
+      "content": "Interesting observations after we deployed the telemetry pipeline this morning. Highly recommend checking memory profiles. #OpenSource",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "OpenSource"
+        ],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 0,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 32
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "ThirdPartyClient/3.1",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000051",
+      "author_id": "usr_fp_000013",
+      "created_at": "2026-08-05T14:18:40Z",
+      "content": "Really impressed by how quickly local residents embraced the new pedestrian plaza.",
+      "language": "en",
+      "entities": {
+        "hashtags": [],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 9,
+        "reposts_count": 2,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 184
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Mobile Web Client",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000078",
+      "author_id": "usr_fp_000020",
+      "created_at": "2026-08-05T14:41:54Z",
+      "content": "@mikkel_k26 Regional data shows grid battery storage grew by over 18% quarter-over-quarter. Solid momentum. #CleanEnergy",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "CleanEnergy"
+        ],
+        "mentions": [
+          "mikkel_k26"
+        ],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 3,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 87
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Android App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000079",
+      "author_id": "usr_fp_000020",
+      "created_at": "2026-08-05T15:52:45Z",
+      "content": "Great turnout at the community hall discussing the upcoming public library initiative proposal. #ActiveTransit https://bloomberg.com/news/article-51932",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "ActiveTransit"
+        ],
+        "mentions": [],
+        "urls": [
+          "https://bloomberg.com/news/article-51932"
+        ],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 1,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 42
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Android App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000155",
+      "author_id": "usr_fp_000039",
+      "created_at": "2026-08-05T16:34:38Z",
+      "content": "@smith_carlos_14 Good urban infrastructure starts with accessible community garden for everyone. #WalkableCities",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "WalkableCities"
+        ],
+        "mentions": [
+          "smith_carlos_14"
+        ],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 1,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 42
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Web Client",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000114",
+      "author_id": "usr_fp_000029",
+      "created_at": "2026-08-05T16:42:50Z",
+      "content": "Investing in offshore wind farm pays off far sooner than older cost models predicted. #RenewableEnergy",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "RenewableEnergy"
+        ],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 5,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 180
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Web Client",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000036",
+      "author_id": "usr_fp_000009",
+      "created_at": "2026-08-05T17:15:18Z",
+      "content": "@henrik_clark_10 Our municipal team installed the new solar telemetry feed. Clear gains during peak demand hours.",
+      "language": "en",
+      "entities": {
+        "hashtags": [],
+        "mentions": [
+          "henrik_clark_10"
+        ],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 3,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 121
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Web Client",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000199",
+      "author_id": "usr_fp_000050",
+      "created_at": "2026-08-05T17:36:43Z",
+      "content": "Clear skies tonight allowed our observatory team to verify the preliminary space weather monitoring metrics. #ScienceDaily",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "ScienceDaily"
+        ],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 7,
+        "reposts_count": 1,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 224
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Android App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000122",
+      "author_id": "usr_fp_000031",
+      "created_at": "2026-08-05T18:13:07Z",
+      "content": "Stopped by the public library initiative on the way home. Vibrant civic spaces make our city thrive. https://wired.com/news/article-45406",
+      "language": "en",
+      "entities": {
+        "hashtags": [],
+        "mentions": [],
+        "urls": [
+          "https://wired.com/news/article-45406"
+        ],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 1,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 44
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "iOS App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000160",
+      "author_id": "usr_fp_000040",
+      "created_at": "2026-08-05T18:32:47Z",
+      "content": "Stopped by the protected bike lane on the way home. Vibrant civic spaces make our city thrive. #UrbanPlanning",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "UrbanPlanning"
+        ],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 8,
+        "reposts_count": 1,
+        "replies_count": 1,
+        "quotes_count": 0,
+        "impressions_count": 241
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "ThirdPartyClient/3.1",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000164",
+      "author_id": "usr_fp_000041",
+      "created_at": "2026-08-05T18:33:22Z",
+      "content": "Reading up on recent developments in database index. Clean architecture makes all the difference.",
+      "language": "en",
+      "entities": {
+        "hashtags": [],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 1,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 70
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Android App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000196",
+      "author_id": "usr_fp_000049",
+      "created_at": "2026-08-05T19:23:44Z",
+      "content": "Stopped by the protected bike lane on the way home. Vibrant civic spaces make our city thrive. #ActiveTransit",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "ActiveTransit"
+        ],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 1,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 53
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Web Client",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000052",
+      "author_id": "usr_fp_000013",
+      "created_at": "2026-08-05T19:24:02Z",
+      "content": "Really impressed by how quickly local residents embraced the new community garden. https://techcrunch.com/news/article-45686",
+      "language": "en",
+      "entities": {
+        "hashtags": [],
+        "mentions": [],
+        "urls": [
+          "https://techcrunch.com/news/article-45686"
+        ],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 0,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 66
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Mobile Web Client",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000123",
+      "author_id": "usr_fp_000031",
+      "created_at": "2026-08-05T19:49:08Z",
+      "content": "The newly completed community garden has noticeably improved morning commute times downtown.",
+      "language": "en",
+      "entities": {
+        "hashtags": [],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 0,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 30
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "iOS App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000172",
+      "author_id": "usr_fp_000043",
+      "created_at": "2026-08-05T20:43:03Z",
+      "content": "Regional data shows heat pump efficiency grew by over 18% quarter-over-quarter. Solid momentum.",
+      "language": "en",
+      "entities": {
+        "hashtags": [],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 6,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 181
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "iOS App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000098",
+      "author_id": "usr_fp_000025",
+      "created_at": "2026-08-06T00:04:05Z",
+      "content": "Great turnout at the community hall discussing the upcoming bus rapid transit proposal. #UrbanPlanning https://ieee.org/news/article-39270",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "UrbanPlanning"
+        ],
+        "mentions": [],
+        "urls": [
+          "https://ieee.org/news/article-39270"
+        ],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 2,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 72
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "iOS App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000168",
+      "author_id": "usr_fp_000042",
+      "created_at": "2026-08-06T04:31:09Z",
+      "content": "Really impressed by how quickly local residents embraced the new community garden. #Community",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "Community"
+        ],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 1,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 51
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Android App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000056",
+      "author_id": "usr_fp_000014",
+      "created_at": "2026-08-06T05:32:18Z",
+      "content": "Investing in heat pump efficiency pays off far sooner than older cost models predicted. #RenewableEnergy",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "RenewableEnergy"
+        ],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 0,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 40
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "iOS App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000047",
+      "author_id": "usr_fp_000012",
+      "created_at": "2026-08-06T08:34:46Z",
+      "content": "Clear skies tonight allowed our observatory team to verify the preliminary space weather monitoring metrics.",
+      "language": "en",
+      "entities": {
+        "hashtags": [],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 2,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 68
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "ThirdPartyClient/3.1",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000099",
+      "author_id": "usr_fp_000025",
+      "created_at": "2026-08-06T08:58:49Z",
+      "content": "Key takeaway from the renewable summit: grid battery storage remains vital for long-term grid reliability.",
+      "language": "en",
+      "entities": {
+        "hashtags": [],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 1,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 44
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "iOS App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000140",
+      "author_id": "usr_fp_000035",
+      "created_at": "2026-08-06T10:15:42Z",
+      "content": "The newly completed neighborhood park expansion has noticeably improved morning commute times downtown.",
+      "language": "en",
+      "entities": {
+        "hashtags": [],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 1,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 46
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Android App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000156",
+      "author_id": "usr_fp_000039",
+      "created_at": "2026-08-06T11:22:04Z",
+      "content": "Just finished evaluating our new distributed system. The performance improvement is substantial. #SystemsDesign https://economist.com/news/article-83014",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "SystemsDesign"
+        ],
+        "mentions": [],
+        "urls": [
+          "https://economist.com/news/article-83014"
+        ],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 1,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 49
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Web Client",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000183",
+      "author_id": "usr_fp_000046",
+      "created_at": "2026-08-06T13:13:31Z",
+      "content": "Looking forward to the peer-reviewed breakdown of the latest deep-space spectroscopy findings. #ScienceDaily",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "ScienceDaily"
+        ],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 1,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 75
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Android App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000200",
+      "author_id": "usr_fp_000050",
+      "created_at": "2026-08-06T14:31:00Z",
+      "content": "Our municipal team expanded the new solar telemetry feed. Clear gains during peak demand hours.",
+      "language": "en",
+      "entities": {
+        "hashtags": [],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 0,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 68
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Android App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000080",
+      "author_id": "usr_fp_000020",
+      "created_at": "2026-08-06T14:47:51Z",
+      "content": "Reading up on recent developments in API gateway. Clean architecture makes all the difference. #SoftwareEngineering https://bbc.com/news/article-25258",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "SoftwareEngineering"
+        ],
+        "mentions": [],
+        "urls": [
+          "https://bbc.com/news/article-25258"
+        ],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 5,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 147
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Android App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000020",
+      "author_id": "usr_fp_000005",
+      "created_at": "2026-08-06T15:17:07Z",
+      "content": "Key takeaway from the renewable summit: rooftop solar adoption remains vital for long-term grid reliability. #GridModernization",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "GridModernization"
+        ],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 2,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 63
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Android App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000048",
+      "author_id": "usr_fp_000012",
+      "created_at": "2026-08-06T15:49:32Z",
+      "content": "Key takeaway from the renewable summit: rooftop solar adoption remains vital for long-term grid reliability. #EnergyTransition",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "EnergyTransition"
+        ],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 2,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 46
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "ThirdPartyClient/3.1",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000115",
+      "author_id": "usr_fp_000029",
+      "created_at": "2026-08-06T16:07:06Z",
+      "content": "Good urban infrastructure starts with accessible community garden for everyone.",
+      "language": "en",
+      "entities": {
+        "hashtags": [],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 0,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 53
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Web Client",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000184",
+      "author_id": "usr_fp_000046",
+      "created_at": "2026-08-06T18:28:56Z",
+      "content": "The newly completed pedestrian plaza has noticeably improved morning commute times downtown.",
+      "language": "en",
+      "entities": {
+        "hashtags": [],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 1,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 70
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Android App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000032",
+      "author_id": "usr_fp_000008",
+      "created_at": "2026-08-06T18:53:56Z",
+      "content": "Regional data shows microgrid resilience grew by over 18% quarter-over-quarter. Solid momentum. https://bloomberg.com/news/article-3787",
+      "language": "en",
+      "entities": {
+        "hashtags": [],
+        "mentions": [],
+        "urls": [
+          "https://bloomberg.com/news/article-3787"
+        ],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 3,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 54
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "iOS App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000112",
+      "author_id": "usr_fp_000028",
+      "created_at": "2026-08-06T19:00:57Z",
+      "content": "The precision of modern space weather monitoring instruments continues to astonish me. #SpaceScience",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "SpaceScience"
+        ],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 1,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 57
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Android App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000092",
+      "author_id": "usr_fp_000023",
+      "created_at": "2026-08-06T20:36:05Z",
+      "content": "Great turnout at the community hall discussing the upcoming neighborhood park expansion proposal. #PublicTransit https://ieee.org/news/article-72219",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "PublicTransit"
+        ],
+        "mentions": [],
+        "urls": [
+          "https://ieee.org/news/article-72219"
+        ],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 1,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 53
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "ThirdPartyClient/3.1",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000116",
+      "author_id": "usr_fp_000029",
+      "created_at": "2026-08-06T20:43:50Z",
+      "content": "Regional data shows smart meter deployment grew by over 18% quarter-over-quarter. Solid momentum. #EnergyTransition",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "EnergyTransition"
+        ],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 1,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 79
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Web Client",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000068",
+      "author_id": "usr_fp_000017",
+      "created_at": "2026-08-06T21:07:32Z",
+      "content": "Just finished evaluating our new compiler optimization. The performance improvement is substantial. #Python",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "Python"
+        ],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 1,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 57
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "iOS App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000124",
+      "author_id": "usr_fp_000031",
+      "created_at": "2026-08-06T21:50:07Z",
+      "content": "Our municipal team integrated the new solar telemetry feed. Clear gains during peak demand hours.",
+      "language": "en",
+      "entities": {
+        "hashtags": [],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 1,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 39
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "iOS App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000180",
+      "author_id": "usr_fp_000045",
+      "created_at": "2026-08-06T21:52:37Z",
+      "content": "Regional data shows transmission capacity grew by over 18% quarter-over-quarter. Solid momentum. #RenewableEnergy",
+      "language": "en",
+      "entities": {
+        "hashtags": [
+          "RenewableEnergy"
+        ],
+        "mentions": [],
+        "urls": [],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 1,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 51
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Web Client",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000148",
+      "author_id": "usr_fp_000037",
+      "created_at": "2026-08-06T22:34:24Z",
+      "content": "Reading up on recent developments in open source kernel. Clean architecture makes all the difference. https://theatlantic.com/news/article-74791",
+      "language": "en",
+      "entities": {
+        "hashtags": [],
+        "mentions": [],
+        "urls": [
+          "https://theatlantic.com/news/article-74791"
+        ],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 0,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 40
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "Android App",
+      "custom_attributes": {}
+    },
+    {
+      "post_id": "pst_fp_0000100",
+      "author_id": "usr_fp_000025",
+      "created_at": "2026-08-06T23:59:40Z",
+      "content": "Excited to see modern tooling making API gateway so much easier to maintain across large teams. https://nature.com/news/article-78494",
+      "language": "en",
+      "entities": {
+        "hashtags": [],
+        "mentions": [],
+        "urls": [
+          "https://nature.com/news/article-78494"
+        ],
+        "media_urls": []
+      },
+      "metrics": {
+        "likes_count": 3,
+        "reposts_count": 0,
+        "replies_count": 0,
+        "quotes_count": 0,
+        "impressions_count": 87
+      },
+      "reply_to_post_id": null,
+      "repost_of_post_id": null,
+      "client_source": "iOS App",
+      "custom_attributes": {}
+    }
+  ],
+  "ground_truth": {
+    "has_coordination": false,
+    "scenario_type": "organic_topical_similarity",
+    "campaigns": [],
+    "noise_user_ids": [
+      "usr_fp_000001",
+      "usr_fp_000002",
+      "usr_fp_000003",
+      "usr_fp_000004",
+      "usr_fp_000005",
+      "usr_fp_000006",
+      "usr_fp_000007",
+      "usr_fp_000008",
+      "usr_fp_000009",
+      "usr_fp_000010",
+      "usr_fp_000011",
+      "usr_fp_000012",
+      "usr_fp_000013",
+      "usr_fp_000014",
+      "usr_fp_000015",
+      "usr_fp_000016",
+      "usr_fp_000017",
+      "usr_fp_000018",
+      "usr_fp_000019",
+      "usr_fp_000020",
+      "usr_fp_000021",
+      "usr_fp_000022",
+      "usr_fp_000023",
+      "usr_fp_000024",
+      "usr_fp_000025",
+      "usr_fp_000026",
+      "usr_fp_000027",
+      "usr_fp_000028",
+      "usr_fp_000029",
+      "usr_fp_000030",
+      "usr_fp_000031",
+      "usr_fp_000032",
+      "usr_fp_000033",
+      "usr_fp_000034",
+      "usr_fp_000035",
+      "usr_fp_000036",
+      "usr_fp_000037",
+      "usr_fp_000038",
+      "usr_fp_000039",
+      "usr_fp_000040",
+      "usr_fp_000041",
+      "usr_fp_000042",
+      "usr_fp_000043",
+      "usr_fp_000044",
+      "usr_fp_000045",
+      "usr_fp_000046",
+      "usr_fp_000047",
+      "usr_fp_000048",
+      "usr_fp_000049",
+      "usr_fp_000050"
+    ],
+    "evaluation_benchmarks": {
+      "expected_campaigns": 0,
+      "benchmark_condition": "high_topical_similarity_organic"
+    }
+  }
+}
