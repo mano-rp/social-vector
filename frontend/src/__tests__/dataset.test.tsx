@@ -1,10 +1,9 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { DatasetGeneratorModal } from '../components/dataset/DatasetGeneratorModal';
 import { DatasetProvider } from '../context/DatasetContext';
-import * as api from '../services/api';
 
 vi.mock('../services/api', () => ({
   getDatasets: vi.fn().mockResolvedValue([
@@ -73,7 +72,6 @@ describe('Dataset Generator Modal', () => {
 
   it('renders generation form controls and scenario presets', async () => {
     render(<GeneratorModalWrapper />);
-    // Open generator modal through context trigger if needed or verify form components
-    expect(screen.queryByText('Generate Synthetic Social Dataset')).toBeNull(); // Initially closed
+    expect(screen.queryByText('Generate Synthetic Social Dataset')).toBeNull();
   });
 });

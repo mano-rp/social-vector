@@ -1,6 +1,5 @@
-import { describe, it, expect, vi } from 'vitest';
+import { describe, it, expect } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
-import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { PostCard } from '../components/feed/PostCard';
 import { PostList } from '../components/feed/PostList';
@@ -95,7 +94,7 @@ describe('Feed and Post Components', () => {
     expect(screen.getByText(/Analyzing water quality telemetry/)).toBeInTheDocument();
     expect(screen.getByText('#MarineScience')).toBeInTheDocument();
     expect(screen.getByText('#KestrelSound')).toBeInTheDocument();
-    expect(screen.getByText('42')).toBeInTheDocument(); // likes
+    expect(screen.getByText('42')).toBeInTheDocument();
   });
 
   it('filters posts by search text in PostList', () => {
