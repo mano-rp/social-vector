@@ -13,7 +13,7 @@ export const PostsPage: React.FC = () => {
   }
 
   return (
-    <div className="max-w-4xl mx-auto space-y-5">
+    <div className="w-full space-y-5">
       <div className="pb-3 border-b border-slate-200 dark:border-slate-800">
         <h1 className="text-lg font-bold tracking-tight text-slate-900 dark:text-slate-100">
           Posts Explorer

@@ -11,7 +11,7 @@ export const AppShell: React.FC = () => {
       <Header />
       <div className="flex flex-1">
         <Sidebar />
-        <main className="flex-1 min-w-0 p-4 sm:p-6 lg:p-8 max-w-7xl mx-auto w-full">
+        <main className="flex-1 min-w-0 p-4 sm:p-6 lg:p-8 w-full">
           <Outlet />
         </main>
       </div>

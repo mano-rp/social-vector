@@ -34,6 +34,6 @@ describe('Analytical Pipeline and Modal Integration', () => {
     fireEvent.click(btn);
 
     expect(screen.getByText('Analytical Investigation Pipeline')).toBeInTheDocument();
-    expect(screen.getByText('Canonical Python Engine')).toBeInTheDocument();
+    expect(screen.getByText('Observable Pipeline Stages')).toBeInTheDocument();
   });
 });

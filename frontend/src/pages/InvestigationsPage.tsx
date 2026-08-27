@@ -232,14 +232,14 @@ export const InvestigationsPage: React.FC = () => {
       {activeTab === 'overview' && (
         <div className="space-y-5">
           {/* Top Score & Assessment Banner */}
-          <div className="p-4 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0f141c] space-y-3.5">
+          <div className="p-4 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0f141c] space-y-3">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-3 border-b border-slate-100 dark:border-slate-800">
               <div>
                 <div className="text-[10px] font-mono uppercase text-slate-400">
                   Coordination Assessment
                 </div>
                 <div className="text-2xl font-bold text-slate-900 dark:text-slate-100 flex items-center gap-2.5 mt-0.5">
-                  <span className="font-mono text-blue-600 dark:text-cyan-400">
+                  <span className={res.overall_coordination_score >= 0.5 ? 'font-mono text-rose-600 dark:text-rose-400' : 'font-mono text-blue-600 dark:text-cyan-400'}>
                     {(res.overall_coordination_score * 100).toFixed(1)}%
                   </span>
                   <Badge
@@ -257,7 +257,7 @@ export const InvestigationsPage: React.FC = () => {
                 </div>
               </div>
 
-              <div className="grid grid-cols-3 gap-4 text-xs font-mono text-slate-500 dark:text-slate-400">
+              <div className="grid grid-cols-3 gap-6 text-xs font-mono text-slate-500 dark:text-slate-400">
                 <div className="text-center sm:text-right">
                   <div className="text-[10px] uppercase text-slate-400">Accounts</div>
                   <strong className="text-slate-900 dark:text-slate-100 text-sm">{res.total_users_analyzed}</strong>
@@ -273,10 +273,10 @@ export const InvestigationsPage: React.FC = () => {
               </div>
             </div>
 
-            <div className="text-xs text-slate-700 dark:text-slate-300 leading-relaxed bg-slate-50 dark:bg-slate-900/40 p-3 rounded border border-slate-100 dark:border-slate-800">
-              <strong className="text-slate-900 dark:text-slate-100">Assessment Rationale: </strong>
+            <p className="text-xs text-slate-700 dark:text-slate-300 leading-relaxed pt-1">
+              <strong className="text-slate-900 dark:text-slate-100">Rationale: </strong>
               {res.assessment_rationale}
-            </div>
+            </p>
           </div>
 
           {/* Side by side: Signal Profile & Key Clusters */}

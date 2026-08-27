@@ -60,7 +60,7 @@ export const ThreatMapPage: React.FC = () => {
   const currentDatasetId = activeDatasetId || datasetId || activeDataset.metadata.dataset_id;
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 w-full">
       {/* Page Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-slate-200 dark:border-slate-800">
         <div>

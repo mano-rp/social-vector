@@ -36,9 +36,9 @@ export const LocationRankings: React.FC<LocationRankingsProps> = ({
 
   return (
     <div className="space-y-4">
-      {/* 4 Summary Cards */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-        <div className="p-3 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0f141c]">
+      {/* Unified 4 Summary Strip */}
+      <div className="p-3.5 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0f141c] grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-0 sm:divide-x divide-slate-100 dark:divide-slate-800">
+        <div className="sm:px-3.5 sm:first:pl-0">
           <div className="text-[10px] font-mono uppercase text-slate-400">Locations Observed</div>
           <div className="text-xl font-bold font-mono text-slate-900 dark:text-slate-100 mt-0.5">
             {summary.totalLocations}
@@ -46,7 +46,7 @@ export const LocationRankings: React.FC<LocationRankingsProps> = ({
           <p className="text-[11px] text-slate-500 mt-0.5">Distinct geocoded places</p>
         </div>
 
-        <div className="p-3 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0f141c]">
+        <div className="sm:px-3.5">
           <div className="text-[10px] font-mono uppercase text-slate-400">Sovereign Regions</div>
           <div className="text-xl font-bold font-mono text-slate-900 dark:text-slate-100 mt-0.5">
             {summary.totalCountries}
@@ -54,7 +54,7 @@ export const LocationRankings: React.FC<LocationRankingsProps> = ({
           <p className="text-[11px] text-slate-500 mt-0.5">Countries represented</p>
         </div>
 
-        <div className="p-3 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0f141c]">
+        <div className="sm:px-3.5">
           <div className="text-[10px] font-mono uppercase text-slate-400">Top Density Node</div>
           <div className="text-sm font-bold text-slate-900 dark:text-cyan-400 mt-0.5 truncate">
             {summary.topLocation?.name || 'N/A'}
@@ -64,7 +64,7 @@ export const LocationRankings: React.FC<LocationRankingsProps> = ({
           </p>
         </div>
 
-        <div className="p-3 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0f141c]">
+        <div className="sm:px-3.5 sm:last:pr-0">
           <div className="text-[10px] font-mono uppercase text-slate-400">Geographic Spread</div>
           <div className="text-xl font-bold font-mono text-slate-900 dark:text-slate-100 mt-0.5">
             {(summary.geographicEntropy * 100).toFixed(0)}%

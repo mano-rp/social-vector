@@ -62,24 +62,24 @@ export const DomainHashtagChart: React.FC<DomainHashtagChartProps> = ({
                   <div
                     key={dom.domain}
                     onClick={() => setSelectedEntity({ type: 'domain', label: dom.domain, user_ids: dom.user_ids })}
-                    className={`p-2 rounded-lg border transition-all cursor-pointer ${
+                    className={`p-2 rounded-md transition-all cursor-pointer ${
                       isSelected
-                        ? 'border-blue-500 dark:border-cyan-400 bg-blue-50/40 dark:bg-cyan-950/20'
-                        : 'border-slate-100 dark:border-slate-800/80 bg-slate-50/50 dark:bg-slate-900/30 hover:border-slate-200 dark:hover:border-slate-700'
+                        ? 'border border-slate-900 dark:border-cyan-400 bg-slate-50 dark:bg-cyan-950/20'
+                        : 'hover:bg-slate-50 dark:hover:bg-slate-900/40'
                     }`}
                   >
                     <div className="flex items-center justify-between text-xs mb-1">
                       <span className="font-mono font-medium text-slate-900 dark:text-slate-100">
                         {dom.domain}
                       </span>
-                      <span className="font-mono text-[11px] text-blue-600 dark:text-cyan-400 font-bold">
+                      <span className="font-mono text-[11px] text-slate-600 dark:text-cyan-400 font-semibold">
                         {dom.sharer_count} accounts
                       </span>
                     </div>
 
-                    <div className="w-full h-1.5 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
+                    <div className="w-full h-1 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
                       <div
-                        className="h-full bg-blue-600 dark:bg-cyan-400 rounded-full"
+                        className="h-full bg-slate-700 dark:bg-cyan-400 rounded-full transition-all duration-300"
                         style={{ width: `${widthPct}%` }}
                       />
                     </div>
@@ -112,24 +112,24 @@ export const DomainHashtagChart: React.FC<DomainHashtagChartProps> = ({
                   <div
                     key={ht.hashtag}
                     onClick={() => setSelectedEntity({ type: 'hashtag', label: ht.hashtag, user_ids: ht.user_ids })}
-                    className={`p-2 rounded-lg border transition-all cursor-pointer ${
+                    className={`p-2 rounded-md transition-all cursor-pointer ${
                       isSelected
-                        ? 'border-slate-900 dark:border-cyan-400 bg-slate-50 dark:bg-cyan-950/20 shadow-xs'
-                        : 'border-slate-100 dark:border-slate-800/80 bg-slate-50/50 dark:bg-slate-900/30 hover:border-slate-200 dark:hover:border-slate-700'
+                        ? 'border border-slate-900 dark:border-cyan-400 bg-slate-50 dark:bg-cyan-950/20'
+                        : 'hover:bg-slate-50 dark:hover:bg-slate-900/40'
                     }`}
                   >
                     <div className="flex items-center justify-between text-xs mb-1">
                       <span className="font-mono font-medium text-slate-900 dark:text-slate-100">
                         #{ht.hashtag}
                       </span>
-                      <span className="font-mono text-[11px] text-blue-600 dark:text-cyan-400 font-bold">
+                      <span className="font-mono text-[11px] text-blue-600 dark:text-cyan-400 font-semibold">
                         {ht.sharer_count} accounts
                       </span>
                     </div>
 
-                    <div className="w-full h-1.5 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
+                    <div className="w-full h-1 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
                       <div
-                        className="h-full bg-blue-600 dark:bg-cyan-400 rounded-full"
+                        className="h-full bg-blue-600 dark:bg-cyan-400 rounded-full transition-all duration-300"
                         style={{ width: `${widthPct}%` }}
                       />
                     </div>

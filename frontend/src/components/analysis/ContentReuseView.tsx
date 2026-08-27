@@ -71,9 +71,9 @@ export const ContentReuseView: React.FC<ContentReuseViewProps> = ({
                 </div>
 
                 {/* Text Snippet */}
-                <div className="p-2.5 rounded-lg bg-slate-50 dark:bg-slate-900/60 border border-slate-100 dark:border-slate-800 text-xs font-mono text-slate-800 dark:text-slate-200 leading-relaxed">
+                <p className="text-xs font-mono text-slate-800 dark:text-slate-200 leading-relaxed italic border-l-2 border-slate-300 dark:border-slate-700 pl-3 my-1">
                   "{group.sample_text}"
-                </div>
+                </p>
 
                 {/* Expanded Details: Participating Accounts */}
                 {isExpanded && (

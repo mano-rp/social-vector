@@ -19,9 +19,9 @@ export const SignalProfileChart: React.FC<SignalProfileChartProps> = ({
   };
 
   const getScoreBadge = (score: number) => {
-    if (score >= 0.7) return 'text-rose-700 bg-rose-50 dark:text-rose-400 dark:bg-rose-950/50 border-rose-200 dark:border-rose-900';
-    if (score >= 0.4) return 'text-amber-700 bg-amber-50 dark:text-amber-400 dark:bg-amber-950/50 border-amber-200 dark:border-amber-900';
-    return 'text-blue-700 bg-blue-50 dark:text-cyan-400 dark:bg-cyan-950/50 border-blue-200 dark:border-cyan-900';
+    if (score >= 0.7) return 'text-rose-600 dark:text-rose-400 border-rose-200 dark:border-rose-900 bg-rose-50/50 dark:bg-rose-950/30';
+    if (score >= 0.4) return 'text-amber-600 dark:text-amber-400 border-amber-200 dark:border-amber-900 bg-amber-50/50 dark:bg-amber-950/30';
+    return 'text-slate-700 dark:text-cyan-400 border-slate-200 dark:border-cyan-900/40 bg-slate-50 dark:bg-cyan-950/20';
   };
 
   return (

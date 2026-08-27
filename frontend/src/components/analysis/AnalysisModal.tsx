@@ -199,28 +199,29 @@ export const AnalysisModal: React.FC = () => {
     >
       <div className="space-y-4">
         {/* Scope Header */}
-        <div className="p-3 rounded-lg border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/50 flex items-center justify-between gap-3">
+        <div className="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800">
           <div>
             <div className="text-[10px] font-mono uppercase text-slate-400">
               Scope: {analysisTarget.scope.toUpperCase()}
             </div>
-            <div className="text-xs font-semibold text-slate-900 dark:text-slate-100 flex items-center gap-2 mt-0.5">
-              <span>{targetName}</span>
-              <Badge variant="blue" size="sm">
-                Canonical Python Engine
-              </Badge>
+            <div className="text-sm font-semibold text-slate-900 dark:text-slate-100 mt-0.5">
+              {targetName}
             </div>
           </div>
 
-          <Button
-            size="sm"
-            variant="outline"
-            icon={isRunning ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <RotateCcw className="w-3.5 h-3.5" />}
-            disabled={isRunning}
+          <button
             onClick={startAnalysis}
+            disabled={isRunning}
+            title="Re-run pipeline"
+            aria-label="Re-run pipeline"
+            className="p-1.5 rounded-md border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-slate-100 disabled:opacity-50 transition-colors"
           >
-            {isRunning ? 'Analyzing...' : 'Re-Run'}
-          </Button>
+            {isRunning ? (
+              <Loader2 className="w-4 h-4 text-blue-600 dark:text-cyan-400 animate-spin" />
+            ) : (
+              <RotateCcw className="w-4 h-4" />
+            )}
+          </button>
         </div>
 
         {error && (
@@ -285,14 +286,35 @@ export const AnalysisModal: React.FC = () => {
           </div>
         </div>
 
-        {/* Completion Notice */}
+        {/* Final Percentage Report Banner */}
         {analysisResult && (
-          <div className="p-3 rounded-lg border border-slate-200 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-900/40 text-xs flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
-              <span className="text-slate-700 dark:text-slate-300">
-                Analysis complete. Detailed multi-signal evidence, temporal bursts, and cluster dossiers ready.
-              </span>
+          <div className="p-3.5 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0f141c] flex items-center justify-between">
+            <div>
+              <div className="text-[10px] font-mono uppercase text-slate-400">
+                Coordination Risk Score
+              </div>
+              <div className="text-2xl font-bold font-mono text-slate-900 dark:text-slate-100 mt-0.5 flex items-center gap-2">
+                <span className={analysisResult.overall_coordination_score >= 0.5 ? 'text-rose-600 dark:text-rose-400' : 'text-blue-600 dark:text-cyan-400'}>
+                  {(analysisResult.overall_coordination_score * 100).toFixed(1)}%
+                </span>
+                <Badge
+                  variant={
+                    analysisResult.confidence_assessment.includes('high')
+                      ? 'danger'
+                      : analysisResult.confidence_assessment.includes('moderate')
+                      ? 'warning'
+                      : 'success'
+                  }
+                  size="sm"
+                >
+                  {analysisResult.confidence_assessment.replace(/_/g, ' ')}
+                </Badge>
+              </div>
+            </div>
+
+            <div className="text-right text-xs font-mono text-slate-500 dark:text-slate-400">
+              <div>{analysisResult.total_users_analyzed} accounts · {analysisResult.total_posts_analyzed} posts</div>
+              <div>{analysisResult.clusters.length} clusters detected</div>
             </div>
           </div>
         )}
