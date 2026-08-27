@@ -102,22 +102,13 @@ export const InvestigationsPage: React.FC = () => {
   const selectedCluster = res.clusters.find((c) => c.cluster_id === selectedClusterId) || res.clusters[0];
 
   return (
-    <div className="space-y-6">
-      {/* Dossier Header */}
+    <div className="space-y-6 w-full">
+      {/* Page Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-200 dark:border-slate-800">
         <div>
-          <div className="text-xs font-mono uppercase tracking-wider text-slate-400 dark:text-slate-500">
-            Investigation Dossier: {res.analysis_id}
-          </div>
-          <h1 className="text-2xl font-bold text-slate-900 dark:text-slate-100 tracking-tight mt-0.5">
-            Campaign Investigation Workspace
+          <h1 className="text-xl font-bold tracking-tight text-slate-900 dark:text-slate-100">
+            Investigation Workspace
           </h1>
-          <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-            Canonical multi-signal intelligence for{' '}
-            <strong className="text-slate-900 dark:text-slate-200">
-              {activeDatasetMeta.scenario.replace(/_/g, ' ')}
-            </strong>
-          </p>
         </div>
 
         <div className="flex items-center gap-2">

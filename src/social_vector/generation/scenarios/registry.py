@@ -33,6 +33,10 @@ def get_scenario(name: str) -> Type[BaseScenario]:
         "extreme_io": "extreme_information_operation",
         "geopolitical": "extreme_information_operation",
         "high_intensity": "extreme_information_operation",
+        "realworld": "realworld_geopolitical_conflict",
+        "real_world": "realworld_geopolitical_conflict",
+        "realworld_geopolitical": "realworld_geopolitical_conflict",
+        "global_conflict": "realworld_geopolitical_conflict",
     }
     resolved = aliases.get(clean_name, clean_name)
 

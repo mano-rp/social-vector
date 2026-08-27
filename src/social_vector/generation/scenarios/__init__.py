@@ -7,6 +7,7 @@ from social_vector.generation.scenarios.coordinated_campaign import CoordinatedC
 from social_vector.generation.scenarios.paraphrased_coordination import ParaphrasedCoordinationScenario
 from social_vector.generation.scenarios.false_positive import OrganicTopicalSimilarityScenario
 from social_vector.generation.scenarios.extreme_campaign import ExtremeInformationOperationScenario
+from social_vector.generation.scenarios.realworld_geopolitical import RealWorldGeopoliticalScenario
 
 __all__ = [
     "BaseScenario",
@@ -19,4 +20,5 @@ __all__ = [
     "ParaphrasedCoordinationScenario",
     "OrganicTopicalSimilarityScenario",
     "ExtremeInformationOperationScenario",
+    "RealWorldGeopoliticalScenario",
 ]

@@ -44,9 +44,6 @@ export const AnalysisPage: React.FC = () => {
           <h1 className="text-xl font-bold tracking-tight text-slate-900 dark:text-slate-100">
             Analysis Lab
           </h1>
-          <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-            Trigger canonical multi-signal analysis across semantic, temporal, and clustering dimensions.
-          </p>
         </div>
 
         {latestAnalysisResult && (

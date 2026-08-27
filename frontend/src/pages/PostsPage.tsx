@@ -15,12 +15,9 @@ export const PostsPage: React.FC = () => {
   return (
     <div className="w-full space-y-5">
       <div className="pb-3 border-b border-slate-200 dark:border-slate-800">
-        <h1 className="text-lg font-bold tracking-tight text-slate-900 dark:text-slate-100">
+        <h1 className="text-xl font-bold tracking-tight text-slate-900 dark:text-slate-100">
           Posts Explorer
         </h1>
-        <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-          Filter and examine all {activeDataset.posts.length.toLocaleString()} observable posts by keyword, hashtag, domain, or author.
-        </p>
       </div>
 
       <PostList

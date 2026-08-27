@@ -3,7 +3,6 @@ import { useDataset } from '../context/DatasetContext';
 import { LoadingState } from '../components/common/LoadingState';
 import { EmptyState } from '../components/common/EmptyState';
 import { Button } from '../components/common/Button';
-import { Badge } from '../components/common/Badge';
 import { MapPin } from 'lucide-react';
 import { useNavigate, useParams } from 'react-router-dom';
 
@@ -13,7 +12,7 @@ import { LocationRankings } from '../components/threat-map/LocationRankings';
 import { LocationInspectorDrawer } from '../components/threat-map/LocationInspectorDrawer';
 
 export const ThreatMapPage: React.FC = () => {
-  const { activeDataset, activeDatasetMeta, activeDatasetId, isLoadingActiveDataset } = useDataset();
+  const { activeDataset, activeDatasetId, isLoadingActiveDataset } = useDataset();
   const navigate = useNavigate();
   const { datasetId } = useParams<{ datasetId: string }>();
 
@@ -64,21 +63,9 @@ export const ThreatMapPage: React.FC = () => {
       {/* Page Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-slate-200 dark:border-slate-800">
         <div>
-          <div className="text-xs font-mono uppercase tracking-wider text-slate-400 dark:text-slate-500">
-            Spatial Intelligence
-          </div>
-          <h1 className="text-xl font-bold tracking-tight text-slate-900 dark:text-slate-100 mt-0.5 flex items-center gap-2">
-            <span>Threat Map</span>
-            <Badge variant="blue" size="sm">
-              Deterministic Offline GIS
-            </Badge>
+          <h1 className="text-xl font-bold tracking-tight text-slate-900 dark:text-slate-100">
+            Threat Map
           </h1>
-          <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-            Geographic distribution of observed personas and regional concentration for{' '}
-            <strong className="text-slate-900 dark:text-slate-200">
-              {activeDatasetMeta?.scenario?.replace(/_/g, ' ') || activeDataset.metadata.scenario}
-            </strong>
-          </p>
         </div>
 
         <div className="flex items-center gap-3 text-xs font-mono text-slate-500 dark:text-slate-400">

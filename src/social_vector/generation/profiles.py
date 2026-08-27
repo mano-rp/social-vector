@@ -12,6 +12,7 @@ class ContentProfile(str, Enum):
     STANDARD = "standard"        # Compact baseline posts
     REALISTIC = "realistic"      # Multi-sentence coherent organic and campaign discourse
     EXTREME = "extreme"          # High-intensity multi-stage fictional geopolitical information operation
+    REALWORLD = "realworld"      # Real-world geopolitical, conflict, defense, and sovereign state politics
 
     @classmethod
     def from_str(cls, value: str) -> ContentProfile:
@@ -28,6 +29,11 @@ class ContentProfile(str, Enum):
             "extreme_io": cls.EXTREME,
             "geopolitical": cls.EXTREME,
             "high_intensity": cls.EXTREME,
+            "realworld": cls.REALWORLD,
+            "real_world": cls.REALWORLD,
+            "real_life": cls.REALWORLD,
+            "geopolitics": cls.REALWORLD,
+            "global_conflict": cls.REALWORLD,
         }
         if clean in aliases:
             return aliases[clean]
@@ -66,5 +72,11 @@ PROFILE_LENGTH_WEIGHTS: Dict[ContentProfile, Dict[PostLengthTier, float]] = {
         PostLengthTier.MEDIUM: 0.35,
         PostLengthTier.LONG: 0.30,
         PostLengthTier.VERY_LONG: 0.15,
+    },
+    ContentProfile.REALWORLD: {
+        PostLengthTier.SHORT: 0.18,
+        PostLengthTier.MEDIUM: 0.42,
+        PostLengthTier.LONG: 0.28,
+        PostLengthTier.VERY_LONG: 0.12,
     },
 }

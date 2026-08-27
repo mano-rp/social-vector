@@ -41,7 +41,7 @@ def build_parser() -> argparse.ArgumentParser:
     gen_parser.add_argument(
         "-c", "--content-profile",
         default="realistic",
-        choices=["standard", "realistic", "extreme"],
+        choices=["standard", "realistic", "extreme", "realworld"],
         help="Content profile governing post length, narrative depth, and rhetorical style. Default: realistic",
     )
     gen_parser.add_argument(
