@@ -32,6 +32,7 @@ def run_generate_command(
     seed: int,
     output: Optional[str],
     campaign_ratio: float,
+    content_profile: str = "realistic",
     start_date: Optional[str] = None,
     end_date: Optional[str] = None,
     pretty: bool = True,
@@ -49,10 +50,13 @@ def run_generate_command(
         start_time=start_dt,
         end_time=end_dt,
         campaign_ratio=campaign_ratio,
+        content_profile=content_profile,
     )
 
     if not quiet:
-        sys.stderr.write(f"Generating dataset with scenario '{scenario}', {users} users, seed={seed}...\n")
+        sys.stderr.write(
+            f"Generating dataset with scenario '{scenario}', profile '{content_profile}', {users} users, seed={seed}...\n"
+        )
 
     try:
         generator = DatasetGenerator(config)

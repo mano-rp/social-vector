@@ -35,7 +35,13 @@ def build_parser() -> argparse.ArgumentParser:
     gen_parser.add_argument(
         "-s", "--scenario",
         default="organic_activity",
-        help="Scenario type to generate (e.g. 'organic_activity', 'coordinated_campaign', 'paraphrased_coordination', 'organic_topical_similarity'). Default: organic_activity",
+        help="Scenario type to generate (e.g. 'organic_activity', 'coordinated_campaign', 'paraphrased_coordination', 'organic_topical_similarity', 'extreme_information_operation'). Default: organic_activity",
+    )
+    gen_parser.add_argument(
+        "-c", "--content-profile",
+        default="realistic",
+        choices=["standard", "realistic", "extreme"],
+        help="Content profile governing post length, narrative depth, and rhetorical style. Choices: 'standard', 'realistic', 'extreme'. Default: realistic",
     )
     gen_parser.add_argument(
         "-u", "--users",
@@ -134,6 +140,7 @@ def main(argv: Optional[List[str]] = None) -> int:
             seed=args.seed,
             output=args.output,
             campaign_ratio=args.campaign_ratio,
+            content_profile=args.content_profile,
             start_date=args.start_date,
             end_date=args.end_date,
             pretty=not args.no_pretty,
