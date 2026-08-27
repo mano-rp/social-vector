@@ -19,9 +19,9 @@ export const LocationInspectorDrawer: React.FC<LocationInspectorDrawerProps> = (
   const navigate = useNavigate();
 
   return (
-    <div className="p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0f141c] space-y-4 shadow-sm">
+    <div className="p-4 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0f141c] space-y-3.5">
       {/* Header */}
-      <div className="flex items-start justify-between gap-3 pb-3 border-b border-slate-100 dark:border-slate-800">
+      <div className="flex items-start justify-between gap-3 pb-2.5 border-b border-slate-100 dark:border-slate-800">
         <div>
           <div className="text-[10px] font-mono uppercase tracking-wider text-slate-400">
             Selected Geographic Node

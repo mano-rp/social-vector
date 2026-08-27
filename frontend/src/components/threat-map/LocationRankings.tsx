@@ -38,25 +38,25 @@ export const LocationRankings: React.FC<LocationRankingsProps> = ({
     <div className="space-y-4">
       {/* 4 Summary Cards */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-        <div className="p-3.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0f141c]">
+        <div className="p-3 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0f141c]">
           <div className="text-[10px] font-mono uppercase text-slate-400">Locations Observed</div>
-          <div className="text-xl font-bold font-mono text-slate-900 dark:text-slate-100 mt-1">
+          <div className="text-xl font-bold font-mono text-slate-900 dark:text-slate-100 mt-0.5">
             {summary.totalLocations}
           </div>
           <p className="text-[11px] text-slate-500 mt-0.5">Distinct geocoded places</p>
         </div>
 
-        <div className="p-3.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0f141c]">
+        <div className="p-3 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0f141c]">
           <div className="text-[10px] font-mono uppercase text-slate-400">Sovereign Regions</div>
-          <div className="text-xl font-bold font-mono text-slate-900 dark:text-slate-100 mt-1">
+          <div className="text-xl font-bold font-mono text-slate-900 dark:text-slate-100 mt-0.5">
             {summary.totalCountries}
           </div>
           <p className="text-[11px] text-slate-500 mt-0.5">Countries represented</p>
         </div>
 
-        <div className="p-3.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0f141c]">
+        <div className="p-3 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0f141c]">
           <div className="text-[10px] font-mono uppercase text-slate-400">Top Density Node</div>
-          <div className="text-sm font-bold text-blue-600 dark:text-cyan-400 mt-1 truncate">
+          <div className="text-sm font-bold text-slate-900 dark:text-cyan-400 mt-0.5 truncate">
             {summary.topLocation?.name || 'N/A'}
           </div>
           <p className="text-[11px] text-slate-500 mt-0.5 font-mono">
@@ -64,9 +64,9 @@ export const LocationRankings: React.FC<LocationRankingsProps> = ({
           </p>
         </div>
 
-        <div className="p-3.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0f141c]">
+        <div className="p-3 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0f141c]">
           <div className="text-[10px] font-mono uppercase text-slate-400">Geographic Spread</div>
-          <div className="text-xl font-bold font-mono text-slate-900 dark:text-slate-100 mt-1">
+          <div className="text-xl font-bold font-mono text-slate-900 dark:text-slate-100 mt-0.5">
             {(summary.geographicEntropy * 100).toFixed(0)}%
           </div>
           <p className="text-[11px] text-slate-500 mt-0.5">
@@ -76,10 +76,10 @@ export const LocationRankings: React.FC<LocationRankingsProps> = ({
       </div>
 
       {/* Ranked Location List Panel */}
-      <div className="p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0f141c] space-y-3">
+      <div className="p-3.5 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0f141c] space-y-3">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2 border-b border-slate-100 dark:border-slate-800 text-xs">
           <div className="flex items-center gap-2 font-semibold text-slate-900 dark:text-slate-100">
-            <Globe className="w-4 h-4 text-blue-600 dark:text-cyan-400" />
+            <Globe className="w-3.5 h-3.5 text-slate-400 dark:text-slate-500" />
             <span>Geographic Distribution Rankings</span>
           </div>
 
