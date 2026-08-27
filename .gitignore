@@ -216,3 +216,10 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# User generated datasets
+user_generated_datasets/*.json
+!user_generated_datasets/.gitkeep
+# Frontend node_modules & build artifacts
+frontend/node_modules/
+frontend/dist/
