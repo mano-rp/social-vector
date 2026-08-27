@@ -255,12 +255,12 @@ export const AnalysisModal: React.FC = () => {
               return (
                 <div
                   key={stage.stage_id}
-                  className={`p-2.5 rounded-lg border transition-all text-xs ${
+                  className={`p-2 rounded-md border transition-all text-xs ${
                     isStageRunning
-                      ? 'border-blue-500 dark:border-cyan-400 bg-blue-50/50 dark:bg-cyan-950/30 shadow-sm'
+                      ? 'border-slate-800 dark:border-cyan-400 bg-slate-50 dark:bg-cyan-950/20 shadow-xs'
                       : isCompleted
                       ? 'border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0f141c]'
-                      : 'border-slate-100 dark:border-slate-900 bg-slate-50/30 dark:bg-slate-900/20 opacity-60'
+                      : 'border-slate-100 dark:border-slate-900 bg-slate-50/40 dark:bg-slate-900/20 opacity-60'
                   }`}
                 >
                   <div className="flex items-center justify-between">
@@ -274,7 +274,7 @@ export const AnalysisModal: React.FC = () => {
                       ) : (
                         <div className="w-3.5 h-3.5 rounded-full border border-slate-300 dark:border-slate-700 shrink-0" />
                       )}
-                      <span className={`font-medium ${isStageRunning ? 'text-blue-900 dark:text-cyan-200 font-semibold' : 'text-slate-800 dark:text-slate-200'}`}>
+                      <span className={`font-medium ${isStageRunning ? 'text-slate-900 dark:text-cyan-200 font-semibold' : 'text-slate-800 dark:text-slate-200'}`}>
                         {idx + 1}. {stage.name}
                       </span>
                     </div>
@@ -305,10 +305,10 @@ export const AnalysisModal: React.FC = () => {
 
         {/* Quantitative Result Banner */}
         {analysisResult && (
-          <div className="p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-900/40 space-y-3">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-200 dark:border-slate-800">
+          <div className="p-3.5 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0f141c] space-y-3">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-2.5 border-b border-slate-100 dark:border-slate-800">
               <div>
-                <div className="text-[10px] font-mono uppercase tracking-wider text-slate-400 dark:text-slate-500">
+                <div className="text-[10px] font-mono uppercase text-slate-400 dark:text-slate-500">
                   Coordination Risk Score
                 </div>
                 <div className="text-xl font-bold text-slate-900 dark:text-slate-100 flex items-center gap-2 mt-0.5">
@@ -325,7 +325,7 @@ export const AnalysisModal: React.FC = () => {
                     }
                     size="sm"
                   >
-                    {analysisResult.confidence_assessment.replace(/_/g, ' ').toUpperCase()}
+                    {analysisResult.confidence_assessment.replace(/_/g, ' ')}
                   </Badge>
                 </div>
               </div>
@@ -342,15 +342,15 @@ export const AnalysisModal: React.FC = () => {
               {analysisResult.signals.map((sig) => (
                 <div
                   key={sig.signal_id}
-                  className="p-2 rounded-lg bg-white dark:bg-[#0f141c] border border-slate-200 dark:border-slate-800 text-[10px] space-y-1"
+                  className="p-2 rounded bg-slate-50 dark:bg-slate-900/40 border border-slate-100 dark:border-slate-800 text-[10px] space-y-1"
                 >
                   <div className="flex items-center justify-between">
                     <span className="font-medium text-slate-700 dark:text-slate-300 truncate">{sig.name}</span>
-                    <span className="font-mono font-bold text-blue-600 dark:text-cyan-400">
+                    <span className="font-mono font-bold text-slate-900 dark:text-cyan-400">
                       {(sig.score * 100).toFixed(0)}%
                     </span>
                   </div>
-                  <div className="w-full h-1 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+                  <div className="w-full h-1 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
                     <div
                       className="h-full bg-blue-600 dark:bg-cyan-400 rounded-full"
                       style={{ width: `${Math.max(4, sig.score * 100)}%` }}

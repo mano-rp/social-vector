@@ -61,54 +61,51 @@ export const AnalysisPage: React.FC = () => {
         )}
       </div>
 
-      {/* 1. What am I analysing? */}
-      <div className="p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0f141c] space-y-3">
+      {/* 1. Target Observation Scope */}
+      <div className="p-4 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0f141c] space-y-3">
         <div className="flex items-center justify-between text-xs font-semibold text-slate-900 dark:text-slate-100 pb-2 border-b border-slate-100 dark:border-slate-800">
           <div className="flex items-center gap-2">
-            <Database className="w-4 h-4 text-blue-600 dark:text-cyan-400" />
+            <Database className="w-4 h-4 text-slate-400 dark:text-slate-500" />
             <span>Target Observation Scope</span>
           </div>
           <Badge variant={dsMeta.hasCoordination ? 'danger' : 'neutral'} size="sm">
-            {dsMeta.scenario.replace(/_/g, ' ').toUpperCase()}
+            {dsMeta.scenario.replace(/_/g, ' ')}
           </Badge>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-1">
-          <div className="p-2.5 rounded-lg bg-slate-50 dark:bg-slate-900/60 border border-slate-100 dark:border-slate-800 text-center">
-            <div className="text-[10px] font-mono uppercase text-slate-400">Dataset ID</div>
-            <div className="text-xs font-bold font-mono text-slate-900 dark:text-slate-100 mt-0.5 truncate">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs font-mono">
+          <div>
+            <span className="text-[10px] text-slate-400 dark:text-slate-500 block uppercase">DATASET ID</span>
+            <span className="font-semibold text-slate-800 dark:text-slate-200 truncate block mt-0.5">
               {activeDataset.metadata.dataset_id}
-            </div>
+            </span>
           </div>
-
-          <div className="p-2.5 rounded-lg bg-slate-50 dark:bg-slate-900/60 border border-slate-100 dark:border-slate-800 text-center">
-            <div className="text-[10px] font-mono uppercase text-slate-400">Total Accounts</div>
-            <div className="text-xs font-bold font-mono text-slate-900 dark:text-slate-100 mt-0.5">
-              {dsMeta.totalUsers}
-            </div>
+          <div>
+            <span className="text-[10px] text-slate-400 dark:text-slate-500 block uppercase">TOTAL USERS</span>
+            <span className="font-semibold text-slate-800 dark:text-slate-200 block mt-0.5">
+              {dsMeta.totalUsers.toLocaleString()}
+            </span>
           </div>
-
-          <div className="p-2.5 rounded-lg bg-slate-50 dark:bg-slate-900/60 border border-slate-100 dark:border-slate-800 text-center">
-            <div className="text-[10px] font-mono uppercase text-slate-400">Total Posts</div>
-            <div className="text-xs font-bold font-mono text-slate-900 dark:text-slate-100 mt-0.5">
-              {dsMeta.totalPosts}
-            </div>
+          <div>
+            <span className="text-[10px] text-slate-400 dark:text-slate-500 block uppercase">TOTAL POSTS</span>
+            <span className="font-semibold text-slate-800 dark:text-slate-200 block mt-0.5">
+              {dsMeta.totalPosts.toLocaleString()}
+            </span>
           </div>
-
-          <div className="p-2.5 rounded-lg bg-slate-50 dark:bg-slate-900/60 border border-slate-100 dark:border-slate-800 text-center">
-            <div className="text-[10px] font-mono uppercase text-slate-400">Generation Seed</div>
-            <div className="text-xs font-bold font-mono text-slate-900 dark:text-slate-100 mt-0.5">
+          <div>
+            <span className="text-[10px] text-slate-400 dark:text-slate-500 block uppercase">SEED</span>
+            <span className="font-semibold text-slate-800 dark:text-slate-200 block mt-0.5">
               {activeDataset.metadata.seed}
-            </div>
+            </span>
           </div>
         </div>
       </div>
 
-      {/* 2. What can I run? */}
-      <div className="p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0f141c] space-y-4">
+      {/* 2. Analytical Engine Triggers */}
+      <div className="p-4 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0f141c] space-y-3.5">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2 text-xs font-semibold text-slate-900 dark:text-slate-100">
-            <Cpu className="w-4 h-4 text-blue-600 dark:text-cyan-400" />
+            <Cpu className="w-4 h-4 text-slate-400 dark:text-slate-500" />
             <span>Analytical Engine Triggers</span>
           </div>
 
@@ -123,7 +120,7 @@ export const AnalysisPage: React.FC = () => {
 
         {/* Optional Parameter Configuration */}
         {showConfig && (
-          <div className="p-3 rounded-lg bg-slate-50 dark:bg-slate-900/60 border border-slate-100 dark:border-slate-800 grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs font-mono">
+          <div className="p-3 rounded-lg bg-slate-50 dark:bg-slate-900/60 border border-slate-200/80 dark:border-slate-800 grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs font-mono">
             <div>
               <div className="flex justify-between text-slate-700 dark:text-slate-300 mb-1">
                 <span>Semantic Cosine Threshold:</span>
@@ -136,7 +133,7 @@ export const AnalysisPage: React.FC = () => {
                 step="0.01"
                 value={threshold}
                 onChange={(e) => setThreshold(parseFloat(e.target.value))}
-                className="w-full h-1.5 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer"
+                className="w-full h-1.5 bg-slate-200 dark:bg-slate-700 rounded appearance-none cursor-pointer"
               />
             </div>
 
@@ -152,14 +149,14 @@ export const AnalysisPage: React.FC = () => {
                 step="0.01"
                 value={eps}
                 onChange={(e) => setEps(parseFloat(e.target.value))}
-                className="w-full h-1.5 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer"
+                className="w-full h-1.5 bg-slate-200 dark:bg-slate-700 rounded appearance-none cursor-pointer"
               />
             </div>
           </div>
         )}
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
-          <div className="p-3.5 rounded-lg border border-slate-100 dark:border-slate-800/80 bg-slate-50/40 dark:bg-slate-900/30 flex items-center justify-between">
+          <div className="p-3.5 rounded-lg border border-slate-200/80 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/40 flex items-center justify-between">
             <div>
               <div className="font-semibold text-xs text-slate-900 dark:text-slate-100">
                 Complete Dataset Analysis
@@ -174,11 +171,11 @@ export const AnalysisPage: React.FC = () => {
               icon={<Play className="w-3.5 h-3.5" />}
               onClick={() => openAnalysis('dataset', datasetId || activeDatasetId || activeDataset.metadata.dataset_id)}
             >
-              Run Analysis
+              Run Pipeline
             </Button>
           </div>
 
-          <div className="p-3.5 rounded-lg border border-slate-100 dark:border-slate-800/80 bg-slate-50/40 dark:bg-slate-900/30 flex items-center justify-between">
+          <div className="p-3.5 rounded-lg border border-slate-200/80 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/40 flex items-center justify-between">
             <div>
               <div className="font-semibold text-xs text-slate-900 dark:text-slate-100">
                 Feed Scope Analysis
@@ -199,9 +196,9 @@ export const AnalysisPage: React.FC = () => {
         </div>
       </div>
 
-      {/* 3. What happened in the latest run? */}
+      {/* 3. Latest Run Summary */}
       {latestAnalysisResult ? (
-        <div className="p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0f141c] space-y-4">
+        <div className="p-4 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0f141c] space-y-3.5">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2 border-b border-slate-100 dark:border-slate-800">
             <div className="flex items-center gap-2 text-xs font-semibold text-slate-900 dark:text-slate-100">
               <CheckCircle2 className="w-4 h-4 text-emerald-500" />
@@ -212,30 +209,30 @@ export const AnalysisPage: React.FC = () => {
             </span>
           </div>
 
-          {/* Quick Metrics Grid */}
+          {/* Metrics Strip */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-            <div className="p-3 rounded-lg bg-slate-50 dark:bg-slate-900/60 text-center">
+            <div className="p-3 rounded-lg bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800">
               <div className="text-[10px] font-mono uppercase text-slate-400">Risk Score</div>
               <div className="text-lg font-bold font-mono text-blue-600 dark:text-cyan-400 mt-0.5">
                 {(latestAnalysisResult.overall_coordination_score * 100).toFixed(1)}%
               </div>
             </div>
 
-            <div className="p-3 rounded-lg bg-slate-50 dark:bg-slate-900/60 text-center">
+            <div className="p-3 rounded-lg bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800">
               <div className="text-[10px] font-mono uppercase text-slate-400">Classification</div>
               <div className="text-xs font-bold text-slate-800 dark:text-slate-200 mt-1 truncate">
                 {latestAnalysisResult.confidence_assessment.replace(/_/g, ' ').toUpperCase()}
               </div>
             </div>
 
-            <div className="p-3 rounded-lg bg-slate-50 dark:bg-slate-900/60 text-center">
+            <div className="p-3 rounded-lg bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800">
               <div className="text-[10px] font-mono uppercase text-slate-400">Clusters Discovered</div>
               <div className="text-lg font-bold font-mono text-slate-800 dark:text-slate-200 mt-0.5">
                 {latestAnalysisResult.clusters.length}
               </div>
             </div>
 
-            <div className="p-3 rounded-lg bg-slate-50 dark:bg-slate-900/60 text-center">
+            <div className="p-3 rounded-lg bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800">
               <div className="text-[10px] font-mono uppercase text-slate-400">Analyzed Accounts</div>
               <div className="text-lg font-bold font-mono text-slate-800 dark:text-slate-200 mt-0.5">
                 {latestAnalysisResult.total_users_analyzed}
@@ -248,7 +245,7 @@ export const AnalysisPage: React.FC = () => {
             <div className="text-[10px] font-mono uppercase text-slate-400">Signal Vector Contributions:</div>
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
               {latestAnalysisResult.signals.map((sig) => (
-                <div key={sig.signal_id} className="p-2 rounded bg-slate-50 dark:bg-slate-900/40 text-[10px] space-y-1">
+                <div key={sig.signal_id} className="p-2 rounded bg-slate-50 dark:bg-slate-900/40 border border-slate-100 dark:border-slate-800 text-[10px] space-y-1">
                   <div className="flex justify-between">
                     <span className="font-medium text-slate-700 dark:text-slate-300 truncate">{sig.name}</span>
                     <span className="font-mono font-bold text-slate-900 dark:text-cyan-400">{(sig.score * 100).toFixed(0)}%</span>
