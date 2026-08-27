@@ -11,6 +11,14 @@ from social_vector.analysis.features.temporal import TemporalFeatureResult
 from social_vector.analysis.models import SignalScore
 from social_vector.analysis.preprocessing import PreprocessedData
 
+# Standard benign organic domains that shouldn't trigger suspicious infrastructure alerts
+ORGANIC_BENIGN_DOMAINS = {
+    "wikipedia.org", "en.wikipedia.org", "nasa.gov", "space.com", "mit.edu",
+    "nature.com", "science.org", "nytimes.com", "reuters.com", "apnews.com",
+    "bbc.com", "arxiv.org", "ieee.org", "github.com", "scientificamerican.com",
+    "nationalgeographic.com", "astronomy.com", "acm.org"
+}
+
 
 def evaluate_semantic_signal(
     semantic_res: SemanticFeatureResult,
@@ -19,7 +27,7 @@ def evaluate_semantic_signal(
 ) -> SignalScore:
     """Evaluate semantic post similarity and cross-account narrative alignment."""
     n_posts = preprocessed.total_posts
-    n_users = preprocessed.total_users
+    n_users = max(1, preprocessed.total_users)
     strong_pairs = semantic_res.strong_pairs_count
 
     # Max possible pairs between distinct authors
@@ -27,7 +35,7 @@ def evaluate_semantic_signal(
     pair_ratio = strong_pairs / max_comparisons
 
     # Score scaling: High pair ratio or high mean similarity
-    score = min(1.0, (pair_ratio * 15.0) + (semantic_res.mean_similarity * 0.4))
+    score = min(1.0, (pair_ratio * 20.0) + (semantic_res.mean_similarity * 0.35))
 
     evidence: List[str] = []
     if strong_pairs > 0:
@@ -50,7 +58,7 @@ def evaluate_semantic_signal(
     return SignalScore(
         signal_id="semantic_similarity",
         name="Semantic Narrative Alignment",
-        score=score,
+        score=round(score, 4),
         weight=weight,
         confidence=min(1.0, 0.5 + (n_posts / 200.0)),
         summary=summary,
@@ -74,7 +82,7 @@ def evaluate_temporal_signal(
     max_density = temporal_res.max_burst_density
 
     # Score based on synchronization ratio and burst density
-    score = min(1.0, (sync_ratio * 1.5) + (min(50.0, max_density) / 100.0))
+    score = min(1.0, (sync_ratio * 1.6) + (min(50.0, max_density) / 100.0))
 
     evidence: List[str] = []
     if len(bursts) > 0:
@@ -95,7 +103,7 @@ def evaluate_temporal_signal(
     return SignalScore(
         signal_id="temporal_coordination",
         name="Temporal Synchronization & Bursts",
-        score=score,
+        score=round(score, 4),
         weight=weight,
         confidence=min(1.0, 0.6 + (len(bursts) * 0.05)),
         summary=summary,
@@ -117,8 +125,10 @@ def evaluate_content_reuse_signal(
     """Evaluate exact and near-exact verbatim text duplication across accounts."""
     dup_groups = content_res.duplicate_groups
     reuse_ratio = content_res.verbatim_reuse_ratio
+    n_posts = max(1, preprocessed.total_posts)
 
-    score = min(1.0, (reuse_ratio * 2.5) + (len(dup_groups) * 0.1))
+    # Multi-account duplicate ratio
+    score = min(1.0, (reuse_ratio * 2.0) + (len(dup_groups) / (n_posts * 0.2 + 5.0)))
 
     evidence: List[str] = []
     if len(dup_groups) > 0:
@@ -139,7 +149,7 @@ def evaluate_content_reuse_signal(
     return SignalScore(
         signal_id="content_reuse",
         name="Verbatim Text Repetition",
-        score=score,
+        score=round(score, 4),
         weight=weight,
         confidence=0.85,
         summary=summary,
@@ -160,19 +170,27 @@ def evaluate_domain_infrastructure_signal(
     shared_domains = content_res.shared_domains
     n_users = max(1, preprocessed.total_users)
 
-    # Domains shared by many accounts
-    score = min(1.0, len(shared_domains) * 0.15 + (len(content_res.user_domain_pairs) / (n_users * 2.0)))
+    # Separate organic benign domains from suspicious campaign infrastructure
+    suspicious_domains = {d: u for d, u in shared_domains.items() if d not in ORGANIC_BENIGN_DOMAINS}
+    
+    suspicious_score = len(suspicious_domains) * 0.18
+    co_pair_score = len(content_res.user_domain_pairs) / (n_users * 3.0)
+    score = min(1.0, suspicious_score + co_pair_score)
 
     evidence: List[str] = []
-    if len(shared_domains) > 0:
+    if len(suspicious_domains) > 0:
         evidence.append(
-            f"{len(shared_domains)} external domains are co-amplified by multiple participating accounts."
+            f"{len(suspicious_domains)} non-standard campaign domains are co-amplified by multiple participating accounts."
         )
-        for d, users in list(shared_domains.items())[:3]:
+        for d, users in list(suspicious_domains.items())[:3]:
             evidence.append(f"Domain '{d}' shared across {len(users)} distinct accounts.")
+    elif len(shared_domains) > 0:
+        evidence.append(
+            f"{len(shared_domains)} standard public domains (e.g. news/encyclopedia) referenced by participants."
+        )
 
     summary = (
-        f"Shared domain infrastructure is concentrated ({score:.2f}) across {len(shared_domains)} domains."
+        f"Shared domain infrastructure is concentrated ({score:.2f}) across {len(suspicious_domains)} campaign domains."
         if score > 0.25
         else f"Outbound links are decentralized or standard organic sources ({score:.2f})."
     )
@@ -180,12 +198,13 @@ def evaluate_domain_infrastructure_signal(
     return SignalScore(
         signal_id="domain_infrastructure",
         name="Shared Domain Infrastructure",
-        score=score,
+        score=round(score, 4),
         weight=weight,
         confidence=0.80,
         summary=summary,
         metrics={
             "shared_domain_count": len(shared_domains),
+            "suspicious_domain_count": len(suspicious_domains),
             "co_linking_user_pairs": len(content_res.user_domain_pairs),
         },
         evidence_items=evidence,
@@ -199,13 +218,14 @@ def evaluate_hashtag_coordination_signal(
 ) -> SignalScore:
     """Evaluate hashtag concentration and coordinated campaign hashtag pushes."""
     shared_hashtags = content_res.shared_hashtags
+    n_users = max(1, preprocessed.total_users)
 
-    score = min(1.0, len(shared_hashtags) * 0.08)
+    score = min(1.0, len(shared_hashtags) / (n_users * 0.3 + 5.0))
 
     evidence: List[str] = []
     if len(shared_hashtags) > 0:
         evidence.append(
-            f"{len(shared_hashtags)} prominent hashtags co-occur across coordinated participant groups."
+            f"{len(shared_hashtags)} prominent hashtags co-occur across participant groups."
         )
 
     summary = (
@@ -217,7 +237,7 @@ def evaluate_hashtag_coordination_signal(
     return SignalScore(
         signal_id="hashtag_coordination",
         name="Hashtag Convergence",
-        score=score,
+        score=round(score, 4),
         weight=weight,
         confidence=0.75,
         summary=summary,
@@ -237,9 +257,9 @@ def evaluate_behavioral_anomaly_signal(
     """Evaluate bot persona anomalies, registration batching, and client source homogeneity."""
     score = min(
         1.0,
-        (behavior_res.creation_clustering_score * 0.5)
-        + (behavior_res.client_homogeneity_score * 0.3)
-        + (min(10.0, behavior_res.follower_asymmetry_mean) / 30.0),
+        (behavior_res.creation_clustering_score * 0.45)
+        + (behavior_res.client_homogeneity_score * 0.25)
+        + (min(10.0, behavior_res.follower_asymmetry_mean) / 35.0),
     )
 
     evidence: List[str] = []
@@ -261,7 +281,7 @@ def evaluate_behavioral_anomaly_signal(
     return SignalScore(
         signal_id="behavioral_anomaly",
         name="Behavioral & Persona Signatures",
-        score=score,
+        score=round(score, 4),
         weight=weight,
         confidence=0.70,
         summary=summary,

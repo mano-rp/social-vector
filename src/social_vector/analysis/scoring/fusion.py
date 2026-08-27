@@ -24,7 +24,6 @@ def fuse_signals_and_generate_evidence(
 
     signal_by_id: Dict[str, SignalScore] = {s.signal_id: s for s in signals}
 
-    # Map configured weight keys to signal IDs
     key_mapping = {
         "semantic": "semantic_similarity",
         "temporal": "temporal_coordination",
@@ -44,7 +43,6 @@ def fuse_signals_and_generate_evidence(
     overall_score = (weighted_sum / total_weight) if total_weight > 0 else 0.0
     overall_score = min(1.0, max(0.0, overall_score))
 
-    # Compile Evidence Items
     evidence_items: List[EvidenceItem] = []
     item_counter = 1
 
@@ -112,7 +110,7 @@ def fuse_signals_and_generate_evidence(
 
     # 5. Cluster Evidence
     if len(clustering_res.clusters) > 0:
-        for c in clustering_res.clusters[:3]:
+        for c in clustering_res.clusters[:4]:
             evidence_items.append(
                 EvidenceItem(
                     evidence_id=f"ev_{item_counter:03d}",
@@ -133,25 +131,26 @@ def fuse_signals_and_generate_evidence(
 
     # 6. Honest Confidence Assessment and Rationale
     # Core research heuristic: High semantic + High temporal + High infrastructure = Coordinated
-    # High semantic + Low temporal + Low infrastructure = Organic topical convergence
+    # High semantic + Low temporal + Low clusters = Organic topical convergence
     is_high_semantic = sem_sig and sem_sig.score >= 0.5
-    is_high_temporal = temp_sig and temp_sig.score >= 0.4
+    is_high_temporal = temp_sig and temp_sig.score >= 0.35
     is_high_infrastructure = (dom_sig and dom_sig.score >= 0.3) or (reuse_sig and reuse_sig.score >= 0.3)
     has_clusters = len(clustering_res.clusters) > 0
 
-    if overall_score >= 0.55 and has_clusters and (is_high_temporal or is_high_infrastructure):
+    if len(clustering_res.clusters) == 0 and temp_sig and temp_sig.score < 0.20:
+        confidence_assessment = "low_suspicion_organic_similarity"
+        assessment_rationale = (
+            f"No multi-account coordination clusters detected (score: {overall_score:.2f}). "
+            f"Temporal synchronization is negligible ({temp_sig.score:.2f}). "
+            f"Observed topical overlap is consistent with organic viral discussion around a shared real-world event."
+        )
+    elif overall_score >= 0.50 and has_clusters and (is_high_temporal or is_high_infrastructure):
         confidence_assessment = "high_confidence_coordinated_operation"
         assessment_rationale = (
             f"Multi-signal convergence confirms coordinated influence operation (score: {overall_score:.2f}). "
             f"Observed simultaneous narrative alignment ({sem_sig.score if sem_sig else 0:.2f}), "
             f"synchronized burst intervals ({temp_sig.score if temp_sig else 0:.2f}), and "
             f"{len(clustering_res.clusters)} distinct multi-account clusters sharing infrastructure."
-        )
-    elif is_high_semantic and not is_high_temporal and not is_high_infrastructure:
-        confidence_assessment = "low_suspicion_organic_similarity"
-        assessment_rationale = (
-            f"High semantic similarity observed ({sem_sig.score if sem_sig else 0:.2f}) without temporal synchronization "
-            f"or shared infrastructure. Activity is consistent with organic topical convergence on a shared public event."
         )
     elif overall_score >= 0.30 or has_clusters:
         confidence_assessment = "moderate_coordination_potential"

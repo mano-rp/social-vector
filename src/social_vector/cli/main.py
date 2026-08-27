@@ -7,6 +7,7 @@ import sys
 from typing import List, Optional
 
 from social_vector.__version__ import __schema_version__, __version__
+from social_vector.cli.analyze_cmd import run_analyze_command
 from social_vector.cli.generate_cmd import run_generate_command
 from social_vector.cli.inspect_cmd import run_inspect_command
 from social_vector.cli.scenarios_cmd import run_scenarios_command
@@ -35,13 +36,13 @@ def build_parser() -> argparse.ArgumentParser:
     gen_parser.add_argument(
         "-s", "--scenario",
         default="organic_activity",
-        help="Scenario type to generate (e.g. 'organic_activity', 'coordinated_campaign', 'paraphrased_coordination', 'organic_topical_similarity', 'extreme_information_operation'). Default: organic_activity",
+        help="Scenario type to generate. Default: organic_activity",
     )
     gen_parser.add_argument(
         "-c", "--content-profile",
         default="realistic",
         choices=["standard", "realistic", "extreme"],
-        help="Content profile governing post length, narrative depth, and rhetorical style. Choices: 'standard', 'realistic', 'extreme'. Default: realistic",
+        help="Content profile governing post length, narrative depth, and rhetorical style. Default: realistic",
     )
     gen_parser.add_argument(
         "-u", "--users",
@@ -77,18 +78,18 @@ def build_parser() -> argparse.ArgumentParser:
         "--start-date",
         type=str,
         default=None,
-        help="Observation start datetime in ISO 8601 UTC format (e.g. '2026-08-01T00:00:00Z').",
+        help="Observation start datetime in ISO 8601 UTC format.",
     )
     gen_parser.add_argument(
         "--end-date",
         type=str,
         default=None,
-        help="Observation end datetime in ISO 8601 UTC format (e.g. '2026-08-07T00:00:00Z').",
+        help="Observation end datetime in ISO 8601 UTC format.",
     )
     gen_parser.add_argument(
         "--no-pretty",
         action="store_true",
-        help="Output compact single-line JSON instead of formatted indented JSON.",
+        help="Output compact single-line JSON.",
     )
     gen_parser.add_argument(
         "-q", "--quiet",
@@ -120,6 +121,39 @@ def build_parser() -> argparse.ArgumentParser:
         help="Display detailed diagnostic output.",
     )
 
+    # analyze command with subcommands: dataset, user, feed
+    analyze_parser = subparsers.add_parser(
+        "analyze",
+        aliases=["anl", "eval"],
+        help="Run multi-signal coordination analysis and investigation on an observation dataset.",
+    )
+    anl_subparsers = analyze_parser.add_subparsers(dest="analyze_type", help="Scope of analytical evaluation")
+
+    # sv analyze dataset <dataset>
+    anl_ds = anl_subparsers.add_parser("dataset", help="Analyze entire observation dataset")
+    anl_ds.add_argument("dataset", type=str, help="Dataset identifier or file path")
+    anl_ds.add_argument("-o", "--output", type=str, default=None, help="Save structured analysis to file")
+    anl_ds.add_argument("--json", action="store_true", help="Output raw structured JSON results")
+    anl_ds.add_argument("--threshold", type=float, default=0.78, help="Semantic similarity threshold (default: 0.78)")
+    anl_ds.add_argument("--eps", type=float, default=0.38, help="DBSCAN clustering eps distance (default: 0.38)")
+    anl_ds.add_argument("--min-samples", type=int, default=3, help="DBSCAN min samples per cluster (default: 3)")
+
+    # sv analyze user <dataset> <user>
+    anl_usr = anl_subparsers.add_parser("user", help="Analyze an individual user's activity and interactions")
+    anl_usr.add_argument("dataset", type=str, help="Dataset identifier or file path")
+    anl_usr.add_argument("target", type=str, help="User ID or username to analyze")
+    anl_usr.add_argument("-o", "--output", type=str, default=None, help="Save structured analysis to file")
+    anl_usr.add_argument("--json", action="store_true", help="Output raw structured JSON results")
+    anl_usr.add_argument("--threshold", type=float, default=0.78, help="Semantic similarity threshold")
+
+    # sv analyze feed <dataset> <target>
+    anl_feed = anl_subparsers.add_parser("feed", help="Analyze a specific feed or user timeline")
+    anl_feed.add_argument("dataset", type=str, help="Dataset identifier or file path")
+    anl_feed.add_argument("target", type=str, help="User ID or feed target identifier")
+    anl_feed.add_argument("-o", "--output", type=str, default=None, help="Save structured analysis to file")
+    anl_feed.add_argument("--json", action="store_true", help="Output raw structured JSON results")
+    anl_feed.add_argument("--threshold", type=float, default=0.78, help="Semantic similarity threshold")
+
     return parser
 
 
@@ -150,6 +184,14 @@ def main(argv: Optional[List[str]] = None) -> int:
         return run_scenarios_command()
     elif args.command in ["inspect-dataset", "inspect"]:
         return run_inspect_command(args.file, verbose=args.verbose)
+    elif args.command in ["analyze", "anl", "eval"]:
+        if not getattr(args, "analyze_type", None):
+            # If user ran `sv analyze <dataset>`, default to dataset scope
+            if hasattr(args, "dataset"):
+                return run_analyze_command(args)
+            print("Please specify analysis scope: 'dataset', 'user', or 'feed'. Run `sv analyze --help` for details.", file=sys.stderr)
+            return 1
+        return run_analyze_command(args)
 
     return 0
 
