@@ -234,7 +234,7 @@ npm test
 - [Dataset Schema Specification](docs/schema.md)
 - [Frontend Architecture & UI Reference](docs/frontend.md)
 - [CLI Reference Manual](docs/cli.md)
-- [Comprehensive Backend Technical Guide](BACKEND_EXPLANATION.md)
+- [Comprehensive Backend Technical Guide](docs/backend.md)
 
 ---
 
